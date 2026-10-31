@@ -11,8 +11,8 @@ permalink: /
 
 [![C++](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](https://en.cppreference.com/w/cpp/17.html)
 [![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![CI](https://github.com/N3b3x/hf-tmc5160-driver/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main)](https://github.com/N3b3x/hf-tmc5160-driver/actions/workflows/esp32-examples-build-ci.yml)
-[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://n3b3x.github.io/hf-tmc5160-driver/)
+[![CI](https://github.com/hardfoc/hf-tmc5160-driver/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main)](https://github.com/hardfoc/hf-tmc5160-driver/actions/workflows/esp32-examples-build-ci.yml)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://hardfoc.github.io/hf-tmc5160-driver/)
 
 ## 📚 Table of Contents
 1. [Overview](#-overview)
@@ -27,7 +27,7 @@ permalink: /
 
 ## 📦 Overview
 
-> **📖 [📚🌐 Live Complete Documentation](https://n3b3x.github.io/hf-tmc5160-driver/)** -
+> **📖 [📚🌐 Live Complete Documentation](https://hardfoc.github.io/hf-tmc5160-driver/)** -
 > Interactive guides, examples, and step-by-step tutorials
 
 **HF-TMC51x0** is a comprehensive, production-ready C++17 driver for the **Trinamic TMC51x0** stepper motor controller ICs (TMC5130 & TMC5160). 
@@ -468,7 +468,7 @@ All examples use a unified test rig selection (`SELECTED_TEST_RIG`) for compile-
 
 ## 📚 Documentation
 
-**[Complete Documentation on GitHub Pages](https://n3b3x.github.io/hf-tmc5160-driver/)**
+**[Complete Documentation on GitHub Pages](https://hardfoc.github.io/hf-tmc5160-driver/)**
 
 ### Getting Started
 

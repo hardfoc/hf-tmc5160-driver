@@ -218,7 +218,7 @@ seo:
     Hardware-Agnostic TMC51x0 Stepper Motor Controller Driver
     (TMC5130 and TMC5160) with advanced features including stealthChop,
     spreadCycle, StallGuard2, and encoder support
-  url: "https://n3b3x.github.io/hf-tmc5160-driver"
+  url: "https://hardfoc.github.io/hf-tmc5160-driver"
   twitter:
     card: "summary_large_image"
     site: "@n3b3x"

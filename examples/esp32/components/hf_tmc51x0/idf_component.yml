@@ -10,9 +10,9 @@ description: |
   SPI/UART communication, and daisy-chain support.
 
 url: "https://www.trinamic.com/products/integrated-circuits/details/tmc5160/"
-repository: "https://github.com/N3b3x/hf-tmc5160-driver.git"
-documentation: "https://github.com/N3b3x/hf-tmc5160-driver/blob/main/README.md"
-issues: "https://github.com/N3b3x/hf-tmc5160-driver/issues"
+repository: "https://github.com/hardfoc/hf-tmc5160-driver.git"
+documentation: "https://github.com/hardfoc/hf-tmc5160-driver/blob/main/README.md"
+issues: "https://github.com/hardfoc/hf-tmc5160-driver/issues"
 
 license: "GPL-3.0"
 maintainers:
