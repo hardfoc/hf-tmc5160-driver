@@ -12,15 +12,15 @@ This branch contains the versioned documentation for this repository.
 
 ## Access
 
-- **Latest**: [https://N3b3x.github.io/hf-tmc5160-driver/](https://N3b3x.github.io/hf-tmc5160-driver/)
-- **All Versions**: [https://N3b3x.github.io/hf-tmc5160-driver/version_selector.html](https://N3b3x.github.io/hf-tmc5160-driver/version_selector.html)
+- **Latest**: [https://hardfoc.github.io/hf-tmc5160-driver/](https://hardfoc.github.io/hf-tmc5160-driver/)
+- **All Versions**: [https://hardfoc.github.io/hf-tmc5160-driver/version_selector.html](https://hardfoc.github.io/hf-tmc5160-driver/version_selector.html)
 
 ## Current Version
 
 - **Version**: development
 - **Type**: development
-- **Deployed**: 2026-06-15T01:38:45Z
-- **Commit**: f00bed6a2c2af8cd5be5d5fa78c9b70f4c68c449
+- **Deployed**: 2026-10-31T08:21:47Z
+- **Commit**: 475e5e25f56215d0b99e12dd3f33d54eef05b6ca
 
 ---
 
