@@ -24,7 +24,7 @@ Before installing the driver, ensure you have:
 ### Option 1: Git Clone
 
 ```bash
-git clone https://github.com/N3b3x/hf-tmc5160-driver.git
+git clone https://github.com/hardfoc/hf-tmc5160-driver.git
 cd hf-tmc5160-driver
 ```
 
