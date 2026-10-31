@@ -1,17 +1,17 @@
 <map id="CommandOutput::PrintWarning" name="CommandOutput::PrintWarning">
-<area shape="rect" id="Node000001" title="Print a warning message to the ESP&#45;IDF log." alt="" coords="383,80,607,105"/>
-<area shape="poly" id="edge9_Node000001_Node000001" title=" " alt="" coords="533,70,523,62,495,59,472,61,459,66,457,71,463,78,459,82,452,72,456,62,470,56,495,53,525,57,537,66"/>
-<area shape="rect" id="Node000002" href="$main_8cpp.html#a26ba4ef0d74eb1cdd930e9ed4f0b2c3d" title="Handle PAIR command." alt="" coords="219,5,335,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="443,78,314,33,315,28,444,73"/>
-<area shape="rect" id="Node000004" href="$main_8cpp.html#a35d4c27b82242d39e341bf9d35d50a0f" title="Apply SET command options to the motion controller." alt="" coords="232,55,321,80"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="371,81,321,75,322,70,372,76"/>
-<area shape="rect" id="Node000005" href="$main_8cpp.html#af9a61f18ec0bf52c35280fd8748a0679" title="Handle START command." alt="" coords="227,104,326,129"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="369,109,327,114,326,109,369,104"/>
-<area shape="rect" id="Node000006" href="$main_8cpp.html#a39ccc4c53283879fb74a5a5538daa92b" title="Handle STOP command." alt="" coords="228,153,325,179"/>
-<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="444,112,316,156,315,151,442,107"/>
-<area shape="rect" id="Node000003" href="$classUartCommandParser.html#a2b7090fe7118485c639dce94074b6e68" title="Parse and execute a single command line." alt="" coords="5,73,171,113"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="232,38,140,75,138,70,230,33"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="219,78,171,84,171,79,218,72"/>
-<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="213,111,171,106,171,101,214,106"/>
-<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="229,151,139,115,141,110,231,146"/>
+<area shape="rect" id="Node000001" title="Print a warning message to the ESP&#45;IDF log." alt="" coords="381,84,604,112"/>
+<area shape="poly" id="edge9_Node000001_Node000001" title=" " alt="" coords="528,68,517,65,493,63,470,65,458,69,455,75,460,84,455,83,449,75,454,65,469,59,493,57,518,60,534,69"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html#a26ba4ef0d74eb1cdd930e9ed4f0b2c3d" title="Handle PAIR command." alt="" coords="218,5,333,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="435,79,316,36,316,31,440,78"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html#a35d4c27b82242d39e341bf9d35d50a0f" title="Apply SET command options to the motion controller." alt="" coords="231,57,320,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="363,83,320,79,320,74,368,82"/>
+<area shape="rect" id="Node000005" href="$main_8cpp.html#af9a61f18ec0bf52c35280fd8748a0679" title="Handle START command." alt="" coords="226,109,324,137"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="363,113,325,120,324,115,368,112"/>
+<area shape="rect" id="Node000006" href="$main_8cpp.html#a39ccc4c53283879fb74a5a5538daa92b" title="Handle STOP command." alt="" coords="227,161,324,189"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="440,117,317,163,316,158,435,118"/>
+<area shape="rect" id="Node000003" href="$classUartCommandParser.html#a2b7090fe7118485c639dce94074b6e68" title="Parse and execute a single command line." alt="" coords="5,76,170,120"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="224,41,144,77,142,72,228,38"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="213,81,171,89,169,84,218,79"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="208,115,170,112,170,106,213,114"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="223,156,143,123,144,118,228,154"/>
 </map>

@@ -1,65 +1,65 @@
 <map id="tmc51x0_test_config::TestRigConfig&lt; TestRigType::TEST_RIG_FATIGUE &gt;::ConfigureDriver" name="tmc51x0_test_config::TestRigConfig&lt; TestRigType::TEST_RIG_FATIGUE &gt;::ConfigureDriver">
-<area shape="rect" id="Node000001" title="Configure driver from this test rig&#39;s configuration." alt="" coords="5,926,284,981"/>
-<area shape="rect" id="Node000002" href="$namespacetmc51x0__test__config.html#a2aeab6056b5a5959c89cafb58d037747" title="Helper function to populate DriverConfig from Applied Motion 5034 motor configuration." alt="" coords="332,926,535,981"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="284,951,318,951,318,956,284,956"/>
-<area shape="rect" id="Node000003" href="$classtmc51x0_1_1ConfigBuilder.html#a3e8186a9d87b4d52e8272f9601e48312" title="Build the final configuration." alt="" coords="611,5,786,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="433,926,441,751,450,626,463,490,482,354,507,229,523,174,540,126,559,86,581,56,597,42,601,46,585,59,564,89,545,128,528,176,513,231,487,355,468,491,455,626,446,751,438,926"/>
-<area shape="rect" id="Node000004" href="$classtmc51x0_1_1ConfigBuilder.html#af6c6d96e1e16fb66c48a950860e80bbb" title="Set chopper blank time." alt="" coords="607,69,791,109"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="433,926,443,762,467,521,486,395,511,280,542,185,560,148,581,120,593,109,597,113,585,123,565,150,547,187,516,281,491,396,472,521,448,763,438,926"/>
-<area shape="rect" id="Node000005" href="$classtmc51x0_1_1ConfigBuilder.html#acd69b331ff602036b46468584371e3b2" title="Set chopper mode." alt="" coords="611,133,786,173"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="434,926,445,774,471,551,490,436,515,330,545,243,562,209,581,183,597,170,601,174,585,187,566,212,550,245,520,332,496,437,476,552,450,774,439,926"/>
-<area shape="rect" id="Node000006" href="$classtmc51x0_1_1ConfigBuilder.html#a8ed111ba4619b946e5508eb3d167184a" title="Set chopper off&#45;time (TOFF)" alt="" coords="611,197,786,237"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="434,926,447,785,475,581,495,477,518,381,547,302,563,271,581,247,597,234,601,238,585,251,568,274,552,304,524,382,500,478,480,582,453,785,439,926"/>
-<area shape="rect" id="Node000007" href="$classtmc51x0_1_1ConfigBuilder.html#a864b391940cea0808e2176be155d4dc0" title="Configure direct drive system." alt="" coords="611,261,786,301"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="435,926,450,796,479,612,499,517,522,431,549,360,565,333,581,311,597,298,601,303,585,315,569,335,554,362,527,433,504,519,484,613,455,797,440,926"/>
-<area shape="rect" id="Node000008" href="$classtmc51x0_1_1ConfigBuilder.html#ab45f4fa9465bc7d40cd53b1865bf0d1a" title="Set motor direction." alt="" coords="611,325,786,365"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="435,925,453,807,483,642,503,558,526,482,552,419,581,376,597,363,601,367,585,379,557,421,531,483,508,560,488,644,458,808,441,926"/>
-<area shape="rect" id="Node000009" href="$classtmc51x0_1_1ConfigBuilder.html#a3a1e4201a3e535eb36cd6c6debc25890" title="Set hold current value." alt="" coords="611,389,786,429"/>
-<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="431,926,435,834,441,771,453,703,471,632,498,562,534,497,581,439,598,427,601,431,585,443,538,500,503,565,477,634,458,704,446,772,440,834,437,926"/>
-<area shape="rect" id="Node000010" href="$classtmc51x0_1_1ConfigBuilder.html#a25be94fa8f900c0de6b5491f7c8b3744" title="Set hysteresis end value (SpreadCycle mode)" alt="" coords="611,453,786,493"/>
-<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="433,925,440,843,448,789,461,730,480,669,505,609,539,553,581,503,597,491,600,496,584,507,543,556,510,611,485,671,466,731,453,790,445,844,438,926"/>
-<area shape="rect" id="Node000011" href="$classtmc51x0_1_1ConfigBuilder.html#ab28399f9a706e454a85cb850a5a2856a" title="Set hysteresis start value (SpreadCycle mode)" alt="" coords="611,517,786,557"/>
-<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="434,926,445,854,469,758,488,706,513,656,543,608,581,567,597,556,600,560,584,571,548,612,517,658,493,708,474,759,450,855,440,926"/>
-<area shape="rect" id="Node000012" href="$classtmc51x0_1_1ConfigBuilder.html#a92a91547bf4c6423d1828a012268af04" title="Enable/disable interpolation." alt="" coords="611,581,786,621"/>
-<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="437,925,451,865,478,785,497,743,520,702,548,664,581,631,597,620,600,624,584,635,552,668,525,705,502,746,483,787,456,866,442,927"/>
-<area shape="rect" id="Node000013" href="$classtmc51x0_1_1ConfigBuilder.html#a4f87e98bc39714f631b93da897e5caaa" title="Set microstep resolution." alt="" coords="602,645,795,685"/>
-<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="440,925,458,876,487,813,528,750,553,721,581,695,589,690,592,694,584,699,557,724,532,753,492,816,463,878,445,927"/>
-<area shape="rect" id="Node000014" href="$classtmc51x0_1_1ConfigBuilder.html#a5b99fb555b3565d387bc1f5e4792578c" title="Configure motor specifications." alt="" coords="611,709,786,749"/>
-<area shape="poly" id="edge13_Node000002_Node000014" title=" " alt="" coords="446,925,467,887,498,842,536,797,581,759,597,750,600,754,584,764,540,801,502,846,472,890,451,927"/>
-<area shape="rect" id="Node000015" href="$classtmc51x0_1_1ConfigBuilder.html#a631e2378504ce09410a8538ff92b411f" title="Set motor power down delay time." alt="" coords="583,773,815,813"/>
-<area shape="poly" id="edge14_Node000002_Node000015" title=" " alt="" coords="457,924,511,873,545,846,581,823,596,816,598,821,584,828,548,850,515,877,461,928"/>
-<area shape="rect" id="Node000016" href="$classtmc51x0_1_1ConfigBuilder.html#a888eac28f2326b865b10e72a3c136a68" title="Enable/disable recalibration." alt="" coords="611,837,786,877"/>
-<area shape="poly" id="edge15_Node000002_Node000016" title=" " alt="" coords="492,923,582,887,606,879,608,884,584,892,494,928"/>
-<area shape="rect" id="Node000017" href="$classtmc51x0_1_1ConfigBuilder.html#abf0a33651a724a8517a99f78f12dbb9c" title="Set run current value." alt="" coords="611,901,786,941"/>
-<area shape="poly" id="edge16_Node000002_Node000017" title=" " alt="" coords="534,938,598,931,598,936,535,944"/>
-<area shape="rect" id="Node000018" href="$classtmc51x0_1_1ConfigBuilder.html#ac17f8ed0c6ff298248da13029e4b9cfe" title="Enable/disable short standstill timeout." alt="" coords="594,965,803,1005"/>
-<area shape="poly" id="edge17_Node000002_Node000018" title=" " alt="" coords="535,963,581,968,580,974,534,968"/>
-<area shape="rect" id="Node000019" href="$classtmc51x0_1_1ConfigBuilder.html#ac4eb6a128327d70e350efb96e29c3853" title="Enable/disable StallGuard2 filter." alt="" coords="611,1029,786,1069"/>
-<area shape="poly" id="edge18_Node000002_Node000019" title=" " alt="" coords="494,978,584,1015,608,1023,606,1028,582,1020,492,983"/>
-<area shape="rect" id="Node000020" href="$classtmc51x0_1_1ConfigBuilder.html#a8bdba8b7642a4f58eb249f6fe76cceb6" title="Set StallGuard2 minimum velocity threshold." alt="" coords="597,1093,801,1133"/>
-<area shape="poly" id="edge19_Node000002_Node000020" title=" " alt="" coords="461,979,515,1030,548,1056,584,1079,598,1086,596,1091,581,1084,545,1061,511,1034,457,983"/>
-<area shape="rect" id="Node000021" href="$classtmc51x0_1_1ConfigBuilder.html#a134081ecf09f0f7b24a91c9f411ea599" title="Set StallGuard2 threshold (SGT)" alt="" coords="603,1157,795,1197"/>
-<area shape="poly" id="edge20_Node000002_Node000021" title=" " alt="" coords="451,979,472,1017,502,1061,540,1105,584,1143,594,1149,591,1154,581,1147,536,1109,498,1064,467,1020,446,982"/>
-<area shape="rect" id="Node000022" href="$classtmc51x0_1_1ConfigBuilder.html#aec44097edf1727bb585d65e94359a8d8" title="Set start velocity." alt="" coords="611,1221,786,1261"/>
-<area shape="poly" id="edge21_Node000002_Node000022" title=" " alt="" coords="445,980,463,1029,492,1091,532,1154,557,1182,584,1207,600,1217,598,1222,581,1211,553,1186,528,1157,487,1093,458,1031,440,982"/>
-<area shape="rect" id="Node000023" href="$classtmc51x0_1_1ConfigBuilder.html#a3e65de5f4d30c587d28df4344bf13d5e" title="Enable/disable StealthChop." alt="" coords="611,1285,786,1325"/>
-<area shape="poly" id="edge22_Node000002_Node000023" title=" " alt="" coords="442,980,456,1041,483,1119,502,1161,525,1201,552,1239,584,1271,600,1282,597,1287,581,1275,548,1242,520,1204,497,1163,478,1121,451,1042,437,981"/>
-<area shape="rect" id="Node000024" href="$classtmc51x0_1_1ConfigBuilder.html#abdd0329626db4ea40667484f8536c09f" title="Enable/disable StealthChop PWM autograd." alt="" coords="599,1349,798,1389"/>
-<area shape="poly" id="edge23_Node000002_Node000024" title=" " alt="" coords="440,980,450,1052,474,1148,493,1199,517,1249,548,1295,585,1335,590,1340,586,1344,581,1339,543,1298,513,1251,488,1201,469,1149,445,1053,434,981"/>
-<area shape="rect" id="Node000025" href="$classtmc51x0_1_1ConfigBuilder.html#a7d1696e2139b7aefe242ca5c23566c66" title="Enable/disable StealthChop PWM autoscale." alt="" coords="597,1413,800,1453"/>
-<area shape="poly" id="edge24_Node000002_Node000025" title=" " alt="" coords="438,981,445,1063,453,1117,466,1176,485,1236,510,1296,543,1351,585,1399,589,1403,586,1407,581,1403,539,1354,505,1298,480,1238,461,1177,448,1118,440,1063,433,981"/>
-<area shape="rect" id="Node000026" href="$classtmc51x0_1_1ConfigBuilder.html#a2e77e4fdb726ebd16ea6b1bd7b1f970d" title="Set StealthChop PWM offset." alt="" coords="602,1477,795,1517"/>
-<area shape="poly" id="edge25_Node000002_Node000026" title=" " alt="" coords="437,981,440,1073,446,1134,458,1202,477,1273,503,1342,538,1407,585,1463,592,1470,588,1474,581,1467,534,1410,498,1344,471,1274,453,1203,441,1135,435,1073,431,981"/>
-<area shape="rect" id="Node000027" href="$classtmc51x0_1_1ConfigBuilder.html#ab1e748a4966d373e71d0cbee88159f58" title="Enable/disable StealthChop step filter." alt="" coords="598,1541,799,1581"/>
-<area shape="poly" id="edge26_Node000002_Node000027" title=" " alt="" coords="441,981,458,1098,488,1263,508,1347,531,1423,557,1486,585,1528,588,1531,585,1535,581,1531,552,1488,526,1425,503,1348,483,1264,453,1099,435,981"/>
-<area shape="rect" id="Node000028" href="$classtmc51x0_1_1ConfigBuilder.html#adb7afa76392771f590c3561516702594" title="Set StealthChop threshold velocity." alt="" coords="597,1605,800,1645"/>
-<area shape="poly" id="edge27_Node000002_Node000028" title=" " alt="" coords="440,981,455,1110,484,1294,504,1388,527,1474,554,1544,569,1571,585,1592,588,1595,585,1599,581,1595,565,1574,549,1547,522,1476,499,1389,479,1295,450,1111,435,981"/>
-<area shape="rect" id="Node000029" href="$classtmc51x0_1_1ConfigBuilder.html#aed8119b0d75c07b3d4e0e491b4f34482" title="Set supply voltage value." alt="" coords="611,1669,786,1709"/>
-<area shape="poly" id="edge28_Node000002_Node000029" title=" " alt="" coords="439,980,453,1121,480,1325,500,1429,524,1525,552,1603,568,1633,585,1655,601,1668,597,1673,581,1659,563,1636,547,1605,518,1526,495,1430,475,1325,447,1122,434,981"/>
-<area shape="rect" id="Node000030" href="$classtmc51x0_1_1ConfigBuilder.html#a369820f97c2ef4a9c9e72d97ce7955f5" title="Set winding inductance value." alt="" coords="597,1733,801,1773"/>
-<area shape="poly" id="edge29_Node000002_Node000030" title=" " alt="" coords="439,980,450,1133,476,1355,496,1470,520,1575,550,1661,566,1695,585,1720,588,1723,584,1727,581,1723,562,1697,545,1663,515,1576,490,1471,471,1356,445,1133,434,981"/>
-<area shape="rect" id="Node000031" href="$classtmc51x0_1_1ConfigBuilder.html#ac243cdcc3bf8c19238f620634f9749cf" title="Set winding resistance value." alt="" coords="586,1797,811,1837"/>
-<area shape="poly" id="edge30_Node000002_Node000031" title=" " alt="" coords="438,981,448,1144,472,1385,491,1511,516,1626,547,1720,565,1756,585,1784,588,1787,584,1791,581,1787,560,1759,542,1722,511,1627,486,1512,467,1386,443,1144,433,981"/>
-<area shape="rect" id="Node000032" href="$classtmc51x0_1_1ConfigBuilder.html#aefd8c68025118812f2ebacd5419beb54" title="Set zero velocity wait time." alt="" coords="611,1861,786,1901"/>
-<area shape="poly" id="edge31_Node000002_Node000032" title=" " alt="" coords="438,981,446,1155,455,1280,468,1416,487,1552,513,1676,528,1731,545,1778,564,1818,585,1848,601,1861,597,1865,581,1851,559,1821,540,1780,523,1732,507,1677,482,1553,463,1417,450,1281,441,1156,433,981"/>
+<area shape="rect" id="Node000001" title="Configure driver from this test rig&#39;s configuration." alt="" coords="5,1002,283,1064"/>
+<area shape="rect" id="Node000002" href="$namespacetmc51x0__test__config.html#a2aeab6056b5a5959c89cafb58d037747" title="Helper function to populate DriverConfig from Applied Motion 5034 motor configuration." alt="" coords="331,1002,533,1064"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="282,1031,317,1031,313,1035,285,1035"/>
+<area shape="rect" id="Node000003" href="$classtmc51x0_1_1ConfigBuilder.html#a3e8186a9d87b4d52e8272f9601e48312" title="Build the final configuration." alt="" coords="610,5,783,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="431,1001,437,812,446,677,458,530,477,383,503,249,518,189,536,137,556,94,579,61,598,47,595,51,583,64,561,97,541,139,523,191,508,250,482,384,464,531,451,677,443,812,436,1002"/>
+<area shape="rect" id="Node000004" href="$classtmc51x0_1_1ConfigBuilder.html#af6c6d96e1e16fb66c48a950860e80bbb" title="Set chopper blank time." alt="" coords="605,75,788,119"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="431,1002,440,824,449,699,462,563,481,428,507,303,539,201,558,161,579,130,593,119,591,124,583,133,562,163,544,203,512,305,487,429,468,564,454,699,445,825,437,1002"/>
+<area shape="rect" id="Node000005" href="$classtmc51x0_1_1ConfigBuilder.html#acd69b331ff602036b46468584371e3b2" title="Set chopper mode." alt="" coords="610,144,783,189"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="432,1001,442,836,467,596,486,472,511,358,541,264,559,227,579,199,598,186,595,190,583,203,564,230,546,266,516,359,491,473,472,596,447,836,437,1002"/>
+<area shape="rect" id="Node000006" href="$classtmc51x0_1_1ConfigBuilder.html#a8ed111ba4619b946e5508eb3d167184a" title="Set chopper off&#45;time (TOFF)" alt="" coords="610,213,783,258"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="432,1001,445,848,471,629,490,516,515,413,544,327,561,294,579,269,598,255,595,259,583,272,565,297,549,329,520,414,496,517,476,630,450,849,438,1002"/>
+<area shape="rect" id="Node000007" href="$classtmc51x0_1_1ConfigBuilder.html#a864b391940cea0808e2176be155d4dc0" title="Configure direct drive system." alt="" coords="610,283,783,327"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="433,1001,447,860,475,662,495,560,519,467,546,391,562,361,579,338,597,325,594,329,583,341,567,364,551,393,524,469,500,561,481,663,453,861,438,1002"/>
+<area shape="rect" id="Node000008" href="$classtmc51x0_1_1ConfigBuilder.html#ab45f4fa9465bc7d40cd53b1865bf0d1a" title="Set motor direction." alt="" coords="610,352,783,397"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="434,1001,450,873,480,695,499,605,523,522,549,454,564,428,579,407,598,394,595,398,583,411,568,430,554,456,528,524,505,606,485,696,455,874,439,1002"/>
+<area shape="rect" id="Node000009" href="$classtmc51x0_1_1ConfigBuilder.html#a3a1e4201a3e535eb36cd6c6debc25890" title="Set hold current value." alt="" coords="610,421,783,466"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="435,1001,453,886,484,729,504,649,527,577,552,517,579,477,598,464,595,468,583,480,556,520,532,579,509,651,490,730,458,887,440,1002"/>
+<area shape="rect" id="Node000010" href="$classtmc51x0_1_1ConfigBuilder.html#a25be94fa8f900c0de6b5491f7c8b3744" title="Set hysteresis end value (SpreadCycle mode)" alt="" coords="610,491,783,535"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="431,1001,436,913,444,854,456,791,475,725,501,660,535,599,579,546,598,534,595,538,583,550,540,602,506,662,480,727,462,792,449,855,441,913,436,1002"/>
+<area shape="rect" id="Node000011" href="$classtmc51x0_1_1ConfigBuilder.html#ab28399f9a706e454a85cb850a5a2856a" title="Set hysteresis start value (SpreadCycle mode)" alt="" coords="610,560,783,605"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="432,1001,442,924,465,820,484,765,509,711,540,660,579,615,598,603,595,607,583,619,545,663,514,713,489,767,470,822,447,925,438,1002"/>
+<area shape="rect" id="Node000012" href="$classtmc51x0_1_1ConfigBuilder.html#a92a91547bf4c6423d1828a012268af04" title="Enable/disable interpolation." alt="" coords="610,629,783,674"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="435,1001,448,935,475,850,494,805,517,761,545,720,579,684,598,673,595,677,583,688,550,724,522,764,498,807,480,852,454,937,440,1002"/>
+<area shape="rect" id="Node000013" href="$classtmc51x0_1_1ConfigBuilder.html#a4f87e98bc39714f631b93da897e5caaa" title="Set microstep resolution." alt="" coords="600,699,793,743"/>
+<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="439,1001,456,947,485,881,525,812,551,781,579,754,589,749,586,753,583,758,554,785,530,816,489,883,461,949,444,1003"/>
+<area shape="rect" id="Node000014" href="$classtmc51x0_1_1ConfigBuilder.html#a5b99fb555b3565d387bc1f5e4792578c" title="Configure motor specifications." alt="" coords="610,768,783,813"/>
+<area shape="poly" id="edge13_Node000002_Node000014" title=" " alt="" coords="445,1000,466,960,496,912,534,864,579,823,598,814,595,818,583,827,538,868,500,915,471,963,450,1003"/>
+<area shape="rect" id="Node000015" href="$classtmc51x0_1_1ConfigBuilder.html#a631e2378504ce09410a8538ff92b411f" title="Set motor power down delay time." alt="" coords="581,837,812,882"/>
+<area shape="poly" id="edge14_Node000002_Node000015" title=" " alt="" coords="457,1000,510,945,543,917,580,892,594,887,590,891,582,897,547,921,514,949,461,1003"/>
+<area shape="rect" id="Node000016" href="$classtmc51x0_1_1ConfigBuilder.html#a888eac28f2326b865b10e72a3c136a68" title="Enable/disable recalibration." alt="" coords="610,907,783,951"/>
+<area shape="poly" id="edge15_Node000002_Node000016" title=" " alt="" coords="493,1000,580,961,602,955,598,959,582,966,497,1004"/>
+<area shape="rect" id="Node000017" href="$classtmc51x0_1_1ConfigBuilder.html#abf0a33651a724a8517a99f78f12dbb9c" title="Set run current value." alt="" coords="610,976,783,1021"/>
+<area shape="poly" id="edge16_Node000002_Node000017" title=" " alt="" coords="532,1018,597,1010,592,1013,535,1022"/>
+<area shape="rect" id="Node000018" href="$classtmc51x0_1_1ConfigBuilder.html#ac17f8ed0c6ff298248da13029e4b9cfe" title="Enable/disable short standstill timeout." alt="" coords="592,1045,801,1090"/>
+<area shape="poly" id="edge17_Node000002_Node000018" title=" " alt="" coords="532,1044,579,1051,575,1053,535,1049"/>
+<area shape="rect" id="Node000019" href="$classtmc51x0_1_1ConfigBuilder.html#ac4eb6a128327d70e350efb96e29c3853" title="Enable/disable StallGuard2 filter." alt="" coords="610,1115,783,1159"/>
+<area shape="poly" id="edge18_Node000002_Node000019" title=" " alt="" coords="494,1062,582,1100,603,1108,598,1110,580,1105,496,1067"/>
+<area shape="rect" id="Node000020" href="$classtmc51x0_1_1ConfigBuilder.html#a8bdba8b7642a4f58eb249f6fe76cceb6" title="Set StallGuard2 minimum velocity threshold." alt="" coords="595,1184,798,1229"/>
+<area shape="poly" id="edge19_Node000002_Node000020" title=" " alt="" coords="459,1062,514,1117,547,1145,582,1169,594,1177,589,1178,580,1174,543,1149,510,1121,459,1067"/>
+<area shape="rect" id="Node000021" href="$classtmc51x0_1_1ConfigBuilder.html#a134081ecf09f0f7b24a91c9f411ea599" title="Set StallGuard2 threshold (SGT)" alt="" coords="601,1253,792,1298"/>
+<area shape="poly" id="edge20_Node000002_Node000021" title=" " alt="" coords="447,1062,471,1103,500,1151,538,1198,583,1239,591,1245,586,1246,579,1243,534,1202,496,1154,466,1106,447,1067"/>
+<area shape="rect" id="Node000022" href="$classtmc51x0_1_1ConfigBuilder.html#aec44097edf1727bb585d65e94359a8d8" title="Set start velocity." alt="" coords="610,1323,783,1367"/>
+<area shape="poly" id="edge21_Node000002_Node000022" title=" " alt="" coords="441,1062,461,1117,489,1183,530,1250,554,1281,583,1308,599,1320,593,1321,579,1312,551,1285,525,1254,485,1185,456,1119,441,1067"/>
+<area shape="rect" id="Node000023" href="$classtmc51x0_1_1ConfigBuilder.html#a3e65de5f4d30c587d28df4344bf13d5e" title="Enable/disable StealthChop." alt="" coords="610,1392,783,1437"/>
+<area shape="poly" id="edge22_Node000002_Node000023" title=" " alt="" coords="438,1062,454,1129,480,1214,498,1259,522,1302,550,1342,583,1378,599,1390,594,1391,579,1382,545,1346,517,1305,494,1261,475,1216,448,1131,437,1067"/>
+<area shape="rect" id="Node000024" href="$classtmc51x0_1_1ConfigBuilder.html#abdd0329626db4ea40667484f8536c09f" title="Enable/disable StealthChop PWM autograd." alt="" coords="598,1461,795,1506"/>
+<area shape="poly" id="edge23_Node000002_Node000024" title=" " alt="" coords="435,1062,447,1141,470,1244,489,1299,514,1353,545,1403,583,1447,588,1453,583,1453,579,1451,540,1406,509,1355,484,1301,465,1246,442,1142,434,1067"/>
+<area shape="rect" id="Node000025" href="$classtmc51x0_1_1ConfigBuilder.html#a7d1696e2139b7aefe242ca5c23566c66" title="Enable/disable StealthChop PWM autoscale." alt="" coords="596,1531,798,1575"/>
+<area shape="poly" id="edge24_Node000002_Node000025" title=" " alt="" coords="434,1062,441,1153,449,1211,462,1274,480,1339,506,1404,540,1464,583,1517,587,1521,581,1521,579,1520,535,1467,501,1406,475,1341,456,1275,444,1212,436,1153,433,1067"/>
+<area shape="rect" id="Node000026" href="$classtmc51x0_1_1ConfigBuilder.html#a2e77e4fdb726ebd16ea6b1bd7b1f970d" title="Set StealthChop PWM offset." alt="" coords="600,1600,793,1645"/>
+<area shape="poly" id="edge25_Node000002_Node000026" title=" " alt="" coords="438,1062,458,1179,490,1336,509,1415,532,1487,556,1546,583,1586,590,1594,585,1594,579,1589,552,1549,527,1489,504,1417,484,1337,453,1180,437,1067"/>
+<area shape="rect" id="Node000027" href="$classtmc51x0_1_1ConfigBuilder.html#ab1e748a4966d373e71d0cbee88159f58" title="Enable/disable StealthChop step filter." alt="" coords="596,1669,797,1714"/>
+<area shape="poly" id="edge26_Node000002_Node000027" title=" " alt="" coords="437,1062,455,1192,485,1370,505,1460,528,1542,554,1610,568,1636,583,1655,587,1661,582,1660,579,1659,564,1638,549,1612,523,1544,499,1461,480,1371,450,1193,436,1067"/>
+<area shape="rect" id="Node000028" href="$classtmc51x0_1_1ConfigBuilder.html#adb7afa76392771f590c3561516702594" title="Set StealthChop threshold velocity." alt="" coords="596,1739,798,1783"/>
+<area shape="poly" id="edge27_Node000002_Node000028" title=" " alt="" coords="436,1062,453,1205,481,1403,500,1505,524,1597,551,1673,567,1702,583,1725,586,1729,581,1728,579,1728,562,1705,546,1675,519,1599,495,1506,475,1404,447,1206,435,1067"/>
+<area shape="rect" id="Node000029" href="$classtmc51x0_1_1ConfigBuilder.html#aed8119b0d75c07b3d4e0e491b4f34482" title="Set supply voltage value." alt="" coords="610,1808,783,1853"/>
+<area shape="poly" id="edge28_Node000002_Node000029" title=" " alt="" coords="436,1062,450,1217,476,1436,496,1549,520,1652,549,1737,565,1769,583,1794,599,1809,594,1808,579,1797,561,1772,544,1739,515,1653,490,1550,471,1437,445,1218,434,1067"/>
+<area shape="rect" id="Node000030" href="$classtmc51x0_1_1ConfigBuilder.html#a369820f97c2ef4a9c9e72d97ce7955f5" title="Set winding inductance value." alt="" coords="595,1877,798,1922"/>
+<area shape="poly" id="edge29_Node000002_Node000030" title=" " alt="" coords="435,1062,447,1230,472,1470,491,1593,516,1707,546,1800,564,1836,583,1863,585,1868,580,1866,579,1867,559,1839,541,1802,511,1708,486,1594,467,1470,442,1230,434,1067"/>
+<area shape="rect" id="Node000031" href="$classtmc51x0_1_1ConfigBuilder.html#ac243cdcc3bf8c19238f620634f9749cf" title="Set winding resistance value." alt="" coords="584,1947,809,1991"/>
+<area shape="poly" id="edge30_Node000002_Node000031" title=" " alt="" coords="435,1061,445,1241,454,1367,468,1502,487,1637,512,1761,544,1863,562,1903,583,1933,585,1937,580,1936,579,1936,558,1905,539,1865,507,1763,481,1638,462,1503,449,1367,440,1242,433,1067"/>
+<area shape="rect" id="Node000032" href="$classtmc51x0_1_1ConfigBuilder.html#aefd8c68025118812f2ebacd5419beb54" title="Set zero velocity wait time." alt="" coords="610,2016,783,2061"/>
+<area shape="poly" id="edge31_Node000002_Node000032" title=" " alt="" coords="434,1062,443,1254,451,1389,464,1535,482,1682,508,1816,523,1875,541,1927,561,1969,583,2002,599,2018,594,2016,579,2005,556,1972,536,1929,518,1877,503,1817,477,1683,458,1536,446,1389,437,1254,433,1067"/>
 </map>

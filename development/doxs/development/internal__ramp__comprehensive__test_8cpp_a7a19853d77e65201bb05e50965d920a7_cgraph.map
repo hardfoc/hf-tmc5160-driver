@@ -1,9 +1,9 @@
 <map id="test_sensorless_homing" name="test_sensorless_homing">
-<area shape="rect" id="Node000001" title="Test sensorless homing configuration (StallGuard2&#45;based)." alt="" coords="5,42,184,67"/>
-<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html#a60927fcbf4958948b94cbd922284b8a9" title="Create and initialize a test driver instance." alt="" coords="232,42,372,67"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,52,218,52,218,57,185,57"/>
-<area shape="rect" id="Node000003" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="420,5,583,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="372,42,406,37,407,42,373,47"/>
-<area shape="rect" id="Node000004" href="$internal__ramp__comprehensive__test_8cpp.html#a266d3b939b723d24f9230b6b22b3b8a9" title="Verify mode pins match expected communication mode." alt="" coords="433,70,570,95"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="372,62,419,68,418,74,372,67"/>
+<area shape="rect" id="Node000001" title="Test sensorless homing configuration (StallGuard2&#45;based)." alt="" coords="5,44,184,72"/>
+<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html#a60927fcbf4958948b94cbd922284b8a9" title="Create and initialize a test driver instance." alt="" coords="232,44,371,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,56,219,58,213,59,184,61"/>
+<area shape="rect" id="Node000003" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="419,5,580,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="371,45,401,43,406,42,372,50"/>
+<area shape="rect" id="Node000004" href="$internal__ramp__comprehensive__test_8cpp.html#a266d3b939b723d24f9230b6b22b3b8a9" title="Verify mode pins match expected communication mode." alt="" coords="432,74,568,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="372,66,419,75,414,75,372,71"/>
 </map>

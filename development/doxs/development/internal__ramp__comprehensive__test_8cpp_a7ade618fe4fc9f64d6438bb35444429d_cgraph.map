@@ -1,9 +1,9 @@
 <map id="test_stallguard" name="test_stallguard">
-<area shape="rect" id="Node000001" title="Test StallGuard2 configuration and reading." alt="" coords="5,42,124,67"/>
-<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html#a60927fcbf4958948b94cbd922284b8a9" title="Create and initialize a test driver instance." alt="" coords="172,42,312,67"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,52,158,52,158,57,124,57"/>
-<area shape="rect" id="Node000003" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="360,5,523,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="312,42,346,37,347,42,313,47"/>
-<area shape="rect" id="Node000004" href="$internal__ramp__comprehensive__test_8cpp.html#a266d3b939b723d24f9230b6b22b3b8a9" title="Verify mode pins match expected communication mode." alt="" coords="373,70,510,95"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="312,62,359,68,358,74,312,67"/>
+<area shape="rect" id="Node000001" title="Test StallGuard2 configuration and reading." alt="" coords="5,44,124,72"/>
+<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html#a60927fcbf4958948b94cbd922284b8a9" title="Create and initialize a test driver instance." alt="" coords="172,44,311,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,56,159,58,153,59,125,61"/>
+<area shape="rect" id="Node000003" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="359,5,520,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="311,45,346,42,341,43,312,50"/>
+<area shape="rect" id="Node000004" href="$internal__ramp__comprehensive__test_8cpp.html#a266d3b939b723d24f9230b6b22b3b8a9" title="Verify mode pins match expected communication mode." alt="" coords="372,74,508,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="312,66,359,75,354,75,312,71"/>
 </map>

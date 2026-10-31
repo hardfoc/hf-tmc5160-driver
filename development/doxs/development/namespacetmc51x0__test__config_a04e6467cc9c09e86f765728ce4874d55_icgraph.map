@@ -1,5 +1,5 @@
 <map id="tmc51x0_test_config::ConfigureDriverFromMotor_17HS4401S_Gearbox" name="tmc51x0_test_config::ConfigureDriverFromMotor_17HS4401S_Gearbox">
-<area shape="rect" id="Node000001" title="Helper function to populate DriverConfig from 17HS4401S gearbox motor configuration." alt="" coords="264,13,467,67"/>
-<area shape="rect" id="Node000002" href="$structtmc51x0__test__config_1_1TestRigConfig_3_01TestRigType_1_1TEST__RIG__CORE__DRIVER_01_4.html#ad9b0f8061cc5336afdc5168c9ab0e82e" title="Configure driver from this test rig&#39;s configuration." alt="" coords="5,5,216,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="250,43,216,43,216,37,250,37"/>
+<area shape="rect" id="Node000001" title="Helper function to populate DriverConfig from 17HS4401S gearbox motor configuration." alt="" coords="263,14,465,76"/>
+<area shape="rect" id="Node000002" href="$structtmc51x0__test__config_1_1TestRigConfig_3_01TestRigType_1_1TEST__RIG__CORE__DRIVER_01_4.html#ad9b0f8061cc5336afdc5168c9ab0e82e" title="Configure driver from this test rig&#39;s configuration." alt="" coords="5,5,215,84"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="244,45,215,47,215,42,249,44"/>
 </map>

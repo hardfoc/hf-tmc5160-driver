@@ -1,5 +1,5 @@
 <map id="HandleSet" name="HandleSet">
-<area shape="rect" id="Node000001" title="Apply SET command options to the motion controller." alt="" coords="219,13,308,38"/>
-<area shape="rect" id="Node000002" href="$classUartCommandParser.html#a2b7090fe7118485c639dce94074b6e68" title="Parse and execute a single command line." alt="" coords="5,5,171,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,28,171,28,171,23,205,23"/>
+<area shape="rect" id="Node000001" title="Apply SET command options to the motion controller." alt="" coords="218,14,306,42"/>
+<area shape="rect" id="Node000002" href="$classUartCommandParser.html#a2b7090fe7118485c639dce94074b6e68" title="Parse and execute a single command line." alt="" coords="5,5,170,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,28,170,30,170,25,205,27"/>
 </map>

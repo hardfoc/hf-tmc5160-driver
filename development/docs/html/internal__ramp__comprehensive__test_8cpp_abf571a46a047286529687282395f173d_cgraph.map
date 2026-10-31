@@ -1,13 +1,13 @@
 <map id="test_unit_conversions" name="test_unit_conversions">
-<area shape="rect" id="Node000001" title="Test unit conversion functions (RPM, degrees, millimeters, etc.)." alt="" coords="5,90,169,115"/>
-<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html#a60927fcbf4958948b94cbd922284b8a9" title="Create and initialize a test driver instance." alt="" coords="253,41,393,66"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,87,247,66,248,72,149,93"/>
-<area shape="rect" id="Node000005" href="$namespacetmc51x0.html#a67bdb4d4ee51eb6afb6483731177af81" title="Convert millimeters to steps." alt="" coords="241,90,404,115"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="169,100,227,100,227,105,169,105"/>
-<area shape="rect" id="Node000006" href="$namespacetmc51x0.html#ab0c004bd8dcf257419def5c59d0081d0" title="Convert RPM to steps per second." alt="" coords="217,139,428,165"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="149,113,248,134,247,139,148,118"/>
-<area shape="rect" id="Node000003" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="476,5,639,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="393,42,462,34,463,39,393,48"/>
-<area shape="rect" id="Node000004" href="$internal__ramp__comprehensive__test_8cpp.html#a266d3b939b723d24f9230b6b22b3b8a9" title="Verify mode pins match expected communication mode." alt="" coords="489,70,626,95"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="393,59,476,70,475,75,393,65"/>
+<area shape="rect" id="Node000001" title="Test unit conversion functions (RPM, degrees, millimeters, etc.)." alt="" coords="5,95,169,123"/>
+<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html#a60927fcbf4958948b94cbd922284b8a9" title="Create and initialize a test driver instance." alt="" coords="252,43,392,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,92,243,73,239,76,154,97"/>
+<area shape="rect" id="Node000005" href="$namespacetmc51x0.html#a67bdb4d4ee51eb6afb6483731177af81" title="Convert millimeters to steps." alt="" coords="241,95,402,123"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="169,106,228,108,223,110,169,112"/>
+<area shape="rect" id="Node000006" href="$namespacetmc51x0.html#ab0c004bd8dcf257419def5c59d0081d0" title="Convert RPM to steps per second." alt="" coords="217,147,427,175"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="153,121,244,142,239,144,153,126"/>
+<area shape="rect" id="Node000003" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="475,5,636,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="391,46,462,39,457,40,392,51"/>
+<area shape="rect" id="Node000004" href="$internal__ramp__comprehensive__test_8cpp.html#a266d3b939b723d24f9230b6b22b3b8a9" title="Verify mode pins match expected communication mode." alt="" coords="488,74,624,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="392,63,475,76,469,77,392,69"/>
 </map>

@@ -1,5 +1,5 @@
 <map id="tmc51x0_units.hpp" name="tmc51x0_units.hpp">
-<area shape="rect" id="Node000001" title="Unit conversion functions for TMC51x0 driver (TMC5130 &amp; TMC5160)" alt="" coords="42,5,189,31"/>
-<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html" title="Comprehensive internal ramp test suite for TMC51x0 (single motor)" alt="" coords="5,79,225,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,44,118,79,113,79,113,44"/>
+<area shape="rect" id="Node000001" title="Unit conversion functions for TMC51x0 driver (TMC5130 &amp; TMC5160)" alt="" coords="42,5,188,33"/>
+<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html" title="Comprehensive internal ramp test suite for TMC51x0 (single motor)" alt="" coords="5,81,225,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,47,117,81,113,79,113,51"/>
 </map>

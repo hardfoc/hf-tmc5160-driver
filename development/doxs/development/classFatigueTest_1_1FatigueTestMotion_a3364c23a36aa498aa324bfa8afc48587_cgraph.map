@@ -1,9 +1,9 @@
 <map id="FatigueTest::FatigueTestMotion::Update" name="FatigueTest::FatigueTestMotion::Update">
-<area shape="rect" id="Node000001" title="Periodic update tick." alt="" coords="5,27,181,67"/>
-<area shape="rect" id="Node000002" href="$classTmcMutexGuard.html#af6d5dcf4642c6732aea23ea2489caaaf" title="Manually unlock mutex." alt="" coords="229,35,411,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,45,215,45,215,50,182,50"/>
-<area shape="rect" id="Node000003" href="$classEsp32TmcMutex.html#aa1c5042b5ace0f9a58c140b0f02db0f2" title="Check if mutex is valid." alt="" coords="459,5,647,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="411,33,445,29,446,34,411,39"/>
-<area shape="rect" id="Node000004" href="$classEsp32TmcMutex.html#a7921afd7a51298dbdeec91d115871e7f" title="Get native FreeRTOS semaphore handle." alt="" coords="463,55,642,95"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="411,56,450,60,449,66,411,61"/>
+<area shape="rect" id="Node000001" title="Periodic update tick." alt="" coords="5,28,181,72"/>
+<area shape="rect" id="Node000002" href="$classTmcMutexGuard.html#af6d5dcf4642c6732aea23ea2489caaaf" title="Manually unlock mutex." alt="" coords="229,36,409,64"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,47,216,49,211,50,182,52"/>
+<area shape="rect" id="Node000003" href="$classEsp32TmcMutex.html#aa1c5042b5ace0f9a58c140b0f02db0f2" title="Check if mutex is valid." alt="" coords="457,5,644,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="409,35,444,33,439,34,410,41"/>
+<area shape="rect" id="Node000004" href="$classEsp32TmcMutex.html#a7921afd7a51298dbdeec91d115871e7f" title="Get native FreeRTOS semaphore handle." alt="" coords="462,57,640,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="410,59,449,66,444,66,409,64"/>
 </map>

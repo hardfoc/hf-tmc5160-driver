@@ -1,9 +1,9 @@
 <map id="test_microstep_lookup_table" name="test_microstep_lookup_table">
-<area shape="rect" id="Node000001" title="Test microstep lookup table configuration." alt="" coords="5,35,175,75"/>
-<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html#a60927fcbf4958948b94cbd922284b8a9" title="Create and initialize a test driver instance." alt="" coords="223,42,363,67"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,52,209,52,209,57,175,57"/>
-<area shape="rect" id="Node000003" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="411,5,573,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="362,42,397,37,397,42,363,47"/>
-<area shape="rect" id="Node000004" href="$internal__ramp__comprehensive__test_8cpp.html#a266d3b939b723d24f9230b6b22b3b8a9" title="Verify mode pins match expected communication mode." alt="" coords="423,70,561,95"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="363,62,410,68,409,74,362,67"/>
+<area shape="rect" id="Node000001" title="Test microstep lookup table configuration." alt="" coords="5,36,174,81"/>
+<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html#a60927fcbf4958948b94cbd922284b8a9" title="Create and initialize a test driver instance." alt="" coords="222,44,361,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,56,209,58,204,59,174,61"/>
+<area shape="rect" id="Node000003" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="409,5,570,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="361,45,391,43,396,42,362,50"/>
+<area shape="rect" id="Node000004" href="$internal__ramp__comprehensive__test_8cpp.html#a266d3b939b723d24f9230b6b22b3b8a9" title="Verify mode pins match expected communication mode." alt="" coords="422,74,558,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="362,66,409,75,404,75,362,71"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="CommandOutput::PrintHeader" name="CommandOutput::PrintHeader">
-<area shape="rect" id="Node000001" title="Print a boxed header line for human&#45;readable UART output." alt="" coords="5,29,224,55"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="79,31,71,21,75,11,90,5,115,3,145,6,157,15,154,20,143,11,115,8,91,10,79,15,76,20,83,28"/>
+<area shape="rect" id="Node000001" title="Print a boxed header line for human&#45;readable UART output." alt="" coords="5,29,223,57"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="76,28,71,20,75,11,90,5,114,3,140,5,155,14,150,14,138,10,114,8,91,10,79,15,76,20,82,29"/>
 </map>

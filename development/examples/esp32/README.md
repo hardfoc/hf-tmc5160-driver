@@ -60,7 +60,7 @@ Run `./scripts/build_app.sh list` to see all apps and build types.
     ```
 6.  **More information about the build/flash system:**
     - See `scripts/README.md` for an overview of the ESP-IDF project tools.
-    - Full documentation: [HardFOC ESP-IDF Project Tools Docs](https://n3b3x.github.io/hf-espidf-project-tools/)
+    - Full documentation: [HardFOC ESP-IDF Project Tools Docs](https://hardfoc.github.io/hf-espidf-project-tools/)
 
 ## ⚠️ Critical Warnings
 

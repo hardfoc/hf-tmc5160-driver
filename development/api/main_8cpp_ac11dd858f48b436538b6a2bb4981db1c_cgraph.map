@@ -1,22 +1,22 @@
 <map id="HandleStatus" name="HandleStatus">
-<area shape="rect" id="Node000001" title="Handle STATUS command." alt="" coords="5,217,115,243"/>
-<area shape="rect" id="Node000002" href="$namespaceBoundsCache.html#ae4eb0a6db10372b5c14aeaf29c2d28b0" title="Check if bounds are still valid (within time window and motor energized)." alt="" coords="173,5,393,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="62,216,72,181,91,133,121,83,139,61,161,41,171,35,174,39,164,45,143,64,125,86,96,136,77,183,67,218"/>
-<area shape="rect" id="Node000003" href="$namespaceBoundsCache.html#abceb0195eadedd85f49ac59e87ce3da3" title="Get remaining time until bounds expire (seconds)." alt="" coords="177,55,388,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="66,216,102,162,129,131,161,105,172,99,175,103,164,110,133,135,106,165,71,218"/>
-<area shape="rect" id="Node000004" href="$namespaceCommandOutput.html#a17f37c6f2219b07e23e7ece83c27bb18" title="Print an empty boxed line for spacing in UART output." alt="" coords="163,144,403,169"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="82,215,119,196,162,178,190,170,192,175,164,183,121,201,85,219"/>
-<area shape="rect" id="Node000005" href="$namespaceCommandOutput.html#ac1bb1e11fb1eac54489e3d3cae372fce" title="Print a boxed footer line for UART output." alt="" coords="177,217,389,243"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="115,227,163,227,163,233,115,233"/>
-<area shape="rect" id="Node000006" href="$namespaceCommandOutput.html#a1d3cebfb1eecf215784a06c6f3492241" title="Print a boxed header line for human&#45;readable UART output." alt="" coords="173,291,392,316"/>
-<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="100,240,231,284,229,289,99,245"/>
-<area shape="rect" id="Node000007" href="$namespaceCommandOutput.html#adbbaa4766846cac446f219e82c816b59" title="Print an informational message to the ESP&#45;IDF log." alt="" coords="185,364,381,389"/>
-<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="74,241,112,282,164,325,196,343,229,357,227,362,194,348,161,330,108,285,70,245"/>
-<area shape="rect" id="Node000008" href="$namespaceCommandOutput.html#a2657a77facb7e74dce96aa9265d7407c" title="Print a key/value row within the boxed UART output format." alt="" coords="166,437,399,463"/>
-<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="68,242,101,315,129,359,164,399,191,417,220,430,218,435,188,421,161,403,125,363,96,318,63,244"/>
-<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="247,146,239,136,243,126,258,120,283,117,313,121,326,130,322,134,311,126,283,123,259,125,246,130,244,135,251,142"/>
-<area shape="poly" id="edge6_Node000005_Node000005" title=" " alt="" coords="247,219,239,209,243,199,258,193,283,191,313,194,326,203,322,208,311,199,283,196,259,198,246,203,244,208,251,216"/>
-<area shape="poly" id="edge8_Node000006_Node000006" title=" " alt="" coords="247,292,239,282,243,272,258,266,283,264,313,268,326,277,322,281,311,273,283,269,259,271,246,276,244,282,251,289"/>
-<area shape="poly" id="edge10_Node000007_Node000007" title=" " alt="" coords="247,366,239,356,243,346,258,340,283,337,313,341,326,350,322,354,311,346,283,343,259,345,246,350,244,355,251,362"/>
-<area shape="poly" id="edge12_Node000008_Node000008" title=" " alt="" coords="247,439,239,429,243,419,258,413,283,411,313,414,326,423,322,428,311,419,283,416,259,418,246,423,244,428,251,436"/>
+<area shape="rect" id="Node000001" title="Handle STATUS command." alt="" coords="5,225,114,253"/>
+<area shape="rect" id="Node000002" href="$namespaceBoundsCache.html#ae4eb0a6db10372b5c14aeaf29c2d28b0" title="Check if bounds are still valid (within time window and motor energized)." alt="" coords="172,5,391,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="61,224,71,187,90,138,119,86,138,63,160,42,169,39,166,43,163,47,142,66,124,89,95,140,77,189,66,225"/>
+<area shape="rect" id="Node000003" href="$namespaceBoundsCache.html#abceb0195eadedd85f49ac59e87ce3da3" title="Get remaining time until bounds expire (seconds)." alt="" coords="176,57,386,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="66,224,102,169,129,138,160,112,172,107,168,111,163,116,132,142,106,172,71,226"/>
+<area shape="rect" id="Node000004" href="$namespaceCommandOutput.html#a17f37c6f2219b07e23e7ece83c27bb18" title="Print an empty boxed line for spacing in UART output." alt="" coords="162,149,401,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="85,223,161,187,191,180,187,183,163,192,88,227"/>
+<area shape="rect" id="Node000005" href="$namespaceCommandOutput.html#ac1bb1e11fb1eac54489e3d3cae372fce" title="Print a boxed footer line for UART output." alt="" coords="176,225,387,253"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="113,237,162,238,158,241,115,242"/>
+<area shape="rect" id="Node000006" href="$namespaceCommandOutput.html#a1d3cebfb1eecf215784a06c6f3492241" title="Print a boxed header line for human&#45;readable UART output." alt="" coords="173,301,390,329"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="102,251,226,294,222,297,103,256"/>
+<area shape="rect" id="Node000007" href="$namespaceCommandOutput.html#adbbaa4766846cac446f219e82c816b59" title="Print an informational message to the ESP&#45;IDF log." alt="" coords="184,377,379,405"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="72,251,111,293,163,338,192,355,224,371,219,372,190,360,160,343,107,297,72,256"/>
+<area shape="rect" id="Node000008" href="$namespaceCommandOutput.html#a2657a77facb7e74dce96aa9265d7407c" title="Print a key/value row within the boxed UART output format." alt="" coords="165,453,398,481"/>
+<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="66,251,80,285,100,328,128,374,163,415,187,432,215,447,210,447,185,436,160,418,124,377,96,331,75,287,65,256"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="243,149,237,140,242,131,257,125,281,123,307,125,323,133,318,135,306,130,281,128,258,130,246,135,242,140,248,149"/>
+<area shape="poly" id="edge6_Node000005_Node000005" title=" " alt="" coords="243,225,237,216,242,207,257,201,281,199,307,201,323,210,318,210,306,206,281,204,258,206,246,211,242,216,248,225"/>
+<area shape="poly" id="edge8_Node000006_Node000006" title=" " alt="" coords="243,300,237,292,242,283,257,277,281,275,307,277,323,286,318,286,306,282,281,280,258,282,246,287,242,292,248,301"/>
+<area shape="poly" id="edge10_Node000007_Node000007" title=" " alt="" coords="243,376,237,368,242,359,257,353,281,351,307,353,323,362,318,362,306,358,281,356,258,358,246,363,242,368,248,377"/>
+<area shape="poly" id="edge12_Node000008_Node000008" title=" " alt="" coords="243,452,237,444,242,435,257,429,281,427,307,429,323,438,318,438,306,434,281,432,258,434,246,439,242,444,248,454"/>
 </map>

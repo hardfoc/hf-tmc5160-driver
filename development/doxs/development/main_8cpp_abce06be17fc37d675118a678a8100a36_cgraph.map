@@ -1,129 +1,129 @@
 <map id="app_main" name="app_main">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,1824,92,1850"/>
-<area shape="rect" id="Node000002" href="$main_8cpp.html#a282cbb4958ae3bf0285b9be28ecb1d79" title="FreeRTOS task: process inbound ESP&#45;NOW protocol events." alt="" coords="150,979,329,1004"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="50,1823,230,1017,235,1019,55,1825"/>
-<area shape="rect" id="Node000053" href="$main_8cpp.html#aa4c1f4ebe8d9f2e34a39b419936d8861" title="Handle fatal initialization errors." alt="" coords="461,1546,567,1571"/>
-<area shape="poly" id="edge48_Node000001_Node000053" title=" " alt="" coords="50,1823,58,1788,74,1740,100,1689,118,1666,138,1646,174,1621,213,1601,254,1586,296,1574,377,1560,447,1555,448,1560,378,1565,297,1579,256,1591,215,1606,177,1625,142,1650,122,1669,105,1692,79,1742,63,1789,55,1825"/>
-<area shape="rect" id="Node000054" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="158,1660,321,1700"/>
-<area shape="poly" id="edge51_Node000001_Node000054" title=" " alt="" coords="53,1823,84,1769,109,1737,138,1710,146,1704,149,1709,142,1714,113,1741,89,1772,58,1826"/>
-<area shape="rect" id="Node000055" href="$namespacetmc51x0.html#a443a6e6bc5293c1f6970fe1bc077591c" title=" " alt="" coords="140,1748,339,1774"/>
-<area shape="poly" id="edge52_Node000001_Node000055" title=" " alt="" coords="73,1822,139,1791,181,1775,183,1780,141,1795,75,1827"/>
-<area shape="rect" id="Node000056" href="$namespaceBoundsCache.html#a471efef965016231bc4b531bc1c89161" title="Initialize the bounds cache system (create timer)." alt="" coords="170,1850,309,1875"/>
-<area shape="poly" id="edge54_Node000001_Node000056" title=" " alt="" coords="93,1840,157,1849,156,1854,92,1845"/>
-<area shape="rect" id="Node000058" href="$namespaceEspNowReceiver.html#a7b5448c32668c4ce8c8b2e825fe523ee" title="Initialize ESP&#45;NOW (WiFi STA + ESP&#45;NOW) and start the receive task." alt="" coords="159,2123,319,2148"/>
-<area shape="poly" id="edge58_Node000001_Node000058" title=" " alt="" coords="60,1848,142,1984,224,2110,220,2113,138,1986,55,1851"/>
-<area shape="rect" id="Node000080" href="$classEsp32SPI.html#a85d11c001a36b137e4d29ced49983d20" title="Initialize the SPI interface." alt="" coords="167,1899,312,1924"/>
-<area shape="poly" id="edge65_Node000001_Node000080" title=" " alt="" coords="71,1848,103,1866,141,1884,167,1893,165,1898,139,1889,101,1871,69,1852"/>
-<area shape="rect" id="Node000085" href="$main_8cpp.html#a30da369114ee453fe81be5a919262abf" title="FreeRTOS task: drive the motion update loop and detect completion." alt="" coords="437,1696,591,1722"/>
-<area shape="poly" id="edge66_Node000001_Node000085" title=" " alt="" coords="92,1830,204,1813,272,1800,338,1782,412,1755,475,1725,477,1730,414,1760,339,1788,273,1805,205,1819,93,1835"/>
-<area shape="rect" id="Node000090" href="$main_8cpp.html#a087fdcdd7d4c34c0c22196a7223d96f5" title="FreeRTOS task: periodically send STATUS_UPDATE to the remote controller." alt="" coords="165,1948,314,1974"/>
-<area shape="poly" id="edge73_Node000001_Node000090" title=" " alt="" coords="60,1848,92,1891,115,1914,141,1933,157,1941,154,1946,139,1938,112,1918,88,1894,56,1851"/>
-<area shape="rect" id="Node000091" href="$main_8cpp.html#a5a8d7cdba17444119b8f942be87ffe68" title="FreeRTOS task: poll UART and process commands." alt="" coords="162,2172,317,2198"/>
-<area shape="poly" id="edge77_Node000001_Node000091" title=" " alt="" coords="52,1850,53,1906,63,1989,74,2034,90,2079,112,2121,142,2158,152,2166,148,2170,138,2162,108,2124,85,2081,68,2036,57,1990,47,1906,47,1850"/>
-<area shape="rect" id="Node000003" href="$main_8cpp.html#aa57215c763eed0b2d653533cf6392ffc" title="Apply motion configuration from global settings to the motion controller." alt="" coords="689,827,928,852"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="249,977,303,923,342,893,386,869,458,847,533,834,607,828,676,827,676,832,608,833,534,839,459,852,388,874,345,897,307,927,253,981"/>
-<area shape="rect" id="Node000004" href="$classFatigueTest_1_1FatigueTestMotion.html#a6c005641bc3e3dd824a30759d0967df4" title="Set acceleration for oscillation (direct TMC5160 AMAX control)." alt="" coords="977,361,1154,401"/>
-<area shape="poly" id="edge38_Node000002_Node000004" title=" " alt="" coords="238,978,240,808,245,674,255,526,273,376,299,239,316,179,336,127,359,85,385,55,427,26,472,9,519,3,567,6,616,18,664,37,713,61,760,90,850,158,929,230,994,297,1041,349,1037,352,991,300,926,234,846,162,757,95,710,66,662,42,614,23,566,12,519,8,474,14,430,31,388,59,363,89,340,130,321,181,304,240,278,377,261,526,250,674,245,808,243,978"/>
-<area shape="rect" id="Node000005" href="$classFatigueTest_1_1FatigueTestMotion.html#a34f3dbfb224fbe0d723fc71881c7fb13" title="Set dwell times at local bounds." alt="" coords="977,773,1153,813"/>
-<area shape="poly" id="edge39_Node000002_Node000005" title=" " alt="" coords="245,977,265,946,296,905,337,863,360,845,386,831,459,802,536,781,615,768,694,762,770,760,842,762,964,774,964,779,842,768,770,766,694,767,616,774,537,786,461,807,388,835,363,850,340,867,300,908,270,949,250,980"/>
-<area shape="rect" id="Node000006" href="$classFatigueTest_1_1FatigueTestMotion.html#ad45cc366462781557b9bf45f6884b0d1" title="Set maximum velocity for oscillation (direct TMC5160 VMAX control)." alt="" coords="977,840,1153,880"/>
-<area shape="poly" id="edge42_Node000002_Node000006" title=" " alt="" coords="278,976,386,946,543,917,701,894,964,865,964,871,702,900,544,923,387,952,279,981"/>
-<area shape="rect" id="Node000007" href="$classFatigueTest_1_1FatigueTestMotion.html#aed0a3ce0e3373432f6d47bda89839577" title="Set target cycle count (0 = infinite)." alt="" coords="976,909,1155,949"/>
-<area shape="poly" id="edge44_Node000002_Node000007" title=" " alt="" coords="329,980,386,974,701,950,962,933,962,938,701,955,387,980,329,985"/>
-<area shape="rect" id="Node000008" href="$namespaceBoundsCache.html#a4d78113e0bdf7bd30161718b9ace5298" title="Cancel de&#45;energize timer (e.g., when test starts)." alt="" coords="691,978,927,1018"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="329,990,677,994,677,999,329,995"/>
-<area shape="rect" id="Node000009" href="$main_8cpp.html#a90cfc923a234123f2a025465fadea26a" title="Get bounds validity flag for protocol status updates." alt="" coords="729,1718,889,1743"/>
-<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="245,1004,264,1152,299,1386,320,1506,343,1611,366,1691,378,1716,388,1731,432,1758,480,1774,531,1782,583,1782,634,1776,682,1767,761,1745,762,1750,683,1772,635,1782,583,1787,530,1787,478,1779,429,1763,385,1735,373,1719,361,1692,338,1613,315,1507,294,1387,259,1152,240,1005"/>
-<area shape="rect" id="Node000011" href="$classFatigueTest_1_1FatigueTestMotion.html#a1e9113bd0bda2c479aec845073f78102" title="Get current completed cycles." alt="" coords="714,1174,903,1214"/>
-<area shape="poly" id="edge9_Node000002_Node000011" title=" " alt="" coords="254,1003,308,1055,346,1084,388,1108,432,1121,511,1138,701,1173,700,1178,510,1143,431,1126,386,1113,343,1088,305,1059,250,1006"/>
-<area shape="rect" id="Node000012" href="$namespaceBoundsCache.html#a80342bed32196def75c6df3390744851" title="Invalidate bounds (e.g., on config change or explicit request)." alt="" coords="693,1546,924,1571"/>
-<area shape="poly" id="edge10_Node000002_Node000012" title=" " alt="" coords="243,1004,244,1087,249,1148,259,1216,276,1288,303,1359,339,1424,362,1454,388,1480,426,1491,509,1507,712,1541,711,1546,508,1513,425,1496,385,1485,358,1457,335,1427,298,1361,271,1289,254,1217,243,1148,238,1087,237,1004"/>
-<area shape="rect" id="Node000013" href="$namespaceBoundsCache.html#ac9344d5f823910fee3e630795b94757e" title="Mark bounds as freshly found and start de&#45;energize timer." alt="" coords="395,1231,633,1256"/>
-<area shape="poly" id="edge11_Node000002_Node000013" title=" " alt="" coords="247,1004,264,1046,292,1104,334,1165,359,1193,388,1216,400,1223,398,1228,385,1221,356,1197,330,1169,288,1106,259,1048,242,1005"/>
-<area shape="rect" id="Node000014" href="$main_8cpp.html#a8aaffec68f13f95314677ea8f112a338" title="Enable (energize) the motor power stage." alt="" coords="462,1280,566,1306"/>
-<area shape="poly" id="edge12_Node000002_Node000014" title=" " alt="" coords="246,1004,259,1054,286,1126,305,1164,328,1202,356,1236,388,1265,417,1280,449,1288,448,1294,415,1285,385,1270,352,1240,324,1205,300,1167,281,1128,254,1056,241,1005"/>
-<area shape="rect" id="Node000015" href="$main_8cpp.html#a037f6f66a2a5cdb66649782d6d16b96e" title="Immediately stop motion and enter HOLD mode, but keep motor energized." alt="" coords="455,1330,573,1355"/>
-<area shape="poly" id="edge13_Node000002_Node000015" title=" " alt="" coords="245,1004,255,1062,280,1147,299,1193,323,1238,352,1280,388,1315,414,1329,442,1337,441,1342,411,1334,385,1319,348,1283,318,1241,294,1195,275,1148,250,1063,240,1005"/>
-<area shape="rect" id="Node000016" href="$main_8cpp.html#a3f72921e4deaf387f7444281647ba4b9" title="Immediately stop motion, enter HOLD, and de&#45;energize (disable) the motor." alt="" coords="725,1622,893,1647"/>
-<area shape="poly" id="edge14_Node000002_Node000016" title=" " alt="" coords="245,1004,258,1117,286,1292,305,1384,329,1468,357,1536,372,1562,388,1580,411,1594,442,1605,526,1621,621,1629,711,1632,711,1637,620,1634,525,1626,441,1610,408,1599,385,1584,368,1565,352,1539,324,1470,300,1385,280,1293,252,1117,239,1005"/>
-<area shape="rect" id="Node000017" href="$classFatigueTest_1_1FatigueTestMotion.html#a00a7931fb0325fe2b9ecd7964fbc2d6b" title="Pause active motion (stops movement but keeps motor energized for resume)." alt="" coords="426,1430,602,1470"/>
-<area shape="poly" id="edge15_Node000002_Node000017" title=" " alt="" coords="244,1004,250,1075,271,1184,289,1244,314,1304,347,1361,388,1410,414,1428,411,1432,385,1414,343,1364,310,1307,284,1246,266,1185,245,1076,238,1005"/>
-<area shape="rect" id="Node000018" href="$main_8cpp.html#a03b28507170724db0aecf3bdf950b30a" title="Run bounds finding independently (without starting test)." alt="" coords="437,1647,591,1672"/>
-<area shape="poly" id="edge16_Node000002_Node000018" title=" " alt="" coords="244,1004,257,1123,285,1311,305,1410,329,1501,357,1576,372,1605,389,1626,405,1639,425,1648,423,1653,403,1643,385,1630,368,1607,352,1578,324,1503,300,1411,280,1312,252,1123,239,1005"/>
-<area shape="rect" id="Node000042" href="$main_8cpp.html#a05b979a9e80a20ecf074106e268da672" title="Request a START/RESUME with optional bounds caching." alt="" coords="461,1182,567,1207"/>
-<area shape="poly" id="edge18_Node000002_Node000042" title=" " alt="" coords="250,1003,270,1036,301,1078,341,1123,388,1160,417,1174,448,1183,446,1188,415,1179,385,1165,337,1126,297,1082,266,1039,246,1006"/>
-<area shape="rect" id="Node000025" href="$classFatigueTest_1_1FatigueTestMotion.html#a72eab33f7f498ee30bafbacb0d879b0e" title="Reset cycle counter and completion flags." alt="" coords="721,1044,897,1084"/>
-<area shape="poly" id="edge28_Node000002_Node000025" title=" " alt="" coords="330,1000,707,1048,707,1054,329,1006"/>
-<area shape="rect" id="Node000031" href="$namespaceEspNowReceiver.html#a0e573039958657010ab3722b0eb6cfd8" title="Send ERROR message." alt="" coords="723,1401,894,1441"/>
-<area shape="poly" id="edge32_Node000002_Node000031" title=" " alt="" coords="244,1004,251,1070,272,1169,290,1223,315,1276,348,1324,388,1364,411,1377,443,1388,526,1403,620,1412,709,1417,709,1422,620,1418,525,1409,442,1393,409,1382,385,1368,343,1327,311,1279,285,1225,267,1171,246,1071,239,1005"/>
-<area shape="rect" id="Node000032" href="$namespaceEspNowReceiver.html#a37dbf71c15486999f072d89e26d3dd7e" title="Send STATUS_UPDATE with cycle count and state." alt="" coords="723,1790,894,1830"/>
-<area shape="poly" id="edge36_Node000002_Node000032" title=" " alt="" coords="245,1004,311,1425,356,1671,375,1753,389,1790,410,1802,442,1812,525,1821,620,1822,710,1817,710,1822,620,1827,525,1826,441,1817,408,1807,385,1793,369,1755,350,1672,306,1426,240,1005"/>
-<area shape="rect" id="Node000040" href="$classFatigueTest_1_1FatigueTestMotion.html#a97b23d8b7204e2756cea1a30e406a5e9" title="Start active motion." alt="" coords="721,1109,897,1149"/>
-<area shape="poly" id="edge45_Node000002_Node000040" title=" " alt="" coords="270,1002,324,1024,387,1046,471,1068,555,1086,707,1113,707,1118,554,1092,469,1073,386,1052,322,1029,268,1007"/>
-<area shape="rect" id="Node000043" href="$main_8cpp.html#af2ddedb315802bee297a387cb510f3a1" title="Restore motor current to full rated level after manual bounds positioning." alt="" coords="443,70,585,95"/>
-<area shape="poly" id="edge29_Node000002_Node000043" title=" " alt="" coords="238,979,244,819,252,694,264,555,282,415,308,285,323,228,341,178,362,137,385,106,405,91,428,82,430,87,408,96,389,110,366,140,346,180,329,229,313,286,288,416,269,556,257,695,249,819,244,979"/>
-<area shape="rect" id="Node000044" href="$namespaceEspNowReceiver.html#a126f3feacea21b45e4af0a34deb50dcd" title="Send CONFIG_ACK for a CONFIG_SET request." alt="" coords="429,120,599,160"/>
-<area shape="poly" id="edge30_Node000002_Node000044" title=" " alt="" coords="238,978,246,829,269,586,288,456,313,336,345,237,364,199,385,170,414,150,417,154,389,174,368,202,350,239,318,337,293,457,274,586,252,830,244,979"/>
-<area shape="rect" id="Node000045" href="$namespaceEspNowReceiver.html#ac4af6aafe2cc9de4cbd2354dfc627dc7" title="Send CONFIG_RESPONSE containing the current settings." alt="" coords="429,184,599,224"/>
-<area shape="poly" id="edge31_Node000002_Node000045" title=" " alt="" coords="239,979,248,841,273,616,292,497,317,387,347,296,365,260,385,234,414,214,417,218,389,238,370,263,352,298,322,388,297,498,278,617,254,841,244,979"/>
-<area shape="rect" id="Node000046" href="$namespaceEspNowReceiver.html#a4af879c40f8c3223b890b26dfcd1d7aa" title="Send PAUSE_ACK (acknowledge PAUSE receipt)." alt="" coords="429,248,599,288"/>
-<area shape="poly" id="edge33_Node000002_Node000046" title=" " alt="" coords="239,979,250,851,277,646,296,537,320,437,350,354,366,322,385,298,414,278,417,282,389,302,371,325,355,356,326,438,301,538,282,646,256,852,244,979"/>
-<area shape="rect" id="Node000047" href="$namespaceEspNowReceiver.html#a5996f034b8b0ad5a9e75441c454b8a52" title="Send RESUME_ACK (acknowledge RESUME receipt)." alt="" coords="429,312,599,352"/>
-<area shape="poly" id="edge34_Node000002_Node000047" title=" " alt="" coords="239,978,252,861,281,675,300,577,324,487,352,412,368,383,385,362,415,342,417,346,388,366,372,386,357,414,329,488,306,578,286,676,258,861,245,979"/>
-<area shape="rect" id="Node000048" href="$namespaceEspNowReceiver.html#afb76d5c6ce79015229aca11c94603692" title="Send START_ACK (acknowledge START receipt)." alt="" coords="429,376,599,416"/>
-<area shape="poly" id="edge35_Node000002_Node000048" title=" " alt="" coords="240,979,254,872,284,705,304,618,328,537,355,471,369,445,385,426,414,407,417,411,388,430,374,448,359,473,333,539,310,619,290,706,260,873,245,979"/>
-<area shape="rect" id="Node000049" href="$namespaceEspNowReceiver.html#a5f9e63a444d010ed79c649b6a2467277" title="Send STOP_ACK (acknowledge STOP receipt)." alt="" coords="429,440,599,480"/>
-<area shape="poly" id="edge37_Node000002_Node000049" title=" " alt="" coords="237,979,239,896,244,834,255,764,273,691,299,618,336,549,359,518,385,490,414,471,417,475,388,494,363,522,340,552,304,620,278,692,260,766,250,835,244,896,243,979"/>
-<area shape="rect" id="Node000033" href="$classFatigueTest_1_1FatigueTestMotion.html#a144e2f8d8b876e1ea4a3625edf1b53ca" title="Set global (hardware) bounds in degrees." alt="" coords="421,504,607,544"/>
-<area shape="poly" id="edge40_Node000002_Node000033" title=" " alt="" coords="238,978,243,905,250,851,262,790,281,727,306,664,341,605,385,554,406,539,409,543,388,558,345,608,311,666,286,728,268,791,256,852,248,905,243,979"/>
-<area shape="rect" id="Node000037" href="$classFatigueTest_1_1FatigueTestMotion.html#adb9d8a1620c8167920ea08f1e6ea12de" title="Set local oscillation bounds (degrees) relative to the center." alt="" coords="387,568,641,623"/>
-<area shape="poly" id="edge41_Node000002_Node000037" title=" " alt="" coords="239,978,249,917,274,825,293,774,317,723,347,675,385,634,390,629,394,633,389,638,352,679,322,725,297,776,279,826,255,918,245,979"/>
-<area shape="rect" id="Node000050" href="$main_8cpp.html#ae2344237d134678ce00d04c26334ddb7" title="Set motor current to a reduced level for manual bounds engagement." alt="" coords="407,648,621,688"/>
-<area shape="poly" id="edge43_Node000002_Node000050" title=" " alt="" coords="241,978,254,926,280,850,299,809,323,768,351,730,385,698,393,692,396,696,388,702,355,734,327,771,304,811,285,852,259,927,246,979"/>
-<area shape="rect" id="Node000051" href="$classFatigueTest_1_1FatigueTestMotion.html#ac0248435a2425638b9868a4892e87e9f" title="Stop active motion and command driver stop." alt="" coords="426,712,602,752"/>
-<area shape="poly" id="edge46_Node000002_Node000051" title=" " alt="" coords="243,978,260,937,290,881,332,821,357,793,385,768,411,753,414,757,388,773,361,796,336,824,295,884,265,940,248,980"/>
-<area shape="rect" id="Node000052" href="$main_8cpp.html#a77af09d9386bbe795dc848a935bff12f" title="Map the internal application state machine to the protocol&#45;visible TestState." alt="" coords="462,1848,566,1874"/>
-<area shape="poly" id="edge47_Node000002_Node000052" title=" " alt="" coords="245,1005,312,1444,356,1701,375,1788,389,1827,416,1846,449,1856,447,1861,414,1851,385,1831,370,1789,351,1702,306,1445,240,1005"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="815,826,1044,412,1049,414,819,828"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="879,824,963,809,964,814,880,830"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="928,846,964,849,964,854,928,852"/>
-<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="847,850,995,902,993,907,846,855"/>
-<area shape="poly" id="edge17_Node000018_Node000016" title=" " alt="" coords="591,1650,711,1640,711,1645,591,1656"/>
-<area shape="poly" id="edge19_Node000042_Node000003" title=" " alt="" coords="522,1180,589,1089,687,965,783,860,787,864,691,968,593,1092,526,1183"/>
-<area shape="poly" id="edge20_Node000042_Node000008" title=" " alt="" coords="523,1180,587,1109,635,1066,688,1029,705,1021,707,1026,691,1034,638,1070,591,1113,527,1183"/>
-<area shape="poly" id="edge21_Node000042_Node000009" title=" " alt="" coords="568,1188,608,1195,627,1204,643,1217,655,1233,663,1254,672,1306,675,1367,673,1434,672,1565,677,1618,692,1657,705,1674,721,1688,758,1710,756,1714,718,1692,701,1677,687,1660,672,1619,666,1565,668,1434,669,1367,667,1306,658,1255,650,1236,639,1220,624,1208,606,1200,567,1193"/>
-<area shape="poly" id="edge22_Node000042_Node000011" title=" " alt="" coords="568,1192,700,1192,700,1197,568,1197"/>
-<area shape="poly" id="edge23_Node000042_Node000016" title=" " alt="" coords="568,1188,608,1195,627,1204,643,1216,661,1239,674,1262,682,1284,685,1307,683,1352,673,1396,663,1441,659,1487,666,1533,676,1557,691,1581,712,1600,737,1614,734,1619,709,1604,687,1584,672,1559,661,1535,654,1487,658,1441,668,1395,677,1351,680,1307,676,1285,669,1264,657,1242,639,1220,624,1208,606,1200,567,1194"/>
-<area shape="poly" id="edge24_Node000042_Node000025" title=" " alt="" coords="534,1179,601,1138,688,1095,713,1085,714,1090,690,1099,603,1143,536,1184"/>
-<area shape="poly" id="edge25_Node000042_Node000031" title=" " alt="" coords="568,1194,606,1201,643,1216,693,1254,735,1301,769,1348,793,1388,788,1391,764,1351,731,1304,689,1258,640,1221,605,1206,567,1199"/>
-<area shape="poly" id="edge26_Node000042_Node000032" title=" " alt="" coords="568,1188,608,1195,627,1203,643,1217,657,1237,666,1262,676,1325,676,1401,672,1483,668,1565,667,1642,674,1706,681,1732,692,1753,706,1769,724,1782,721,1786,703,1773,687,1756,676,1734,668,1707,662,1642,663,1565,667,1483,671,1401,670,1326,661,1263,652,1239,639,1220,624,1208,607,1200,567,1193"/>
-<area shape="poly" id="edge27_Node000042_Node000040" title=" " alt="" coords="567,1180,707,1149,708,1154,568,1185"/>
-<area shape="poly" id="edge49_Node000053_Node000016" title=" " alt="" coords="567,1569,642,1588,747,1616,746,1621,641,1593,566,1574"/>
-<area shape="poly" id="edge50_Node000053_Node000031" title=" " alt="" coords="541,1543,751,1445,753,1449,543,1548"/>
-<area shape="poly" id="edge53_Node000055_Node000055" title=" " alt="" coords="208,1750,201,1740,205,1730,218,1724,239,1722,265,1725,276,1734,273,1738,263,1730,239,1727,219,1729,209,1734,207,1739,212,1747"/>
-<area shape="rect" id="Node000057" href="$main_8cpp.html#a9129736e9ca5c05905c4c74e75cb969c" title="Timer callback to de&#45;energize motor after bounds validity expires." alt="" coords="419,1898,609,1923"/>
-<area shape="poly" id="edge55_Node000056_Node000057" title=" " alt="" coords="309,1872,428,1893,427,1898,308,1877"/>
-<area shape="poly" id="edge56_Node000057_Node000016" title=" " alt="" coords="609,1901,625,1894,639,1883,656,1862,665,1842,667,1820,667,1799,667,1753,673,1728,687,1703,720,1672,758,1650,761,1655,724,1676,691,1707,678,1730,672,1753,672,1798,673,1821,670,1843,661,1865,643,1887,628,1898,611,1906"/>
-<area shape="poly" id="edge57_Node000057_Node000032" title=" " alt="" coords="592,1895,641,1882,701,1859,756,1834,758,1839,703,1864,642,1888,593,1900"/>
-<area shape="rect" id="Node000059" href="$espnow__receiver_8cpp.html#ac5e16fbe9d7733f8a1dd357e6cae40e0" title=" " alt="" coords="453,2099,575,2124"/>
-<area shape="poly" id="edge59_Node000058_Node000059" title=" " alt="" coords="319,2126,440,2115,440,2121,320,2131"/>
-<area shape="rect" id="Node000060" href="$espnow__receiver_8cpp.html#a42c9c9de39e4830eafe9a538f7363a21" title=" " alt="" coords="453,2148,575,2174"/>
-<area shape="poly" id="edge60_Node000058_Node000060" title=" " alt="" coords="320,2140,440,2152,440,2157,319,2146"/>
-<area shape="rect" id="Node000061" href="$namespacePeerStore.html#a9b28e00929e22d7fc686a164ff2951cf" title="Get the number of valid approved peers." alt="" coords="423,2198,605,2223"/>
-<area shape="poly" id="edge61_Node000058_Node000061" title=" " alt="" coords="303,2146,340,2157,364,2170,388,2183,419,2192,418,2197,386,2187,361,2175,338,2162,302,2151"/>
-<area shape="rect" id="Node000062" href="$namespacePeerStore.html#ad5335ecd8ed029adc89e1a2c571a5dcb" title="Initialize peer storage and load approved peers from NVS." alt="" coords="457,2247,571,2272"/>
-<area shape="poly" id="edge62_Node000058_Node000062" title=" " alt="" coords="319,2146,340,2158,357,2177,365,2197,372,2216,388,2234,415,2247,444,2254,442,2259,413,2252,385,2238,368,2219,360,2199,353,2180,337,2162,317,2151"/>
-<area shape="rect" id="Node000028" href="$espnow__receiver_8cpp.html#a38ae343ba91aa93458377b341e1d9e4a" title=" " alt="" coords="469,2296,559,2322"/>
-<area shape="poly" id="edge63_Node000058_Node000028" title=" " alt="" coords="321,2145,340,2158,354,2173,361,2190,365,2222,369,2254,376,2269,388,2283,420,2300,456,2307,454,2312,418,2305,385,2287,371,2272,364,2256,360,2223,356,2191,349,2176,337,2162,318,2150"/>
-<area shape="rect" id="Node000065" href="$espnow__receiver_8cpp.html#acfefef0575d2f148427e2d4fc622f175" title=" " alt="" coords="475,2050,553,2075"/>
-<area shape="poly" id="edge64_Node000058_Node000065" title=" " alt="" coords="273,2120,386,2084,460,2068,461,2073,387,2089,275,2126"/>
-<area shape="poly" id="edge67_Node000085_Node000009" title=" " alt="" coords="592,1712,715,1721,714,1726,591,1717"/>
-<area shape="poly" id="edge68_Node000085_Node000011" title=" " alt="" coords="591,1706,617,1697,639,1682,666,1647,679,1614,682,1581,680,1547,673,1474,675,1433,687,1388,707,1341,732,1296,781,1224,785,1227,737,1299,712,1344,692,1390,681,1434,678,1474,685,1547,688,1581,684,1615,670,1650,643,1686,620,1702,593,1711"/>
-<area shape="poly" id="edge69_Node000085_Node000012" title=" " alt="" coords="591,1701,617,1693,640,1682,656,1665,664,1647,671,1627,688,1607,716,1588,747,1573,749,1578,719,1592,691,1611,676,1630,669,1649,661,1668,643,1686,619,1698,593,1706"/>
-<area shape="poly" id="edge70_Node000085_Node000016" title=" " alt="" coords="584,1694,641,1681,755,1648,756,1654,642,1686,585,1699"/>
-<area shape="poly" id="edge71_Node000085_Node000031" title=" " alt="" coords="591,1704,617,1696,640,1682,655,1665,663,1648,668,1613,671,1575,676,1554,687,1532,725,1485,767,1447,770,1451,729,1488,692,1534,681,1556,676,1575,674,1613,668,1650,659,1668,643,1686,619,1701,593,1709"/>
-<area shape="poly" id="edge72_Node000085_Node000032" title=" " alt="" coords="553,1719,738,1783,736,1788,551,1724"/>
-<area shape="poly" id="edge74_Node000090_Node000009" title=" " alt="" coords="314,1963,401,1966,497,1964,583,1954,616,1945,640,1932,655,1915,663,1898,666,1859,667,1819,673,1797,687,1777,709,1759,734,1746,737,1750,712,1763,691,1780,678,1800,672,1819,671,1860,669,1899,660,1918,643,1936,618,1949,584,1959,498,1969,401,1971,314,1968"/>
-<area shape="poly" id="edge75_Node000090_Node000032" title=" " alt="" coords="281,1971,352,1988,443,2001,493,2003,543,2001,593,1993,640,1977,687,1950,727,1914,761,1875,786,1841,790,1844,765,1879,731,1918,690,1954,642,1982,594,1998,544,2006,493,2009,443,2007,351,1994,280,1976"/>
-<area shape="poly" id="edge76_Node000090_Node000052" title=" " alt="" coords="309,1946,337,1933,352,1921,360,1909,369,1895,385,1883,416,1870,448,1863,449,1868,418,1875,388,1887,373,1899,365,1912,356,1925,340,1938,311,1951"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,1889,91,1917"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html#a282cbb4958ae3bf0285b9be28ecb1d79" title="FreeRTOS task: process inbound ESP&#45;NOW protocol events." alt="" coords="148,1031,326,1058"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="50,1888,227,1072,232,1074,55,1889"/>
+<area shape="rect" id="Node000053" href="$main_8cpp.html#aa4c1f4ebe8d9f2e34a39b419936d8861" title="Handle fatal initialization errors." alt="" coords="458,1611,563,1638"/>
+<area shape="poly" id="edge48_Node000001_Node000053" title=" " alt="" coords="49,1888,57,1851,73,1802,99,1750,116,1727,137,1706,172,1682,211,1663,251,1648,293,1637,373,1624,445,1621,441,1624,374,1629,294,1642,253,1653,213,1668,175,1687,140,1710,120,1730,103,1753,78,1804,62,1853,54,1889"/>
+<area shape="rect" id="Node000054" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="157,1721,318,1765"/>
+<area shape="poly" id="edge51_Node000001_Node000054" title=" " alt="" coords="53,1888,84,1834,108,1803,137,1776,146,1771,143,1776,140,1780,112,1806,89,1837,58,1890"/>
+<area shape="rect" id="Node000055" href="$namespacetmc51x0.html#a443a6e6bc5293c1f6970fe1bc077591c" title=" " alt="" coords="139,1813,336,1841"/>
+<area shape="poly" id="edge52_Node000001_Node000055" title=" " alt="" coords="74,1887,138,1857,175,1844,171,1848,140,1862,78,1890"/>
+<area shape="rect" id="Node000056" href="$namespaceBoundsCache.html#a471efef965016231bc4b531bc1c89161" title="Initialize the bounds cache system (create timer)." alt="" coords="168,1915,306,1942"/>
+<area shape="poly" id="edge54_Node000001_Node000056" title=" " alt="" coords="90,1906,155,1915,151,1919,93,1911"/>
+<area shape="rect" id="Node000058" href="$namespaceEspNowReceiver.html#a7b5448c32668c4ce8c8b2e825fe523ee" title="Initialize ESP&#45;NOW (WiFi STA + ESP&#45;NOW) and start the receive task." alt="" coords="158,2197,317,2225"/>
+<area shape="poly" id="edge58_Node000001_Node000058" title=" " alt="" coords="58,1915,141,2056,221,2183,216,2185,136,2059,57,1920"/>
+<area shape="rect" id="Node000080" href="$classEsp32SPI.html#a85d11c001a36b137e4d29ced49983d20" title="Initialize the SPI interface." alt="" coords="165,1967,310,1994"/>
+<area shape="poly" id="edge65_Node000001_Node000080" title=" " alt="" coords="70,1915,140,1951,163,1960,158,1963,138,1956,72,1920"/>
+<area shape="rect" id="Node000085" href="$main_8cpp.html#a30da369114ee453fe81be5a919262abf" title="FreeRTOS task: drive the motion update loop and detect completion." alt="" coords="434,1764,588,1792"/>
+<area shape="poly" id="edge66_Node000001_Node000085" title=" " alt="" coords="89,1897,202,1880,269,1867,335,1850,406,1824,470,1797,466,1800,408,1829,337,1855,270,1872,203,1885,92,1901"/>
+<area shape="rect" id="Node000090" href="$main_8cpp.html#a087fdcdd7d4c34c0c22196a7223d96f5" title="FreeRTOS task: periodically send STATUS_UPDATE to the remote controller." alt="" coords="163,2019,312,2046"/>
+<area shape="poly" id="edge73_Node000001_Node000090" title=" " alt="" coords="57,1915,92,1960,114,1983,140,2003,153,2011,148,2013,137,2008,111,1987,88,1963,58,1920"/>
+<area shape="rect" id="Node000091" href="$main_8cpp.html#a5a8d7cdba17444119b8f942be87ffe68" title="FreeRTOS task: poll UART and process commands." alt="" coords="160,2249,314,2277"/>
+<area shape="poly" id="edge77_Node000001_Node000091" title=" " alt="" coords="49,1915,52,1976,61,2061,72,2108,88,2154,111,2197,141,2235,149,2243,144,2243,137,2238,106,2200,83,2156,67,2109,56,2062,46,1976,48,1920"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html#aa57215c763eed0b2d653533cf6392ffc" title="Apply motion configuration from global settings to the motion controller." alt="" coords="685,879,923,906"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="248,1029,302,974,340,945,383,922,454,900,529,886,602,880,672,881,668,884,603,886,530,892,456,905,385,927,343,949,306,978,253,1031"/>
+<area shape="rect" id="Node000004" href="$classFatigueTest_1_1FatigueTestMotion.html#a6c005641bc3e3dd824a30759d0967df4" title="Set acceleration for oscillation (direct TMC5160 AMAX control)." alt="" coords="972,381,1148,425"/>
+<area shape="poly" id="edge38_Node000002_Node000004" title=" " alt="" coords="236,1030,236,850,240,708,250,551,267,393,293,249,310,186,331,131,355,87,382,54,425,25,469,9,516,3,563,7,611,19,660,39,707,65,754,95,843,166,922,241,987,311,1034,368,1029,369,983,315,918,245,839,170,751,100,705,69,657,44,610,24,562,12,516,8,471,14,427,30,386,58,359,90,336,133,315,187,298,250,272,394,255,552,245,708,241,850,241,1030"/>
+<area shape="rect" id="Node000005" href="$classFatigueTest_1_1FatigueTestMotion.html#a34f3dbfb224fbe0d723fc71881c7fb13" title="Set dwell times at local bounds." alt="" coords="972,822,1148,867"/>
+<area shape="poly" id="edge39_Node000002_Node000005" title=" " alt="" coords="244,1029,264,996,295,955,335,914,358,896,383,882,456,853,532,833,611,820,689,813,764,812,836,814,959,826,955,829,836,819,764,817,689,819,611,825,533,838,457,858,385,887,361,901,338,918,299,959,268,999,249,1031"/>
+<area shape="rect" id="Node000006" href="$classFatigueTest_1_1FatigueTestMotion.html#ad45cc366462781557b9bf45f6884b0d1" title="Set maximum velocity for oscillation (direct TMC5160 VMAX control)." alt="" coords="972,893,1148,937"/>
+<area shape="poly" id="edge42_Node000002_Node000006" title=" " alt="" coords="280,1028,383,999,539,971,695,948,958,921,954,925,696,954,540,976,385,1004,283,1032"/>
+<area shape="rect" id="Node000007" href="$classFatigueTest_1_1FatigueTestMotion.html#aed0a3ce0e3373432f6d47bda89839577" title="Set target cycle count (0 = infinite)." alt="" coords="971,965,1149,1009"/>
+<area shape="poly" id="edge44_Node000002_Node000007" title=" " alt="" coords="325,1033,384,1027,695,1005,957,991,953,994,696,1010,384,1032,329,1037"/>
+<area shape="rect" id="Node000008" href="$namespaceBoundsCache.html#a4d78113e0bdf7bd30161718b9ace5298" title="Cancel de&#45;energize timer (e.g., when test starts)." alt="" coords="686,1031,922,1076"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="326,1043,672,1050,669,1053,328,1048"/>
+<area shape="rect" id="Node000009" href="$main_8cpp.html#a90cfc923a234123f2a025465fadea26a" title="Get bounds validity flag for protocol status updates." alt="" coords="724,1775,884,1802"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="240,1056,262,1209,296,1449,318,1571,340,1679,363,1760,375,1786,386,1801,428,1827,476,1843,526,1849,577,1848,628,1841,675,1831,757,1807,753,1810,677,1836,629,1847,578,1853,526,1855,474,1848,426,1832,382,1805,370,1789,358,1762,335,1680,312,1572,291,1450,256,1210,240,1061"/>
+<area shape="rect" id="Node000011" href="$classFatigueTest_1_1FatigueTestMotion.html#a1e9113bd0bda2c479aec845073f78102" title="Get current completed cycles." alt="" coords="710,1239,898,1284"/>
+<area shape="poly" id="edge9_Node000002_Node000011" title=" " alt="" coords="250,1056,306,1112,344,1142,385,1167,452,1193,508,1203,565,1207,638,1219,698,1234,693,1236,637,1224,565,1213,507,1208,451,1198,383,1172,341,1146,303,1115,251,1061"/>
+<area shape="rect" id="Node000012" href="$namespaceBoundsCache.html#a80342bed32196def75c6df3390744851" title="Invalidate bounds (e.g., on config change or explicit request)." alt="" coords="689,1609,919,1637"/>
+<area shape="poly" id="edge10_Node000002_Node000012" title=" " alt="" coords="241,1056,260,1156,290,1305,310,1382,333,1452,358,1509,386,1546,421,1557,498,1572,694,1605,690,1608,497,1577,419,1562,382,1551,354,1512,328,1454,305,1383,285,1306,254,1157,241,1061"/>
+<area shape="rect" id="Node000013" href="$namespaceBoundsCache.html#ac9344d5f823910fee3e630795b94757e" title="Mark bounds as freshly found and start de&#45;energize timer." alt="" coords="392,1285,629,1313"/>
+<area shape="poly" id="edge11_Node000002_Node000013" title=" " alt="" coords="243,1056,262,1100,291,1158,332,1219,357,1247,386,1270,396,1277,391,1279,382,1275,353,1251,328,1223,286,1161,257,1102,243,1061"/>
+<area shape="rect" id="Node000014" href="$main_8cpp.html#a8aaffec68f13f95314677ea8f112a338" title="Enable (energize) the motor power stage." alt="" coords="459,1337,562,1365"/>
+<area shape="poly" id="edge12_Node000002_Node000014" title=" " alt="" coords="242,1056,258,1109,284,1181,303,1220,326,1258,353,1293,386,1322,414,1337,446,1347,442,1349,412,1342,382,1327,350,1296,322,1261,298,1223,279,1183,253,1111,242,1061"/>
+<area shape="rect" id="Node000015" href="$main_8cpp.html#a037f6f66a2a5cdb66649782d6d16b96e" title="Immediately stop motion and enter HOLD mode, but keep motor energized." alt="" coords="452,1389,570,1417"/>
+<area shape="poly" id="edge13_Node000002_Node000015" title=" " alt="" coords="240,1056,253,1118,277,1204,296,1250,320,1296,350,1338,386,1374,410,1388,439,1398,434,1401,408,1393,382,1378,346,1342,315,1299,291,1253,272,1205,248,1119,240,1061"/>
+<area shape="rect" id="Node000016" href="$main_8cpp.html#a3f72921e4deaf387f7444281647ba4b9" title="Immediately stop motion, enter HOLD, and de&#45;energize (disable) the motor." alt="" coords="720,1703,888,1730"/>
+<area shape="poly" id="edge14_Node000002_Node000016" title=" " alt="" coords="240,1056,256,1174,283,1353,303,1447,327,1533,354,1602,370,1629,386,1648,401,1655,428,1663,510,1679,707,1705,702,1708,509,1684,427,1668,399,1660,382,1652,365,1632,349,1605,322,1534,298,1448,278,1354,250,1175,240,1061"/>
+<area shape="rect" id="Node000017" href="$classFatigueTest_1_1FatigueTestMotion.html#a00a7931fb0325fe2b9ecd7964fbc2d6b" title="Pause active motion (stops movement but keeps motor energized for resume)." alt="" coords="423,1491,598,1536"/>
+<area shape="poly" id="edge15_Node000002_Node000017" title=" " alt="" coords="239,1056,248,1131,269,1241,287,1302,312,1363,345,1420,386,1470,411,1490,406,1491,382,1474,340,1423,307,1365,282,1304,264,1242,243,1131,239,1061"/>
+<area shape="rect" id="Node000018" href="$main_8cpp.html#a03b28507170724db0aecf3bdf950b30a" title="Run bounds finding independently (without starting test)." alt="" coords="434,1712,587,1740"/>
+<area shape="poly" id="edge16_Node000002_Node000018" title=" " alt="" coords="240,1056,255,1180,282,1372,302,1473,326,1565,354,1641,369,1670,386,1692,402,1704,422,1715,417,1717,399,1709,382,1696,365,1673,349,1643,321,1567,297,1474,277,1373,250,1181,240,1061"/>
+<area shape="rect" id="Node000042" href="$main_8cpp.html#a05b979a9e80a20ecf074106e268da672" title="Request a START/RESUME with optional bounds caching." alt="" coords="458,1233,563,1261"/>
+<area shape="poly" id="edge18_Node000002_Node000042" title=" " alt="" coords="246,1056,269,1089,299,1132,339,1176,385,1213,413,1226,445,1237,440,1239,412,1231,383,1217,335,1180,295,1135,264,1092,247,1061"/>
+<area shape="rect" id="Node000025" href="$classFatigueTest_1_1FatigueTestMotion.html#a72eab33f7f498ee30bafbacb0d879b0e" title="Reset cycle counter and completion flags." alt="" coords="716,1101,892,1145"/>
+<area shape="poly" id="edge28_Node000002_Node000025" title=" " alt="" coords="326,1054,703,1107,699,1111,328,1059"/>
+<area shape="rect" id="Node000031" href="$namespaceEspNowReceiver.html#a0e573039958657010ab3722b0eb6cfd8" title="Send ERROR message." alt="" coords="719,1486,889,1531"/>
+<area shape="poly" id="edge32_Node000002_Node000031" title=" " alt="" coords="239,1056,249,1126,270,1226,289,1281,313,1335,345,1384,385,1426,501,1451,706,1489,702,1492,500,1456,383,1431,341,1387,309,1337,284,1283,265,1228,244,1127,239,1061"/>
+<area shape="rect" id="Node000032" href="$namespaceEspNowReceiver.html#a37dbf71c15486999f072d89e26d3dd7e" title="Send STATUS_UPDATE with cycle count and state." alt="" coords="719,1857,889,1901"/>
+<area shape="poly" id="edge36_Node000002_Node000032" title=" " alt="" coords="241,1056,309,1487,353,1735,372,1819,386,1856,407,1868,439,1878,520,1888,614,1889,706,1887,701,1889,614,1894,520,1893,437,1883,405,1873,382,1859,367,1820,348,1737,304,1488,240,1061"/>
+<area shape="rect" id="Node000040" href="$classFatigueTest_1_1FatigueTestMotion.html#a97b23d8b7204e2756cea1a30e406a5e9" title="Start active motion." alt="" coords="716,1170,892,1215"/>
+<area shape="poly" id="edge45_Node000002_Node000040" title=" " alt="" coords="267,1056,322,1080,385,1103,467,1126,551,1146,703,1176,699,1178,550,1151,466,1131,383,1108,320,1085,269,1061"/>
+<area shape="rect" id="Node000043" href="$main_8cpp.html#af2ddedb315802bee297a387cb510f3a1" title="Restore motor current to full rated level after manual bounds positioning." alt="" coords="440,68,582,96"/>
+<area shape="poly" id="edge29_Node000002_Node000043" title=" " alt="" coords="236,1030,240,860,247,728,259,581,277,432,302,295,318,234,337,182,358,138,382,105,401,91,426,82,423,87,404,95,386,109,363,141,342,184,323,236,308,296,282,433,264,581,252,728,246,860,241,1030"/>
+<area shape="rect" id="Node000044" href="$namespaceEspNowReceiver.html#a126f3feacea21b45e4af0a34deb50dcd" title="Send CONFIG_ACK for a CONFIG_SET request." alt="" coords="426,119,595,164"/>
+<area shape="poly" id="edge30_Node000002_Node000044" title=" " alt="" coords="236,1030,243,873,252,751,265,615,283,478,308,351,324,295,341,246,360,205,382,175,413,154,410,159,386,178,365,208,346,248,329,297,314,353,289,479,270,616,257,751,249,873,242,1031"/>
+<area shape="rect" id="Node000045" href="$namespaceEspNowReceiver.html#ac4af6aafe2cc9de4cbd2354dfc627dc7" title="Send CONFIG_RESPONSE containing the current settings." alt="" coords="426,189,595,233"/>
+<area shape="poly" id="edge31_Node000002_Node000045" title=" " alt="" coords="237,1030,245,884,269,647,288,522,312,405,344,309,362,272,382,244,413,224,410,228,386,248,366,275,348,311,318,407,293,523,274,648,251,884,242,1031"/>
+<area shape="rect" id="Node000046" href="$namespaceEspNowReceiver.html#a4af879c40f8c3223b890b26dfcd1d7aa" title="Send PAUSE_ACK (acknowledge PAUSE receipt)." alt="" coords="426,258,595,303"/>
+<area shape="poly" id="edge33_Node000002_Node000046" title=" " alt="" coords="237,1030,247,895,273,679,292,565,316,460,346,373,363,339,382,313,413,293,410,298,386,317,368,342,351,375,322,461,297,566,278,680,253,896,242,1031"/>
+<area shape="rect" id="Node000047" href="$namespaceEspNowReceiver.html#a5996f034b8b0ad5a9e75441c454b8a52" title="Send RESUME_ACK (acknowledge RESUME receipt)." alt="" coords="426,327,595,372"/>
+<area shape="poly" id="edge34_Node000002_Node000047" title=" " alt="" coords="237,1030,250,906,277,711,297,608,321,514,349,436,365,405,382,382,413,363,410,367,386,386,369,408,354,438,326,515,302,610,282,712,255,907,242,1030"/>
+<area shape="rect" id="Node000048" href="$namespaceEspNowReceiver.html#afb76d5c6ce79015229aca11c94603692" title="Send START_ACK (acknowledge START receipt)." alt="" coords="426,397,595,441"/>
+<area shape="poly" id="edge35_Node000002_Node000048" title=" " alt="" coords="238,1030,252,917,281,743,301,652,325,568,351,499,366,472,382,452,413,432,410,437,386,456,371,475,356,501,330,570,306,653,286,744,257,918,243,1030"/>
+<area shape="rect" id="Node000049" href="$namespaceEspNowReceiver.html#a5f9e63a444d010ed79c649b6a2467277" title="Send STOP_ACK (acknowledge STOP receipt)." alt="" coords="426,466,595,511"/>
+<area shape="poly" id="edge37_Node000002_Node000049" title=" " alt="" coords="235,1030,236,944,241,879,251,807,269,731,295,655,332,584,356,551,382,521,413,502,410,507,386,525,360,554,337,586,300,657,274,732,256,808,246,880,241,944,241,1031"/>
+<area shape="rect" id="Node000033" href="$classFatigueTest_1_1FatigueTestMotion.html#a144e2f8d8b876e1ea4a3625edf1b53ca" title="Set global (hardware) bounds in degrees." alt="" coords="418,535,603,580"/>
+<area shape="poly" id="edge40_Node000002_Node000033" title=" " alt="" coords="236,1030,240,953,247,898,259,835,277,770,303,705,338,644,382,590,405,576,402,580,386,594,342,647,308,707,282,771,265,836,253,898,246,954,241,1030"/>
+<area shape="rect" id="Node000037" href="$classFatigueTest_1_1FatigueTestMotion.html#adb9d8a1620c8167920ea08f1e6ea12de" title="Set local oscillation bounds (degrees) relative to the center." alt="" coords="384,604,637,666"/>
+<area shape="poly" id="edge41_Node000002_Node000037" title=" " alt="" coords="237,1030,247,966,271,872,290,819,314,767,345,719,382,676,387,673,385,678,386,680,349,722,319,770,295,821,276,873,253,967,243,1031"/>
+<area shape="rect" id="Node000050" href="$main_8cpp.html#ae2344237d134678ce00d04c26334ddb7" title="Set motor current to a reduced level for manual bounds engagement." alt="" coords="404,690,618,735"/>
+<area shape="poly" id="edge43_Node000002_Node000050" title=" " alt="" coords="239,1029,252,976,278,899,297,857,321,816,349,778,382,745,392,740,389,744,386,749,353,782,325,819,302,860,283,901,257,977,244,1031"/>
+<area shape="rect" id="Node000051" href="$classFatigueTest_1_1FatigueTestMotion.html#ac0248435a2425638b9868a4892e87e9f" title="Stop active motion and command driver stop." alt="" coords="423,759,598,804"/>
+<area shape="poly" id="edge46_Node000002_Node000051" title=" " alt="" coords="242,1029,259,988,289,932,330,873,355,845,382,821,410,806,407,810,386,825,359,849,334,876,294,935,264,991,247,1031"/>
+<area shape="rect" id="Node000052" href="$main_8cpp.html#a77af09d9386bbe795dc848a935bff12f" title="Map the internal application state machine to the protocol&#45;visible TestState." alt="" coords="459,1916,562,1944"/>
+<area shape="poly" id="edge47_Node000002_Node000052" title=" " alt="" coords="241,1056,309,1506,354,1768,372,1856,386,1896,413,1915,446,1926,441,1928,410,1919,382,1899,367,1857,348,1769,304,1507,240,1061"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="810,877,1039,441,1041,437,815,879"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="880,876,959,862,955,865,883,880"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="922,901,959,905,954,907,924,905"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="843,904,986,958,981,960,844,909"/>
+<area shape="poly" id="edge17_Node000018_Node000016" title=" " alt="" coords="586,1721,707,1718,703,1721,588,1726"/>
+<area shape="poly" id="edge19_Node000042_Node000003" title=" " alt="" coords="520,1231,587,1140,683,1017,779,915,777,920,687,1021,591,1143,524,1234"/>
+<area shape="poly" id="edge20_Node000042_Node000008" title=" " alt="" coords="521,1231,586,1162,632,1121,684,1086,698,1081,694,1085,687,1091,635,1126,589,1166,526,1234"/>
+<area shape="poly" id="edge21_Node000042_Node000009" title=" " alt="" coords="562,1242,604,1250,623,1259,639,1272,651,1290,659,1312,668,1368,669,1434,667,1506,664,1578,664,1644,671,1700,678,1723,687,1740,702,1754,721,1768,715,1768,698,1759,683,1743,673,1725,665,1701,658,1645,658,1577,661,1505,664,1434,663,1368,654,1313,646,1292,635,1275,620,1263,602,1255,565,1247"/>
+<area shape="poly" id="edge22_Node000042_Node000011" title=" " alt="" coords="563,1247,697,1255,692,1258,565,1252"/>
+<area shape="poly" id="edge23_Node000042_Node000016" title=" " alt="" coords="563,1242,604,1250,623,1259,639,1272,658,1295,671,1318,679,1342,682,1365,681,1410,672,1455,662,1501,657,1548,664,1597,673,1621,687,1647,714,1674,747,1695,742,1696,710,1678,683,1650,668,1624,659,1598,652,1548,657,1501,667,1454,675,1409,677,1365,673,1343,666,1321,653,1298,635,1276,620,1263,603,1255,565,1247"/>
+<area shape="poly" id="edge24_Node000042_Node000025" title=" " alt="" coords="534,1231,601,1194,684,1155,706,1149,702,1152,686,1160,603,1199,538,1235"/>
+<area shape="poly" id="edge25_Node000042_Node000031" title=" " alt="" coords="562,1247,602,1255,639,1271,666,1292,691,1316,734,1370,767,1424,790,1472,785,1472,762,1427,729,1373,687,1320,663,1296,636,1276,600,1260,565,1252"/>
+<area shape="poly" id="edge26_Node000042_Node000032" title=" " alt="" coords="563,1242,604,1250,623,1259,639,1272,653,1292,662,1318,672,1382,673,1458,669,1540,665,1622,664,1699,670,1765,677,1791,688,1812,704,1831,726,1849,720,1849,700,1835,683,1815,672,1793,665,1766,659,1699,660,1622,664,1540,668,1458,667,1382,657,1319,648,1295,635,1275,620,1263,603,1255,565,1247"/>
+<area shape="poly" id="edge27_Node000042_Node000040" title=" " alt="" coords="563,1235,703,1210,699,1213,565,1240"/>
+<area shape="poly" id="edge49_Node000053_Node000016" title=" " alt="" coords="562,1634,638,1654,755,1696,750,1697,637,1659,564,1639"/>
+<area shape="poly" id="edge50_Node000053_Node000031" title=" " alt="" coords="547,1608,733,1535,729,1539,550,1612"/>
+<area shape="poly" id="edge53_Node000055_Node000055" title=" " alt="" coords="204,1813,199,1804,203,1795,216,1789,237,1787,260,1789,273,1797,268,1799,258,1794,237,1792,218,1794,207,1799,205,1804,209,1812"/>
+<area shape="rect" id="Node000057" href="$main_8cpp.html#a9129736e9ca5c05905c4c74e75cb969c" title="Timer callback to de&#45;energize motor after bounds validity expires." alt="" coords="416,1968,605,1996"/>
+<area shape="poly" id="edge55_Node000056_Node000057" title=" " alt="" coords="306,1939,423,1963,419,1966,308,1944"/>
+<area shape="poly" id="edge56_Node000057_Node000016" title=" " alt="" coords="604,1972,621,1964,635,1953,653,1931,661,1908,662,1885,661,1861,660,1812,667,1787,683,1761,701,1746,724,1735,720,1738,704,1750,687,1765,672,1789,665,1813,666,1861,668,1885,666,1909,658,1933,639,1957,624,1969,607,1976"/>
+<area shape="poly" id="edge57_Node000057_Node000032" title=" " alt="" coords="592,1965,636,1953,693,1931,749,1907,744,1910,695,1935,638,1958,594,1970"/>
+<area shape="rect" id="Node000059" href="$espnow__receiver_8cpp.html#ac5e16fbe9d7733f8a1dd357e6cae40e0" title=" " alt="" coords="450,2172,571,2200"/>
+<area shape="poly" id="edge59_Node000058_Node000059" title=" " alt="" coords="317,2201,437,2192,432,2194,318,2206"/>
+<area shape="rect" id="Node000060" href="$espnow__receiver_8cpp.html#a42c9c9de39e4830eafe9a538f7363a21" title=" " alt="" coords="450,2224,571,2252"/>
+<area shape="poly" id="edge60_Node000058_Node000060" title=" " alt="" coords="317,2216,437,2229,432,2231,318,2221"/>
+<area shape="rect" id="Node000061" href="$namespacePeerStore.html#a9b28e00929e22d7fc686a164ff2951cf" title="Get the number of valid approved peers." alt="" coords="420,2276,602,2304"/>
+<area shape="poly" id="edge61_Node000058_Node000061" title=" " alt="" coords="299,2223,337,2235,361,2248,385,2261,414,2271,408,2272,383,2266,359,2253,335,2240,300,2228"/>
+<area shape="rect" id="Node000062" href="$namespacePeerStore.html#ad5335ecd8ed029adc89e1a2c571a5dcb" title="Initialize peer storage and load approved peers from NVS." alt="" coords="454,2328,567,2356"/>
+<area shape="poly" id="edge62_Node000058_Node000062" title=" " alt="" coords="314,2223,338,2236,355,2255,362,2276,369,2295,386,2313,411,2326,441,2337,436,2337,409,2331,382,2317,365,2298,357,2278,350,2258,334,2240,314,2228"/>
+<area shape="rect" id="Node000028" href="$espnow__receiver_8cpp.html#a38ae343ba91aa93458377b341e1d9e4a" title=" " alt="" coords="466,2380,555,2408"/>
+<area shape="poly" id="edge63_Node000058_Node000028" title=" " alt="" coords="318,2223,338,2236,351,2252,359,2269,362,2303,366,2335,373,2350,386,2365,417,2382,454,2393,448,2393,415,2387,382,2369,368,2353,361,2336,357,2303,353,2270,347,2255,334,2240,317,2228"/>
+<area shape="rect" id="Node000065" href="$espnow__receiver_8cpp.html#acfefef0575d2f148427e2d4fc622f175" title=" " alt="" coords="472,2120,550,2148"/>
+<area shape="poly" id="edge64_Node000058_Node000065" title=" " alt="" coords="275,2194,383,2158,459,2142,454,2145,385,2163,277,2199"/>
+<area shape="poly" id="edge67_Node000085_Node000009" title=" " alt="" coords="588,1778,711,1784,706,1786,589,1783"/>
+<area shape="poly" id="edge68_Node000085_Node000011" title=" " alt="" coords="587,1774,614,1765,635,1749,660,1717,673,1686,677,1655,676,1623,670,1554,672,1515,683,1473,703,1423,728,1375,777,1300,780,1295,733,1377,708,1425,688,1475,678,1516,675,1554,681,1623,682,1655,678,1687,665,1719,639,1753,616,1769,590,1778"/>
+<area shape="poly" id="edge69_Node000085_Node000012" title=" " alt="" coords="587,1768,613,1760,636,1749,651,1735,660,1721,669,1706,684,1689,719,1663,759,1643,755,1646,722,1667,687,1693,673,1709,665,1724,655,1739,639,1753,615,1765,589,1772"/>
+<area shape="poly" id="edge70_Node000085_Node000016" title=" " alt="" coords="579,1761,722,1732,717,1735,582,1766"/>
+<area shape="poly" id="edge71_Node000085_Node000031" title=" " alt="" coords="587,1772,613,1763,636,1749,651,1732,659,1714,663,1678,665,1639,671,1618,683,1596,713,1564,750,1538,746,1541,716,1567,688,1599,676,1620,671,1640,668,1679,664,1716,655,1735,639,1753,616,1768,590,1777"/>
+<area shape="poly" id="edge72_Node000085_Node000032" title=" " alt="" coords="553,1789,725,1850,720,1852,553,1795"/>
+<area shape="poly" id="edge74_Node000090_Node000009" title=" " alt="" coords="311,2035,399,2038,494,2036,580,2026,613,2017,636,2005,652,1987,660,1969,663,1950,662,1930,663,1887,669,1865,683,1843,707,1822,738,1807,734,1810,710,1826,687,1846,674,1867,668,1888,668,1930,668,1950,665,1971,657,1990,639,2009,615,2022,581,2031,495,2041,399,2043,313,2040"/>
+<area shape="poly" id="edge75_Node000090_Node000032" title=" " alt="" coords="283,2044,355,2061,445,2073,493,2075,542,2072,590,2064,636,2049,682,2022,722,1986,754,1948,779,1916,783,1913,759,1951,725,1990,685,2026,638,2053,592,2069,543,2077,493,2080,444,2079,354,2066,285,2049"/>
+<area shape="poly" id="edge76_Node000090_Node000052" title=" " alt="" coords="308,2016,335,2003,349,1992,358,1979,367,1966,383,1954,412,1941,446,1935,442,1938,414,1947,385,1959,371,1970,362,1982,353,1995,337,2008,311,2020"/>
 </map>

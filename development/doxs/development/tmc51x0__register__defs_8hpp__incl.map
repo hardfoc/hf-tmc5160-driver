@@ -1,5 +1,5 @@
 <map id="tmc51x0_register_defs.hpp" name="tmc51x0_register_defs.hpp">
-<area shape="rect" id="Node000001" title="X&#45;MACRO definitions for TMC51x0 registers (TMC5130 &amp; TMC5160)" alt="" coords="5,5,204,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="71,79,138,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,31,107,65,102,65,102,31"/>
+<area shape="rect" id="Node000001" title="X&#45;MACRO definitions for TMC51x0 registers (TMC5130 &amp; TMC5160)" alt="" coords="5,5,204,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="72,81,137,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,32,107,66,102,64,103,36"/>
 </map>

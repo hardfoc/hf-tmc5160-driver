@@ -1,19 +1,19 @@
 <map id="Esp32SPI::GetPinMapping" name="Esp32SPI::GetPinMapping">
-<area shape="rect" id="Node000001" title="Get pin mapping for a TMC51x0 control pin." alt="" coords="651,55,839,80"/>
-<area shape="rect" id="Node000002" href="$classEsp32SPI.html#af6da72550da3f66fb49561b48e8cc3f0" title="Read GPIO pin state." alt="" coords="447,5,599,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="673,54,581,33,582,28,674,49"/>
-<area shape="rect" id="Node000004" href="$classEsp32SPI.html#a434e1cfd74165d1e6fac1a940d1d513a" title="Set GPIO pin state." alt="" coords="453,55,593,80"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="637,70,594,70,594,65,637,65"/>
-<area shape="rect" id="Node000009" href="$classEsp32SPI.html#a4556d69ff17f533c19e565b18ddb79a5" title="Set external clock frequency on CLK pin." alt="" coords="444,104,603,129"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="674,86,582,107,581,101,673,80"/>
-<area shape="rect" id="Node000003" href="$internal__ramp__sinusoidal_8cpp.html#abce06be17fc37d675118a678a8100a36" title=" " alt="" coords="280,5,367,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="433,21,367,21,367,15,433,15"/>
-<area shape="rect" id="Node000005" href="$classEsp32SPI.html#a85d11c001a36b137e4d29ced49983d20" title="Initialize the SPI interface." alt="" coords="251,55,396,80"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="439,70,396,70,396,65,439,65"/>
-<area shape="rect" id="Node000006" href="$main_8cpp.html#abce06be17fc37d675118a678a8100a36" title=" " alt="" coords="61,5,147,31"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="252,54,147,30,148,25,253,49"/>
-<area shape="rect" id="Node000007" href="$abn__encoder__reader_8cpp.html#a630544a7f0a2cc40d8a7fefab7e2fe70" title=" " alt="" coords="61,55,147,80"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="237,70,148,70,148,65,237,65"/>
-<area shape="rect" id="Node000008" href="$classEsp32SPI.html#aaa5da2a0aab5837f09ac731c53075cc7" title="Ensure SPI interface is initialized, initializing if necessary." alt="" coords="5,104,203,129"/>
-<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="254,86,162,107,161,101,252,80"/>
+<area shape="rect" id="Node000001" title="Get pin mapping for a TMC51x0 control pin." alt="" coords="648,57,836,85"/>
+<area shape="rect" id="Node000002" href="$classEsp32SPI.html#af6da72550da3f66fb49561b48e8cc3f0" title="Read GPIO pin state." alt="" coords="446,5,597,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="662,53,583,36,584,31,668,53"/>
+<area shape="rect" id="Node000004" href="$classEsp32SPI.html#a434e1cfd74165d1e6fac1a940d1d513a" title="Set GPIO pin state." alt="" coords="452,57,591,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="630,71,591,74,591,69,636,71"/>
+<area shape="rect" id="Node000009" href="$classEsp32SPI.html#a4556d69ff17f533c19e565b18ddb79a5" title="Set external clock frequency on CLK pin." alt="" coords="442,109,600,137"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="668,89,584,111,583,106,662,90"/>
+<area shape="rect" id="Node000003" href="$internal__ramp__sinusoidal_8cpp.html#abce06be17fc37d675118a678a8100a36" title=" " alt="" coords="279,5,364,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="427,20,365,22,365,17,433,19"/>
+<area shape="rect" id="Node000005" href="$classEsp32SPI.html#a85d11c001a36b137e4d29ced49983d20" title="Initialize the SPI interface." alt="" coords="250,57,394,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="433,71,395,74,394,69,438,71"/>
+<area shape="rect" id="Node000006" href="$main_8cpp.html#abce06be17fc37d675118a678a8100a36" title=" " alt="" coords="61,5,146,33"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="243,54,146,32,147,27,248,52"/>
+<area shape="rect" id="Node000007" href="$abn__encoder__reader_8cpp.html#a630544a7f0a2cc40d8a7fefab7e2fe70" title=" " alt="" coords="61,57,146,85"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="232,72,147,74,146,69,237,70"/>
+<area shape="rect" id="Node000008" href="$classEsp32SPI.html#aaa5da2a0aab5837f09ac731c53075cc7" title="Ensure SPI interface is initialized, initializing if necessary." alt="" coords="5,109,202,137"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="248,89,166,111,164,106,243,90"/>
 </map>

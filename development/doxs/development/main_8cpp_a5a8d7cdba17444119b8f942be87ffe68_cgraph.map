@@ -1,5 +1,5 @@
 <map id="uart_command_task" name="uart_command_task">
-<area shape="rect" id="Node000001" title="FreeRTOS task: poll UART and process commands." alt="" coords="5,13,160,38"/>
-<area shape="rect" id="Node000002" href="$classUartCommandParser.html#a867cccdf009c2a69f1edf9a02f50c984" title="Poll the UART for input and process complete lines." alt="" coords="208,5,383,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,23,194,23,194,28,160,28"/>
+<area shape="rect" id="Node000001" title="FreeRTOS task: poll UART and process commands." alt="" coords="5,14,160,42"/>
+<area shape="rect" id="Node000002" href="$classUartCommandParser.html#a867cccdf009c2a69f1edf9a02f50c984" title="Poll the UART for input and process complete lines." alt="" coords="208,5,381,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,25,195,27,189,28,160,30"/>
 </map>

@@ -1,9 +1,9 @@
 <map id="test_enable_disable" name="test_enable_disable">
-<area shape="rect" id="Node000001" title="Test motor enable/disable functionality." alt="" coords="5,42,157,67"/>
-<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html#a60927fcbf4958948b94cbd922284b8a9" title="Create and initialize a test driver instance." alt="" coords="205,42,345,67"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,52,191,52,191,57,158,57"/>
-<area shape="rect" id="Node000003" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="393,5,556,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="345,42,379,37,380,42,346,47"/>
-<area shape="rect" id="Node000004" href="$internal__ramp__comprehensive__test_8cpp.html#a266d3b939b723d24f9230b6b22b3b8a9" title="Verify mode pins match expected communication mode." alt="" coords="406,70,543,95"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="346,62,393,68,392,74,345,67"/>
+<area shape="rect" id="Node000001" title="Test motor enable/disable functionality." alt="" coords="5,44,157,72"/>
+<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html#a60927fcbf4958948b94cbd922284b8a9" title="Create and initialize a test driver instance." alt="" coords="205,44,344,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,56,191,58,186,59,157,61"/>
+<area shape="rect" id="Node000003" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="392,5,553,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="344,45,379,42,374,43,345,50"/>
+<area shape="rect" id="Node000004" href="$internal__ramp__comprehensive__test_8cpp.html#a266d3b939b723d24f9230b6b22b3b8a9" title="Verify mode pins match expected communication mode." alt="" coords="404,74,541,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="345,66,392,75,387,75,345,71"/>
 </map>

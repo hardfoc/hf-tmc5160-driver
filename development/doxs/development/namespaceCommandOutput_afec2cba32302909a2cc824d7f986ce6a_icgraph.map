@@ -1,23 +1,23 @@
 <map id="CommandOutput::PrintError" name="CommandOutput::PrintError">
-<area shape="rect" id="Node000001" title="Print an error message to the ESP&#45;IDF log." alt="" coords="505,156,708,181"/>
-<area shape="poly" id="edge12_Node000001_Node000001" title=" " alt="" coords="654,147,652,142,643,139,607,135,578,137,563,142,560,147,567,154,564,158,554,148,559,138,577,131,607,129,645,133,655,138,659,144"/>
-<area shape="rect" id="Node000002" href="$main_8cpp.html#a26ba4ef0d74eb1cdd930e9ed4f0b2c3d" title="Handle PAIR command." alt="" coords="280,5,396,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="582,148,527,100,493,74,456,52,426,40,396,31,397,26,428,35,459,48,496,70,531,96,585,144"/>
-<area shape="rect" id="Node000003" href="$classUartCommandParser.html#a2b7090fe7118485c639dce94074b6e68" title="Parse and execute a single command line." alt="" coords="5,99,171,139"/>
-<area shape="poly" id="edge13_Node000001_Node000003" title=" " alt="" coords="574,151,521,121,489,107,457,97,382,86,306,85,234,92,171,103,170,97,234,87,306,80,383,80,458,91,491,102,523,116,577,146"/>
-<area shape="rect" id="Node000004" href="$main_8cpp.html#abda5ef2605b311dad7dc06cc34373d11" title="Handle HELP command." alt="" coords="289,107,387,132"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="523,156,387,131,388,126,524,151"/>
-<area shape="rect" id="Node000005" href="$main_8cpp.html#a35d4c27b82242d39e341bf9d35d50a0f" title="Apply SET command options to the motion controller." alt="" coords="293,156,383,181"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="492,171,383,171,383,166,492,166"/>
-<area shape="rect" id="Node000006" href="$main_8cpp.html#af9a61f18ec0bf52c35280fd8748a0679" title="Handle START command." alt="" coords="289,205,387,231"/>
-<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="524,186,388,212,387,206,523,181"/>
-<area shape="rect" id="Node000007" href="$classUartCommandParser.html#ab0e959fc2d336b5fbfb2dfafb901b167" title="Convert tokens into a structured ParsedCommand." alt="" coords="255,255,421,295"/>
-<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="572,190,519,218,458,244,419,258,417,253,456,240,517,213,570,185"/>
-<area shape="rect" id="Node000008" href="$namespaceCommandOutput.html#ae19be1e7f6cf49a36ef024d47be9d1b7" title="Print a success/failure result line for a command." alt="" coords="219,343,457,383"/>
-<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="587,194,532,250,497,281,459,310,392,346,389,341,456,305,493,277,528,246,583,190"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="268,37,220,52,168,76,123,102,121,97,166,72,218,48,266,32"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="275,122,171,122,171,117,275,117"/>
-<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="279,160,170,138,172,133,280,155"/>
-<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="275,211,218,195,163,169,118,142,120,137,166,165,220,190,276,206"/>
-<area shape="poly" id="edge11_Node000008_Node000008" title=" " alt="" coords="380,332,365,325,338,322,314,324,300,329,294,335,297,342,292,344,289,334,297,324,313,319,338,317,367,320,383,327"/>
+<area shape="rect" id="Node000001" title="Print an error message to the ESP&#45;IDF log." alt="" coords="503,159,704,186"/>
+<area shape="poly" id="edge12_Node000001_Node000001" title=" " alt="" coords="648,143,634,140,604,137,576,139,560,144,556,149,563,159,558,158,551,150,557,140,575,134,604,132,635,134,653,143"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html#a26ba4ef0d74eb1cdd930e9ed4f0b2c3d" title="Handle PAIR command." alt="" coords="279,5,394,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="576,147,523,101,490,75,454,54,424,41,395,32,394,27,426,36,456,49,493,71,527,97,581,148"/>
+<area shape="rect" id="Node000003" href="$classUartCommandParser.html#a2b7090fe7118485c639dce94074b6e68" title="Parse and execute a single command line." alt="" coords="5,98,170,143"/>
+<area shape="poly" id="edge13_Node000001_Node000003" title=" " alt="" coords="568,150,517,122,486,108,454,98,380,87,305,86,233,93,171,103,169,98,232,88,305,81,381,81,456,93,488,103,519,117,573,150"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html#abda5ef2605b311dad7dc06cc34373d11" title="Handle HELP command." alt="" coords="288,107,385,134"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="511,156,386,133,385,127,516,154"/>
+<area shape="rect" id="Node000005" href="$main_8cpp.html#a35d4c27b82242d39e341bf9d35d50a0f" title="Apply SET command options to the motion controller." alt="" coords="292,159,380,186"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="485,173,381,175,380,170,490,172"/>
+<area shape="rect" id="Node000006" href="$main_8cpp.html#af9a61f18ec0bf52c35280fd8748a0679" title="Handle START command." alt="" coords="287,211,386,238"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="511,191,387,218,385,212,516,189"/>
+<area shape="rect" id="Node000007" href="$classUartCommandParser.html#ab0e959fc2d336b5fbfb2dfafb901b167" title="Convert tokens into a structured ParsedCommand." alt="" coords="254,262,418,307"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="568,193,515,225,456,252,419,265,418,260,454,247,513,220,563,196"/>
+<area shape="rect" id="Node000008" href="$namespaceCommandOutput.html#ae19be1e7f6cf49a36ef024d47be9d1b7" title="Print a success/failure result line for a command." alt="" coords="218,356,455,400"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="583,197,528,259,494,292,456,321,393,357,391,352,454,317,490,288,525,255,578,200"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="262,38,219,54,170,76,128,99,124,96,168,71,217,49,266,34"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="270,122,171,123,169,118,275,119"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="274,162,171,140,170,135,279,159"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="269,215,217,200,164,174,120,146,120,141,166,169,219,195,274,213"/>
+<area shape="poly" id="edge11_Node000008_Node000008" title=" " alt="" coords="375,340,362,337,336,334,313,336,299,341,293,347,294,356,289,353,288,345,296,336,312,331,336,329,363,331,381,341"/>
 </map>

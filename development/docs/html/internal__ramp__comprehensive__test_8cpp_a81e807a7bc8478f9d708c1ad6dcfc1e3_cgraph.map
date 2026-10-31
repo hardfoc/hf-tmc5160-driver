@@ -1,9 +1,9 @@
 <map id="test_offset_calibration" name="test_offset_calibration">
-<area shape="rect" id="Node000001" title="Test offset calibration reading." alt="" coords="5,42,172,67"/>
-<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html#a60927fcbf4958948b94cbd922284b8a9" title="Create and initialize a test driver instance." alt="" coords="220,42,360,67"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,52,206,52,206,57,173,57"/>
-<area shape="rect" id="Node000003" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="408,5,571,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="360,42,394,37,395,42,361,47"/>
-<area shape="rect" id="Node000004" href="$internal__ramp__comprehensive__test_8cpp.html#a266d3b939b723d24f9230b6b22b3b8a9" title="Verify mode pins match expected communication mode." alt="" coords="421,70,558,95"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="360,62,407,68,406,74,360,67"/>
+<area shape="rect" id="Node000001" title="Test offset calibration reading." alt="" coords="5,44,172,72"/>
+<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html#a60927fcbf4958948b94cbd922284b8a9" title="Create and initialize a test driver instance." alt="" coords="220,44,359,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,56,207,58,202,59,172,61"/>
+<area shape="rect" id="Node000003" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="407,5,568,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="359,45,389,43,394,42,360,50"/>
+<area shape="rect" id="Node000004" href="$internal__ramp__comprehensive__test_8cpp.html#a266d3b939b723d24f9230b6b22b3b8a9" title="Verify mode pins match expected communication mode." alt="" coords="420,74,556,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="360,66,407,75,402,75,360,71"/>
 </map>
