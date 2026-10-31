@@ -1,30 +1,30 @@
 <map id="tmc51x0::TMC51x0::GetDriverConfig" name="tmc51x0::TMC51x0::GetDriverConfig">
-<area shape="rect" id="Node000001" title="Get current driver configuration." alt="" coords="911,121,1129,161"/>
-<area shape="rect" id="Node000002" href="$main_8cpp.html#aad11fcee042534d6e42aa0b3f79f5b0f" title="FreeRTOS task: perform bounds finding, then start motion." alt="" coords="678,41,833,67"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="959,118,862,82,816,69,817,64,863,77,961,113"/>
-<area shape="rect" id="Node000010" href="$main_8cpp.html#a30da369114ee453fe81be5a919262abf" title="FreeRTOS task: drive the motion update loop and detect completion." alt="" coords="445,207,600,232"/>
-<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="959,168,912,184,863,197,794,208,724,216,600,222,600,216,724,210,793,203,862,191,911,179,957,163"/>
-<area shape="rect" id="Node000011" href="$main_8cpp.html#af2ddedb315802bee297a387cb510f3a1" title="Restore motor current to full rated level after manual bounds positioning." alt="" coords="684,156,827,181"/>
-<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="898,156,827,164,826,159,897,151"/>
-<area shape="rect" id="Node000012" href="$main_8cpp.html#ae2344237d134678ce00d04c26334ddb7" title="Set motor current to a reduced level for manual bounds engagement." alt="" coords="648,91,863,131"/>
-<area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="897,130,863,126,863,121,897,124"/>
-<area shape="rect" id="Node000003" href="$main_8cpp.html#a03b28507170724db0aecf3bdf950b30a" title="Run bounds finding independently (without starting test)." alt="" coords="446,55,599,80"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="664,62,600,66,599,60,663,57"/>
-<area shape="rect" id="Node000008" href="$main_8cpp.html#a05b979a9e80a20ecf074106e268da672" title="Request a START/RESUME with optional bounds caching." alt="" coords="469,5,576,31"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="664,43,576,29,577,24,664,37"/>
-<area shape="rect" id="Node000004" href="$main_8cpp.html#a282cbb4958ae3bf0285b9be28ecb1d79" title="FreeRTOS task: process inbound ESP&#45;NOW protocol events." alt="" coords="219,105,397,131"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="455,86,363,108,362,103,454,81"/>
-<area shape="rect" id="Node000006" href="$main_8cpp.html#a26ba4ef0d74eb1cdd930e9ed4f0b2c3d" title="Handle PAIR command." alt="" coords="250,55,366,80"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="432,70,366,70,366,65,432,65"/>
-<area shape="rect" id="Node000005" href="$main_8cpp.html#abce06be17fc37d675118a678a8100a36" title=" " alt="" coords="45,120,131,145"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="205,128,132,132,132,127,205,122"/>
-<area shape="rect" id="Node000007" href="$classUartCommandParser.html#a2b7090fe7118485c639dce94074b6e68" title="Parse and execute a single command line." alt="" coords="5,34,171,74"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="236,66,171,62,171,56,236,60"/>
-<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="458,38,447,44,432,56,424,68,414,81,399,94,368,108,365,103,396,89,410,77,419,65,429,52,444,40,455,34"/>
-<area shape="rect" id="Node000009" href="$main_8cpp.html#af9a61f18ec0bf52c35280fd8748a0679" title="Handle START command." alt="" coords="259,5,357,31"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="455,21,358,21,358,15,455,15"/>
-<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="246,31,171,43,170,38,245,26"/>
-<area shape="poly" id="edge12_Node000010_Node000005" title=" " alt="" coords="444,207,131,144,132,139,445,201"/>
-<area shape="poly" id="edge14_Node000011_Node000004" title=" " alt="" coords="670,162,397,131,398,125,670,156"/>
-<area shape="poly" id="edge16_Node000012_Node000004" title=" " alt="" coords="634,116,397,119,397,114,634,110"/>
+<area shape="rect" id="Node000001" title="Get current driver configuration." alt="" coords="909,121,1127,166"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html#aad11fcee042534d6e42aa0b3f79f5b0f" title="FreeRTOS task: perform bounds finding, then start motion." alt="" coords="676,39,831,66"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="951,114,860,80,822,70,823,64,862,75,956,114"/>
+<area shape="rect" id="Node000010" href="$main_8cpp.html#a30da369114ee453fe81be5a919262abf" title="FreeRTOS task: drive the motion update loop and detect completion." alt="" coords="444,209,598,237"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="951,171,861,200,792,212,723,220,599,226,599,220,722,214,792,207,860,195,946,172"/>
+<area shape="rect" id="Node000011" href="$main_8cpp.html#af2ddedb315802bee297a387cb510f3a1" title="Restore motor current to full rated level after manual bounds positioning." alt="" coords="682,159,825,186"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="896,157,826,167,825,162,890,157"/>
+<area shape="rect" id="Node000012" href="$main_8cpp.html#ae2344237d134678ce00d04c26334ddb7" title="Set motor current to a reduced level for manual bounds engagement." alt="" coords="646,90,861,135"/>
+<area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="890,129,861,128,861,122,896,129"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html#a03b28507170724db0aecf3bdf950b30a" title="Run bounds finding independently (without starting test)." alt="" coords="445,57,597,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="658,60,598,68,597,62,663,59"/>
+<area shape="rect" id="Node000008" href="$main_8cpp.html#a05b979a9e80a20ecf074106e268da672" title="Request a START/RESUME with optional bounds caching." alt="" coords="468,5,574,33"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="658,40,575,29,574,24,663,39"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html#a282cbb4958ae3bf0285b9be28ecb1d79" title="FreeRTOS task: process inbound ESP&#45;NOW protocol events." alt="" coords="218,109,396,137"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="444,90,368,111,366,106,449,88"/>
+<area shape="rect" id="Node000006" href="$main_8cpp.html#a26ba4ef0d74eb1cdd930e9ed4f0b2c3d" title="Handle PAIR command." alt="" coords="249,57,364,85"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="427,72,365,74,364,69,432,70"/>
+<area shape="rect" id="Node000005" href="$main_8cpp.html#abce06be17fc37d675118a678a8100a36" title=" " alt="" coords="45,124,130,152"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="200,132,131,138,130,132,204,129"/>
+<area shape="rect" id="Node000007" href="$classUartCommandParser.html#a2b7090fe7118485c639dce94074b6e68" title="Parse and execute a single command line." alt="" coords="5,34,170,79"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="231,68,171,65,170,59,236,65"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="457,39,446,48,431,60,422,73,413,86,397,99,371,111,369,106,395,94,409,82,418,70,427,57,442,44,452,41"/>
+<area shape="rect" id="Node000009" href="$main_8cpp.html#af9a61f18ec0bf52c35280fd8748a0679" title="Handle START command." alt="" coords="258,5,356,33"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="450,20,357,22,356,17,455,18"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="240,32,171,45,169,40,244,28"/>
+<area shape="poly" id="edge12_Node000010_Node000005" title=" " alt="" coords="431,208,130,149,131,143,433,203"/>
+<area shape="poly" id="edge14_Node000011_Node000004" title=" " alt="" coords="664,164,396,136,397,130,669,162"/>
+<area shape="poly" id="edge16_Node000012_Node000004" title=" " alt="" coords="628,116,397,124,396,118,633,115"/>
 </map>

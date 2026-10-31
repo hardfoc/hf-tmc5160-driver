@@ -1,26 +1,26 @@
 <map id="FatigueTest::FatigueTestMotion::GetCurrentCycles" name="FatigueTest::FatigueTestMotion::GetCurrentCycles">
-<area shape="rect" id="Node000001" title="Get current completed cycles." alt="" coords="849,73,1039,113"/>
-<area shape="rect" id="Node000002" href="$main_8cpp.html#aad11fcee042534d6e42aa0b3f79f5b0f" title="FreeRTOS task: perform bounds finding, then start motion." alt="" coords="647,55,801,80"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="835,83,801,79,802,74,836,78"/>
-<area shape="rect" id="Node000004" href="$main_8cpp.html#a282cbb4958ae3bf0285b9be28ecb1d79" title="FreeRTOS task: process inbound ESP&#45;NOW protocol events." alt="" coords="219,104,397,129"/>
-<area shape="poly" id="edge11_Node000001_Node000004" title=" " alt="" coords="836,99,398,116,397,111,836,94"/>
-<area shape="rect" id="Node000008" href="$main_8cpp.html#a05b979a9e80a20ecf074106e268da672" title="Request a START/RESUME with optional bounds caching." alt="" coords="469,5,575,31"/>
-<area shape="poly" id="edge14_Node000001_Node000008" title=" " alt="" coords="882,70,801,45,741,34,680,27,576,21,576,16,681,22,742,29,802,39,884,65"/>
-<area shape="rect" id="Node000010" href="$main_8cpp.html#a30da369114ee453fe81be5a919262abf" title="FreeRTOS task: drive the motion update loop and detect completion." alt="" coords="647,156,801,181"/>
-<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="873,120,763,158,761,153,871,115"/>
-<area shape="rect" id="Node000003" href="$main_8cpp.html#a03b28507170724db0aecf3bdf950b30a" title="Run bounds finding independently (without starting test)." alt="" coords="445,55,599,80"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="633,70,599,70,599,65,633,65"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="657,54,574,33,575,28,659,49"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="454,86,365,107,363,101,452,81"/>
-<area shape="rect" id="Node000006" href="$main_8cpp.html#a26ba4ef0d74eb1cdd930e9ed4f0b2c3d" title="Handle PAIR command." alt="" coords="250,55,366,80"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="431,70,367,70,367,65,431,65"/>
-<area shape="rect" id="Node000005" href="$main_8cpp.html#abce06be17fc37d675118a678a8100a36" title=" " alt="" coords="45,119,131,144"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="205,126,132,131,132,126,205,121"/>
-<area shape="rect" id="Node000007" href="$classUartCommandParser.html#a2b7090fe7118485c639dce94074b6e68" title="Parse and execute a single command line." alt="" coords="5,33,171,73"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="236,65,171,61,171,56,236,60"/>
-<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="458,38,447,44,432,56,424,68,414,81,399,94,370,106,368,102,396,89,410,77,419,65,429,52,444,40,455,34"/>
-<area shape="rect" id="Node000009" href="$main_8cpp.html#af9a61f18ec0bf52c35280fd8748a0679" title="Handle START command." alt="" coords="259,5,357,31"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="455,21,357,21,357,15,455,15"/>
-<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="246,30,171,42,170,37,245,25"/>
-<area shape="poly" id="edge13_Node000010_Node000005" title=" " alt="" coords="633,167,218,145,132,138,132,132,219,139,633,162"/>
+<area shape="rect" id="Node000001" title="Get current completed cycles." alt="" coords="847,76,1035,120"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html#aad11fcee042534d6e42aa0b3f79f5b0f" title="FreeRTOS task: perform bounds finding, then start motion." alt="" coords="644,59,799,86"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="829,85,799,84,799,79,834,85"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html#a282cbb4958ae3bf0285b9be28ecb1d79" title="FreeRTOS task: process inbound ESP&#45;NOW protocol events." alt="" coords="218,109,396,137"/>
+<area shape="poly" id="edge11_Node000001_Node000004" title=" " alt="" coords="830,105,397,122,396,117,832,100"/>
+<area shape="rect" id="Node000008" href="$main_8cpp.html#a05b979a9e80a20ecf074106e268da672" title="Request a START/RESUME with optional bounds caching." alt="" coords="468,7,573,34"/>
+<area shape="poly" id="edge14_Node000001_Node000008" title=" " alt="" coords="869,70,798,50,738,39,678,31,573,24,573,19,678,26,739,34,799,45,874,70"/>
+<area shape="rect" id="Node000010" href="$main_8cpp.html#a30da369114ee453fe81be5a919262abf" title="FreeRTOS task: drive the motion update loop and detect completion." alt="" coords="644,160,799,188"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="863,125,764,162,763,157,858,126"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html#a03b28507170724db0aecf3bdf950b30a" title="Run bounds finding independently (without starting test)." alt="" coords="444,59,596,86"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="626,73,597,75,596,70,631,72"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="648,54,573,37,574,31,653,54"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="447,90,369,111,368,106,442,91"/>
+<area shape="rect" id="Node000006" href="$main_8cpp.html#a26ba4ef0d74eb1cdd930e9ed4f0b2c3d" title="Handle PAIR command." alt="" coords="249,57,364,85"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="426,72,365,74,364,69,431,71"/>
+<area shape="rect" id="Node000005" href="$main_8cpp.html#abce06be17fc37d675118a678a8100a36" title=" " alt="" coords="45,124,130,152"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="200,131,131,138,130,132,205,129"/>
+<area shape="rect" id="Node000007" href="$classUartCommandParser.html#a2b7090fe7118485c639dce94074b6e68" title="Parse and execute a single command line." alt="" coords="5,34,170,79"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="231,67,171,65,170,59,236,65"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="457,40,446,49,431,61,422,74,413,86,397,99,371,111,369,106,395,94,409,83,418,70,427,58,442,45,452,42"/>
+<area shape="rect" id="Node000009" href="$main_8cpp.html#af9a61f18ec0bf52c35280fd8748a0679" title="Handle START command." alt="" coords="258,5,356,33"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="450,21,357,22,356,17,455,19"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="240,31,171,45,169,40,245,29"/>
+<area shape="poly" id="edge13_Node000010_Node000005" title=" " alt="" coords="628,173,217,151,131,144,131,139,218,146,629,167"/>
 </map>

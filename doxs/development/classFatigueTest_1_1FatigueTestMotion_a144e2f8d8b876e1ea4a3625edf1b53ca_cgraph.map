@@ -1,9 +1,9 @@
 <map id="FatigueTest::FatigueTestMotion::SetGlobalBounds" name="FatigueTest::FatigueTestMotion::SetGlobalBounds">
-<area shape="rect" id="Node000001" title="Set global (hardware) bounds in degrees." alt="" coords="5,27,192,67"/>
-<area shape="rect" id="Node000002" href="$classTmcMutexGuard.html#af6d5dcf4642c6732aea23ea2489caaaf" title="Manually unlock mutex." alt="" coords="240,35,421,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,45,226,45,226,50,193,50"/>
-<area shape="rect" id="Node000003" href="$classEsp32TmcMutex.html#aa1c5042b5ace0f9a58c140b0f02db0f2" title="Check if mutex is valid." alt="" coords="469,5,657,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="421,33,456,29,456,34,422,39"/>
-<area shape="rect" id="Node000004" href="$classEsp32TmcMutex.html#a7921afd7a51298dbdeec91d115871e7f" title="Get native FreeRTOS semaphore handle." alt="" coords="474,55,653,95"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="422,56,461,60,460,66,421,61"/>
+<area shape="rect" id="Node000001" title="Set global (hardware) bounds in degrees." alt="" coords="5,28,191,72"/>
+<area shape="rect" id="Node000002" href="$classTmcMutexGuard.html#af6d5dcf4642c6732aea23ea2489caaaf" title="Manually unlock mutex." alt="" coords="239,36,419,64"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,47,226,49,220,50,191,52"/>
+<area shape="rect" id="Node000003" href="$classEsp32TmcMutex.html#aa1c5042b5ace0f9a58c140b0f02db0f2" title="Check if mutex is valid." alt="" coords="467,5,654,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="419,35,454,33,449,34,420,41"/>
+<area shape="rect" id="Node000004" href="$classEsp32TmcMutex.html#a7921afd7a51298dbdeec91d115871e7f" title="Get native FreeRTOS semaphore handle." alt="" coords="472,57,650,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="420,59,459,66,454,66,419,64"/>
 </map>

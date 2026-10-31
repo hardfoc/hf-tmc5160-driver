@@ -1,5 +1,5 @@
 <map id="TmcMutexGuard" name="TmcMutexGuard">
-<area shape="rect" id="Node000001" title="RAII mutex guard for automatic lock/unlock." alt="" coords="5,93,136,119"/>
-<area shape="rect" id="Node000002" href="$classEsp32TmcMutex.html" title="ESP32 FreeRTOS mutex wrapper for TMC51x0 driver." alt="" coords="5,5,136,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,45,73,93,68,93,68,45"/>
+<area shape="rect" id="Node000001" title="RAII mutex guard for automatic lock/unlock." alt="" coords="5,98,135,126"/>
+<area shape="rect" id="Node000002" href="$classEsp32TmcMutex.html" title="ESP32 FreeRTOS mutex wrapper for TMC51x0 driver." alt="" coords="5,5,135,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,47,73,98,67,97,68,50"/>
 </map>

@@ -1,9 +1,9 @@
 <map id="test_speed_control" name="test_speed_control">
-<area shape="rect" id="Node000001" title="Test speed control (max speed, acceleration, deceleration)." alt="" coords="5,42,151,67"/>
-<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html#a60927fcbf4958948b94cbd922284b8a9" title="Create and initialize a test driver instance." alt="" coords="199,42,339,67"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,52,185,52,185,57,151,57"/>
-<area shape="rect" id="Node000003" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="387,5,549,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="338,42,373,37,373,42,339,47"/>
-<area shape="rect" id="Node000004" href="$internal__ramp__comprehensive__test_8cpp.html#a266d3b939b723d24f9230b6b22b3b8a9" title="Verify mode pins match expected communication mode." alt="" coords="399,70,537,95"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="339,62,386,68,385,74,338,67"/>
+<area shape="rect" id="Node000001" title="Test speed control (max speed, acceleration, deceleration)." alt="" coords="5,44,150,72"/>
+<area shape="rect" id="Node000002" href="$internal__ramp__comprehensive__test_8cpp.html#a60927fcbf4958948b94cbd922284b8a9" title="Create and initialize a test driver instance." alt="" coords="198,44,337,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,56,185,58,180,59,150,61"/>
+<area shape="rect" id="Node000003" href="$namespacetmc51x0__test__config.html#ad88c0c8419d1ef47a6ba7e56b79936c7" title="Complete pin configuration for all tests." alt="" coords="385,5,546,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="337,45,372,42,367,43,338,50"/>
+<area shape="rect" id="Node000004" href="$internal__ramp__comprehensive__test_8cpp.html#a266d3b939b723d24f9230b6b22b3b8a9" title="Verify mode pins match expected communication mode." alt="" coords="398,74,534,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="338,66,385,75,380,75,338,71"/>
 </map>
