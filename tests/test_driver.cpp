@@ -78,6 +78,46 @@ TEST_CASE("Initialize detects a TMC5130; SetGlobalScaler then writes nothing") {
   CHECK(!spi.lastWrite(reg::GLOBAL_SCALER, scaler));
 }
 
+TEST_CASE("TMC5130: Initialize never writes the TMC5160-only registers 0x09..0x0B") {
+  // TMC5160A datasheet section 6.1: SHORT_CONF (0x09), DRV_CONF (0x0A) and GLOBAL_SCALER (0x0B) are TMC5160 only.
+  MockSpi spi(tmc51x0::ChipVersion::TMC5130);
+  Driver driver(spi);
+  tmc51x0::DriverConfig cfg{};
+  cfg.motor_spec.run_current_ma = 1000;
+  cfg.motor_spec.sense_resistor_mohm = 50;
+  REQUIRE(driver.Initialize(cfg, false).IsOk());
+  uint32_t v = 0;
+  CHECK(!spi.lastWrite(reg::GLOBAL_SCALER, v));
+  CHECK(!spi.lastWrite(reg::DRV_CONF, v));
+  CHECK(!spi.lastWrite(reg::SHORT_CONF, v));
+}
+
+TEST_CASE("TMC5130: IRUN follows the TMC5130 current formula, not GLOBAL_SCALER") {
+  // TMC5130A: I_RMS = ((CS+1)/32) * 0.32 V / (RSENSE + 20 mOhm) / sqrt(2). With 50 mOhm the full scale is
+  // 3.23 A, so 1.0 A needs CS = 8 (0.91 A; rounded down). The TMC5160 formula would give IRUN = 31 (3.2 A).
+  MockSpi spi(tmc51x0::ChipVersion::TMC5130);
+  Driver driver(spi);
+  tmc51x0::DriverConfig cfg{};
+  cfg.motor_spec.run_current_ma = 1000;
+  cfg.motor_spec.hold_current_ma = 500;
+  cfg.motor_spec.sense_resistor_mohm = 50;
+  REQUIRE(driver.Initialize(cfg, false).IsOk());
+  uint32_t ihold_irun = 0;
+  REQUIRE(spi.lastWrite(reg::IHOLD_IRUN, ihold_irun));
+  CHECK_EQ((ihold_irun >> 8) & 0x1Fu, 8u);
+  CHECK_EQ(ihold_irun & 0x1Fu, 3u);
+}
+
+TEST_CASE("CalculateMotorCurrent keeps the TMC5160 result by default") {
+  tmc51x0::MotorSpec spec{};
+  uint8_t irun = 0;
+  uint8_t ihold = 0;
+  uint16_t scaler = 0;
+  REQUIRE(tmc51x0::CalculateMotorCurrent(spec, 50, 24000, 1500, 0, irun, ihold, scaler));
+  CHECK_EQ(irun, 31u);
+  CHECK(scaler >= 80u && scaler <= 86u);
+}
+
 TEST_CASE("Motion commands write RAMPMODE, VMAX and XTARGET in microsteps") {
   MockSpi spi;
   Driver driver(spi);

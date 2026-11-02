@@ -1066,6 +1066,25 @@ Result<void> TMC51x0<CommType>::Initialize(const DriverConfig& config, bool verb
     return Result<void>(ErrorCode::COMM_ERROR);
   }
 
+  // Detect chip version (IOIN.VERSION, bits 31..24) before the first chip-specific write: the TMC5130 has no
+  // GLOBAL_SCALER (0x0B), DRV_CONF (0x0A) or SHORT_CONF (0x09) and uses a different current formula
+  // (TMC5160A datasheet section 6.1, register map 0x00..0x0F; TMC5130A datasheet register map).
+  auto chip_version_result = io.ReadIcVersion();
+  if (chip_version_result.IsOk()) {
+    uint8_t chip_version = chip_version_result.Value();
+    chip_version_ = chip_version;
+    if (chip_version == ChipVersion::TMC5130) {
+      TMC51X0_LOG_DEBUG(comm_, LogLevel::Info, "TMC5160", "Detected TMC5130 chip (version 0x%02X)", chip_version);
+    } else if (chip_version == ChipVersion::TMC5160) {
+      TMC51X0_LOG_DEBUG(comm_, LogLevel::Info, "TMC5160", "Detected TMC5160 chip (version 0x%02X)", chip_version);
+    } else {
+      TMC51X0_LOG_DEBUG(comm_, LogLevel::Warn, "TMC5160", "Unknown chip version: 0x%02X", chip_version);
+    }
+  } else {
+    TMC51X0_LOG_DEBUG(comm_, LogLevel::Warn, "TMC5160", "Failed to read chip version, assuming TMC5160");
+    chip_version_ = ChipVersion::TMC5160; // Default to TMC5160
+  }
+
   // Calculate initial microsteps from config
   // mres: 0=256, 1=128, ... 8=fullstep. microsteps = 256 >> mres
   uint8_t mres = constrain<uint8_t>(static_cast<uint8_t>(config.chopper.mres), 0U, 8U);
@@ -1111,8 +1130,8 @@ Result<void> TMC51x0<CommType>::Initialize(const DriverConfig& config, bool verb
     return Result<void>(ErrorCode::COMM_ERROR);
   }
 
-  // Configure power stage
-  {
+  // Configure power stage: DRV_CONF and SHORT_CONF exist on the TMC5160 only (TMC5160A datasheet section 6.1)
+  if (chip_version_ != ChipVersion::TMC5130) {
     auto ps_result = powerStage.ConfigurePowerStage(config.power_stage);
     if (!ps_result) {
       TMC51X0_LOG_DEBUG(comm_, LogLevel::Error, "TMC5160",
@@ -1158,10 +1177,12 @@ Result<void> TMC51x0<CommType>::Initialize(const DriverConfig& config, bool verb
   uint8_t shortdelay = CalculateShortDelay(delay_us_x10);
   short_conf.bits.shortdelay = constrain<uint8_t>(shortdelay, 0U, 1U);
 
-  if (!this->comm_.WriteRegister(Registers::SHORT_CONF, short_conf.value, this->GetCommAddress())) {
-    return Result<void>(ErrorCode::COMM_ERROR);
+  if (chip_version_ != ChipVersion::TMC5130) {
+    if (!this->comm_.WriteRegister(Registers::SHORT_CONF, short_conf.value, this->GetCommAddress())) {
+      return Result<void>(ErrorCode::COMM_ERROR);
+    }
+    this->write_only_regs_.short_conf = short_conf.value;
   }
-  this->write_only_regs_.short_conf = short_conf.value;
 
   // Configure chopper
   {
@@ -1189,23 +1210,6 @@ Result<void> TMC51x0<CommType>::Initialize(const DriverConfig& config, bool verb
   TMC51X0_LOG_DEBUG(comm_, LogLevel::Debug, "TMC5160", "Initialize: Setting ramp mode to POSITIONING");
   if (!rampControl.SetRampMode(RampMode::POSITIONING)) {
     return Result<void>(ErrorCode::COMM_ERROR);
-  }
-
-  // Detect chip version (read from IOIN register)
-  auto chip_version_result = io.ReadIcVersion();
-  if (chip_version_result.IsOk()) {
-    uint8_t chip_version = chip_version_result.Value();
-    chip_version_ = chip_version;
-    if (chip_version == ChipVersion::TMC5130) {
-      TMC51X0_LOG_DEBUG(comm_, LogLevel::Info, "TMC5160", "Detected TMC5130 chip (version 0x%02X)", chip_version);
-    } else if (chip_version == ChipVersion::TMC5160) {
-      TMC51X0_LOG_DEBUG(comm_, LogLevel::Info, "TMC5160", "Detected TMC5160 chip (version 0x%02X)", chip_version);
-    } else {
-      TMC51X0_LOG_DEBUG(comm_, LogLevel::Warn, "TMC5160", "Unknown chip version: 0x%02X", chip_version);
-    }
-  } else {
-    TMC51X0_LOG_DEBUG(comm_, LogLevel::Warn, "TMC5160", "Failed to read chip version, assuming TMC5160");
-    chip_version_ = ChipVersion::TMC5160; // Default to TMC5160
   }
 
   // Configure global settings (GCONF)
@@ -3001,7 +3005,7 @@ Result<void> TMC51x0<CommType>::MotorControl::ConfigureMotorCurrent(const MotorS
                     run_current, motor_spec.sense_resistor_mohm, motor_spec.supply_voltage_mv);
   
   if (!CalculateMotorCurrent(motor_spec, motor_spec.sense_resistor_mohm, motor_spec.supply_voltage_mv, run_current,
-                             motor_spec.hold_current_ma, calc_irun, calc_ihold, calc_scaler)) {
+                             motor_spec.hold_current_ma, calc_irun, calc_ihold, calc_scaler, driver_.chip_version_)) {
     TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Error, "TMC5160", "Failed to calculate motor current settings: run_current=%u mA may exceed max for sense_resistor=%u mOhm",
                       run_current, motor_spec.sense_resistor_mohm);
     return Result<void>(ErrorCode::INVALID_VALUE);
@@ -3984,7 +3988,8 @@ Result<void> TMC51x0<CommType>::MotorControl::SetupMotorFromSpec(const MotorSpec
 
   // Use CalculateMotorCurrent for accurate calculations
   if (!CalculateMotorCurrent(motor_spec, motor_spec.sense_resistor_mohm, motor_spec.supply_voltage_mv,
-                             run_current, motor_spec.hold_current_ma, calc_irun, calc_ihold, calc_scaler)) {
+                             run_current, motor_spec.hold_current_ma, calc_irun, calc_ihold, calc_scaler,
+                             driver_.chip_version_)) {
     return Result<void>(ErrorCode::INVALID_VALUE);
   }
 
@@ -5701,7 +5706,7 @@ Result<void> ReduceCurrentForBounds(TMC51x0<CommType>& driver, float factor, uin
   if (!CalculateMotorCurrent(motor_spec, motor_spec.sense_resistor_mohm,
                              motor_spec.supply_voltage_mv,
                              new_run_ma, new_hold_ma,
-                             new_irun, new_ihold, new_scaler)) {
+                             new_irun, new_ihold, new_scaler, driver.status.GetChipVersion())) {
     // If calculation fails, do not change anything (safe fallback).
     return Result<void>();
   }
@@ -9127,7 +9132,7 @@ Result<void> TMC51x0<CommType>::Tuning::AutoTuneStallGuard(float target_velocity
 
         if (CalculateMotorCurrent(driver_.motor_spec_, driver_.motor_spec_.sense_resistor_mohm,
                                    driver_.motor_spec_.supply_voltage_mv, new_current_ma, new_hold_current_ma,
-                                   new_irun, new_ihold, new_scaler)) {
+                                   new_irun, new_ihold, new_scaler, driver_.chip_version_)) {
           // Ensure minimum IRUN=8 for StealthChop compatibility
           if (new_irun < 8) {
             new_irun = 8;
