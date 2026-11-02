@@ -2979,7 +2979,6 @@ public:
 
   /**
    * @brief Read NAO (Next Address Output) pin state
-   * @param active Reference to store NAO pin state
    * @return Result<bool> containing true if NAO is active, false otherwise
    *
    * NAO is the output from one TMC5160 that connects to the next
@@ -2996,8 +2995,7 @@ public:
    * @note In UART mode, SD_MODE=0 and SPI_MODE=0 must be set
    */
   Result<bool> GetNaoPin() noexcept {
-    bool active = false;
-    return static_cast<Derived *>(this)->GetNaoPin(active);
+    return static_cast<Derived *>(this)->GetNaoPin();
   }
 
   /**
