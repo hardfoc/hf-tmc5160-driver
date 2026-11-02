@@ -66,7 +66,7 @@ namespace tmc51x0 {
  *
  * @code
  * // Create multi-node manager with 3 onboard devices
- * tmc5160::TMC51x0MultiNode<MyUART, 5> nodes(uartComm, 3, 12'000'000);
+ * tmc51x0::TMC51x0MultiNode<MyUART, 5> nodes(uartComm, 3);
  *
  * // Program all devices sequentially (required at startup)
  * nodes.ProgramSequentially();
@@ -86,13 +86,13 @@ namespace tmc51x0 {
  *
  * @code
  * // Create UART communication interface (shared by all devices)
- * class MyUART : public tmc5160::UartCommInterface<MyUART> { ... };
+ * class MyUART : public tmc51x0::UartCommInterface<MyUART> { ... };
  * MyUART uartComm;
  * uartComm.Initialize();
  *
  * // Create multi-node manager with 3 onboard devices, capacity for 5 total
  * // Onboard devices are created with initial address 0 (will be programmed)
- * tmc5160::TMC51x0MultiNode<MyUART, 5> nodes(uartComm, 3, 12'000'000);
+ * tmc51x0::TMC51x0MultiNode<MyUART, 5> nodes(uartComm, 3);
  *
  * // Program all devices sequentially (required at startup)
  * // This programs devices to addresses 254, 253, 252 per datasheet procedure
@@ -141,7 +141,8 @@ public:
    * devices)
    * @param num_onboard_devices Number of onboard devices (fixed, created at
    * construction)
-   * @param f_clk TMC5160 clock frequency in Hz (default: 12 MHz)
+   * @param f_clk Kept for source compatibility and ignored: each driver takes its clock from
+   * DriverConfig::external_clk_config in Initialize().
    *
    * @note Onboard devices are created immediately with initial address 0.
    *       Extra devices can be added/removed at runtime up to MaxDevices total.
@@ -151,7 +152,8 @@ public:
   explicit TMC51x0MultiNode(CommType &comm, uint8_t num_onboard_devices,
                             uint32_t f_clk = ClockFreq::DEFAULT_F_CLK) noexcept
       : comm_(comm), num_onboard_devices_(num_onboard_devices),
-        num_active_devices_(num_onboard_devices), f_clk_(f_clk) {
+        num_active_devices_(num_onboard_devices) {
+    (void)f_clk;
     // Validate num_onboard_devices
     if (num_onboard_devices == 0 || num_onboard_devices > MaxDevices) {
       num_onboard_devices_ = 1;
@@ -162,12 +164,12 @@ public:
     // Initial node address is 0 (will be programmed via ProgramSequentially())
     // The actual programmed addresses will be 254, 253, 252, ... per datasheet
     for (uint8_t i = 0; i < num_onboard_devices_; ++i) {
-      drivers_[i] = std::make_optional<TMC51x0<CommType>>(comm_, f_clk_, 0, 0);
+      drivers_[i].emplace(comm_, 0, 0); // position 0, node address 0 until programmed
     }
 
     // Initialize extra device slots as empty
     for (size_t i = num_onboard_devices_; i < MaxDevices; ++i) {
-      drivers_[i] = std::nullopt;
+      drivers_[i].reset();
     }
   }
 
@@ -202,7 +204,7 @@ public:
    */
   [[nodiscard]] bool IsDeviceActive(uint8_t index) const noexcept {
     if (index >= MaxDevices) {
-      return Result<void>(ErrorCode::INVALID_STATE);
+      return false;
     }
     return drivers_[index].has_value();
   }
@@ -277,13 +279,14 @@ public:
             ErrorCode::INVALID_STATE); // Failed to program device
       }
 
-      // Update the driver's node address to the programmed address
-      drivers_[i]->SetUartNodeAddress(target_address);
-
-      // After programming, the chip's NAO automatically goes LOW (per
-      // datasheet) This makes the next chip accessible at address 0 Small delay
-      // to ensure NAO settles
-      comm_.DelayMs(10);
+      // ConfigureUartNodeAddress() already moved the driver to target_address.
+      // NAO does not change by itself: drive it low (OUTPUT bit 0 = 0) so the
+      // next chip's NAI goes low and that chip answers at address 0
+      // (TMC5160A datasheet section 5.4, figure 5.1; OUTPUT register 0x04).
+      if (!drivers_[i]->io.SetSdoCfg0Polarity(false)) {
+        return Result<void>(ErrorCode::COMM_ERROR);
+      }
+      comm_.DelayMs(1);
 
       device_index++;
     }
@@ -316,7 +319,10 @@ public:
       return Result<void>(ErrorCode::INVALID_STATE);
     }
 
-    drivers_[index]->SetUartNodeAddress(target_address);
+    // Drive NAO low so the next chip answers at address 0 (datasheet figure 5.1).
+    if (!drivers_[index]->io.SetSdoCfg0Polarity(false)) {
+      return Result<void>(ErrorCode::COMM_ERROR);
+    }
     return Result<void>();
   }
 
@@ -359,8 +365,7 @@ public:
     // Create device instance with initial address 0
     // The actual address will be programmed via ProgramSequentially() or
     // ProgramDevice()
-    drivers_[index] =
-        std::make_optional<TMC51x0<CommType>>(comm_, f_clk_, 0, 0);
+    drivers_[index].emplace(comm_, 0, 0);
     num_active_devices_++;
 
     return Result<void>();
@@ -408,7 +413,7 @@ public:
     }
 
     // Remove device
-    drivers_[index] = std::nullopt;
+    drivers_[index].reset();
     num_active_devices_--;
 
     return Result<void>();
@@ -446,15 +451,16 @@ public:
    */
   Result<void>
   InitializeAll(const DriverConfig &config = DriverConfig()) noexcept {
-    bool all_success = true;
+    Result<void> first_error{};
     for (size_t i = 0; i < MaxDevices; ++i) {
       if (drivers_[i].has_value()) {
-        if (!drivers_[i]->Initialize(config)) {
-          all_success = false;
+        auto result = drivers_[i]->Initialize(config);
+        if (!result && first_error) {
+          first_error = result; // keep initialising the others; report the first error
         }
       }
     }
-    return all_success;
+    return first_error;
   }
 
 private:
@@ -462,7 +468,6 @@ private:
   uint8_t num_onboard_devices_; ///< Number of onboard devices (fixed)
   uint8_t
       num_active_devices_; ///< Total number of active devices (onboard + extra)
-  uint32_t f_clk_;         ///< TMC5160 clock frequency
   std::array<std::optional<TMC51x0<CommType>>, MaxDevices>
       drivers_; ///< TMC5160 driver instances (optional for dynamic devices)
 };

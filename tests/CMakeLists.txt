@@ -13,6 +13,7 @@ add_executable(hf_tmc51x0_host_tests
   test_main.cpp
   test_frames.cpp
   test_driver.cpp
+  test_multi_chip.cpp
 )
 
 target_link_libraries(hf_tmc51x0_host_tests PRIVATE ${HF_TMC51X0_TARGET_NAME})

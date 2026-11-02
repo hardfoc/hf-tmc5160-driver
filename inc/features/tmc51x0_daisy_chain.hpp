@@ -57,7 +57,7 @@ namespace tmc51x0 {
  *
  * @code
  * // Create daisy-chain with 3 onboard devices
- * tmc51x0::TMC51x0DaisyChain<MySPI, 5> chain(spi_comm, 3, 12'000'000);
+ * tmc51x0::TMC51x0DaisyChain<MySPI, 5> chain(spi_comm, 3);
  *
  * // Create user-friendly aliases for device indices
  * auto& x_axis = chain[0];  // Position 0 = X-axis motor
@@ -80,7 +80,7 @@ namespace tmc51x0 {
  *
  * // Create daisy-chain manager with 3 onboard devices, capacity for 5 total
  * // Onboard devices are created at positions 0, 1, 2 (sequential)
- * tmc51x0::TMC51x0DaisyChain<MySPI, 5> chain(spi_comm, 3, 12'000'000);
+ * tmc51x0::TMC51x0DaisyChain<MySPI, 5> chain(spi_comm, 3);
  *
  * // Initialize onboard devices
  * tmc51x0::DriverConfig cfg{};
@@ -120,7 +120,8 @@ public:
    * devices)
    * @param num_onboard_devices Number of onboard devices (fixed, created at
    * construction)
-   * @param f_clk TMC51x0 clock frequency in Hz (default: 12 MHz)
+   * @param f_clk Kept for source compatibility and ignored: each driver takes its clock from
+   * DriverConfig::external_clk_config in Initialize().
    *
    * @note Onboard devices are created immediately and cannot be removed.
    *       Extra devices can be added/removed at runtime up to MaxDevices total.
@@ -128,7 +129,8 @@ public:
   explicit TMC51x0DaisyChain(CommType &comm, uint8_t num_onboard_devices,
                              uint32_t f_clk = ClockFreq::DEFAULT_F_CLK) noexcept
       : comm_(comm), num_onboard_devices_(num_onboard_devices),
-        num_active_devices_(num_onboard_devices), f_clk_(f_clk) {
+        num_active_devices_(num_onboard_devices) {
+    (void)f_clk;
     // Validate num_onboard_devices
     if (num_onboard_devices == 0 || num_onboard_devices > MaxDevices) {
       num_onboard_devices_ = 1;
@@ -138,12 +140,12 @@ public:
     // Create onboard TMC51x0 instances, one per device
     // Each device has its position (0, 1, 2, ...) set in constructor
     for (uint8_t i = 0; i < num_onboard_devices_; ++i) {
-      drivers_[i] = std::make_optional<TMC51x0<CommType>>(comm_, f_clk_, i);
+      drivers_[i].emplace(comm_, i); // TMC51x0(comm, daisy_chain_position)
     }
 
     // Initialize extra device slots as empty
     for (size_t i = num_onboard_devices_; i < MaxDevices; ++i) {
-      drivers_[i] = std::nullopt;
+      drivers_[i].reset();
     }
 
     // CRITICAL: Set the total chain length on the SpiCommInterface
@@ -183,7 +185,7 @@ public:
    */
   [[nodiscard]] bool IsDeviceActive(uint8_t index) const noexcept {
     if (index >= MaxDevices) {
-      return Result<void>(ErrorCode::INVALID_STATE);
+      return false;
     }
     return drivers_[index].has_value();
   }
@@ -227,8 +229,7 @@ public:
     }
 
     // Create device instance at specified position
-    drivers_[position] =
-        std::make_optional<TMC51x0<CommType>>(comm_, f_clk_, position);
+    drivers_[position].emplace(comm_, position);
     num_active_devices_++;
 
     // Update chain length on SpiCommInterface
@@ -280,7 +281,7 @@ public:
     }
 
     // Remove device
-    drivers_[position] = std::nullopt;
+    drivers_[position].reset();
     num_active_devices_--;
 
     // Update chain length on SpiCommInterface
@@ -356,7 +357,6 @@ private:
   uint8_t num_onboard_devices_; ///< Number of onboard devices (fixed)
   uint8_t
       num_active_devices_; ///< Total number of active devices (onboard + extra)
-  uint32_t f_clk_;         ///< TMC51x0 clock frequency
   std::array<std::optional<TMC51x0<CommType>>, MaxDevices>
       drivers_; ///< TMC51x0 driver instances (optional for dynamic devices)
 };
