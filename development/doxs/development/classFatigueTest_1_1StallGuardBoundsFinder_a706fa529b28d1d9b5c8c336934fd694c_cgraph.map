@@ -1,7 +1,0 @@
-<map id="FatigueTest::StallGuardBoundsFinder::FindBounds" name="FatigueTest::StallGuardBoundsFinder::FindBounds">
-<area shape="rect" id="Node000001" title="Find motor bounds in both directions." alt="" coords="5,37,224,77"/>
-<area shape="rect" id="Node000002" href="$classFatigueTest_1_1StallGuardBoundsFinder.html#a618baa37e8c04806ac32be4021ae92bd" title=" " alt="" coords="272,5,491,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,42,258,37,259,43,224,47"/>
-<area shape="rect" id="Node000003" href="$classFatigueTest_1_1StallGuardBoundsFinder.html#ac4c37e1bf90e981b68b9f883b4c9d215" title=" " alt="" coords="272,69,491,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="224,68,259,72,258,77,224,73"/>
-</map>

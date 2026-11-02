@@ -1,7 +1,0 @@
-<map id="bounds_finder.hpp" name="bounds_finder.hpp">
-<area shape="rect" id="Node000001" title="Abstract interface for bounds finding strategies." alt="" coords="149,5,289,31"/>
-<area shape="rect" id="Node000002" href="$bounds__finder__encoder_8cpp.html" title="Encoder&#45;based bounds finder implementation." alt="" coords="5,79,204,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,40,125,81,122,76,188,35"/>
-<area shape="rect" id="Node000003" href="$bounds__finder__stallguard_8cpp.html" title="StallGuard2&#45;based bounds finder implementation." alt="" coords="228,79,440,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="251,35,317,76,314,81,248,40"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="tmc51x0::UartCommInterface::UartReceive" name="tmc51x0::UartCommInterface::UartReceive">
-<area shape="rect" id="Node000001" title="Receive raw bytes via UART." alt="" coords="5,29,221,74"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="72,28,70,19,77,10,92,5,113,3,136,5,152,14,146,14,135,10,113,8,93,10,81,15,76,21,77,30"/>
-</map>

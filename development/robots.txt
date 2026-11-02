@@ -1,1 +1,0 @@
-Sitemap: https://hardfoc.github.io/hf-tmc5160-driver/development/sitemap.xml
