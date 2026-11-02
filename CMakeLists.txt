@@ -46,6 +46,13 @@ if(HF_TMC51X0_ENABLE_WARNINGS)
     endif()
 endif()
 
+# ── Host unit tests (chip model behind the SPI interface; no hardware) ────────
+option(HF_TMC51X0_BUILD_TESTS "Build the host unit tests in tests/" OFF)
+if(HF_TMC51X0_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
+
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 

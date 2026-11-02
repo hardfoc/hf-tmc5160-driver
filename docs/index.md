@@ -1,75 +1,114 @@
 ---
-layout: default
-title: "📚 Documentation"
-description: "Complete documentation for the HardFOC TMC51x0 Driver (TMC5130 & TMC5160)"
-nav_order: 2
-parent: "HardFOC TMC51x0 Driver (TMC5130 & TMC5160)"
-permalink: /docs/
-has_children: true
+hide:
+  - navigation
+  - toc
 ---
 
-# HF-TMC51x0 Documentation (TMC5130 & TMC5160)
+<div class="hf-hero" markdown>
+<span class="hf-kicker">HardFOC driver</span>
 
-Welcome! This directory contains step-by-step guides for installing, building, and using the **HF-TMC51x0** library, which supports both TMC5130 and TMC5160 chips.
+# TMC5160 Driver
 
-## 📚 Documentation Structure
+<p>A C++20 driver for the Analog Devices (Trinamic) TMC5160 and TMC5130 stepper motor controllers. It sets the
+motor current from the motor's datasheet values, runs the chip's internal ramp generator in degrees, millimetres
+or RPM, and gives you StallGuard2, CoolStep, StealthChop, encoder feedback and sensorless homing, on any MCU with
+SPI or a UART.</p>
 
-### **Getting Started**
+[Quickstart](quickstart.md){ .md-button .md-button--primary }
+[API guide](api-guide.md){ .md-button }
+[Source on GitHub](https://github.com/hardfoc/hf-tmc5160-driver){ .md-button }
+</div>
 
-1. **[🛠️ Installation](installation.md)** – Prerequisites and how to obtain the source
-2. **[⚡ Quick Start](quickstart.md)** – Minimal working example to get you running
-3. **[🔌 Hardware Setup](hardware_setup.md)** – Wiring diagrams and pin connections
+The driver has no platform code. You give it a small class that moves bytes over SPI or a UART, sets the
+DRV_ENN pin and waits; it does the rest: datagram framing, daisy-chain padding, UART CRC, register caching,
+current calculation, unit conversion and fault decoding.
 
-### **Integration**
+<div class="hf-chip" markdown>
+<div class="hf-chip__head">
+<span class="hf-chip__kicker">Stepper controller and gate driver with motion controller</span>
+<span class="hf-chip__name">TMC5160</span>
+<span class="hf-chip__vendor">Analog Devices (Trinamic)</span>
+</div>
 
-4. **[🔧 Platform Integration](platform_integration.md)** – Implement the CRTP communication interface for your platform
-5. **[⚙️ Configuration](configuration.md)** – Configuration options and settings
+Function
+:   2-phase bipolar stepper, external MOSFET bridges for 1 A to several 10 A per coil, up to 256 microsteps
 
-### **Reference**
+Motion
+:   Internal SixPoint ramp generator (positioning and velocity modes), or STEP/DIR input
 
-6. **[📖 API Reference](api_reference.md)** – Complete API documentation
-7. **[💡 Examples](examples.md)** – Detailed example walkthroughs
+Host interface
+:   SPI mode 3, 40-bit datagrams, up to 4 MHz on the internal clock; or single-wire UART with CRC8
 
-### **Advanced Features**
+Supply
+:   VS 10 V to 55 V operating (8 V reduced spec, 60 V absolute maximum); VCC_IO 3.0 V to 5.25 V
 
-8. **[📐 Unit Conversions](special_features_unit_conversions.md)** – Converting between physical units and driver steps
-9. **[⚙️ Motor Setup from Specifications](special_features_motor_setup.md)** – High-level motor configuration from physical parameters
-10. **[🏠 Sensorless Homing](special_features_sensorless_homing.md)** – Homing without endstops using StallGuard2
-11. **[🎯 Automatic Tuning](special_features_advanced_configuration.md#automatic-tuning-with-comprehensive-velocity-range-analysis)** – Intelligent StallGuard2 threshold optimization
-12. **[🔧 Advanced Configuration](special_features_advanced_configuration.md)** – CoolStep, dcStep, freewheeling, and more
-13. **[🔗 Multi-Chip Communication](special_features_multi_chip.md)** – SPI daisy chaining and UART multi-node addressing
-14. **[📡 Communication Interface](special_features_communication_interface.md)** – Low-level SPI/UART communication details
-15. **[🔌 GPIO Pin Configuration](gpio_pin_configuration.md)** – Pin mapping, active levels, and mode pin setup
-16. **[📝 Register Access](special_features_register_access.md)** – Direct register read/write and initialization flow
-17. **[🔄 TMC5130 Support](tmc5130_support.md)** – Differences between TMC5130 and TMC5160
+Features
+:   StallGuard2, CoolStep, StealthChop2, SpreadCycle, DcStep, ABN encoder, two reference switches
 
-### **Troubleshooting**
+Package
+:   eTQFP48 (7 x 7 mm body) or QFN56 (8 x 8 mm)
 
-18. **[🐛 Troubleshooting](troubleshooting.md)** – Common issues and solutions
+Also supported
+:   TMC5130: the same register set with integrated MOSFETs (up to 1.4 A), detected at start-up
 
----
+[TMC5160 datasheet](datasheet/tmc5160a-datasheet-rev1.18.pdf) ·
+[TMC5130 differences](tmc5130.md)
+</div>
 
-## 🚀 Quick Start Path
+## What you get
 
-**New to TMC51x0?** Follow this recommended path:
+- **One object per chip.** `TMC51x0<YourPort>` exposes the chip as named subsystems: `rampControl`,
+  `motorControl`, `stallGuard`, `encoder`, `homing`, `status` and more. See [API guide](api-guide.md).
+- **Current from the motor datasheet.** Give rated current, sense resistor and supply; the driver computes
+  `GLOBAL_SCALER`, `IRUN` and `IHOLD`. See [Current and chopper](current-and-chopper.md).
+- **Physical units.** Positions in degrees, steps or millimetres, speeds in RPM or rev/s, with lead screw, belt
+  and gearbox ratios. See [Motion and units](motion-and-units.md).
+- **Sensorless homing.** StallGuard2 threshold tuning and bounds finding without end switches. See
+  [StallGuard and homing](stallguard-and-homing.md).
+- **Several chips on one bus.** SPI daisy chains and UART node addresses. See [Multi-chip](multi-chip.md).
+- **Zero-overhead portability.** The port is a CRTP class: no virtual calls, no RTOS dependency, every call
+  returns `Result<T>`. See [Porting](porting.md).
+- **Tested without hardware.** Host unit tests run the driver against a model of the chip's SPI interface. See
+  [Testing and CI](testing.md).
 
-1. Start with **[Installation](installation.md)** to prepare your environment
-2. Follow **[Hardware Setup](hardware_setup.md)** to wire your hardware
-3. Read **[Quick Start](quickstart.md)** for a minimal working example and `Result<T>` error handling
-4. Check **[Platform Integration](platform_integration.md)** to implement the SPI/UART interface
-5. Explore **[Examples](examples.md)** for progressively harder walkthroughs with explanations
-6. Refer to **[Troubleshooting](troubleshooting.md)** when things don't work as expected
+## Where to go next
 
----
+<div class="grid cards" markdown>
 
-## 💡 Need Help?
+-   :material-rocket-launch-outline: **[Quickstart](quickstart.md)**
 
-- **🐛 Found a bug?** Check the [Troubleshooting](troubleshooting.md) guide
-- **❓ Have questions?** Review the [API Reference](api_reference.md)
-- **📝 Want to contribute?** See the contributing guidelines in the main README
+    ---
 
----
+    Wire the chip, write the port, turn the motor half a revolution.
 
-**Navigation**
-[Next: Installation ->](installation.md)
+-   :material-chip: **[Hardware](hardware.md)**
 
+    ---
+
+    Pins, mode straps, bus settings, power and the sense resistor.
+
+-   :material-layers-outline: **[Architecture](architecture.md)**
+
+    ---
+
+    The three layers and what each one owns.
+
+-   :material-code-braces: **[API guide](api-guide.md)**
+
+    ---
+
+    Initialise, move, read, detect stalls and handle faults, task by task.
+
+-   :material-swap-horizontal: **[Porting](porting.md)**
+
+    ---
+
+    Implement the communication interface for your MCU.
+
+-   :material-book-open-variant: **[API reference](api-reference.md)**
+
+    ---
+
+    Every class and member, generated from the headers.
+
+</div>

@@ -1,0 +1,32 @@
+{
+  "subsystems": [
+    "rampControl",
+    "switches",
+    "events",
+    "motorControl",
+    "thresholds",
+    "powerStage",
+    "communication",
+    "io",
+    "encoder",
+    "status",
+    "stallGuard",
+    "tuning",
+    "homing",
+    "printer",
+    "uartConfig"
+  ],
+  "port_hooks": [
+    "GetMode",
+    "GpioSet",
+    "GpioRead",
+    "DebugLog",
+    "DelayMs",
+    "DelayUs",
+    "SpiTransfer"
+  ],
+  "sources": [
+    "inc/tmc51x0.hpp:TMC51x0 members",
+    "inc/tmc51x0_comm_interface.hpp:SpiCommInterface"
+  ]
+}

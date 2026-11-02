@@ -348,7 +348,7 @@ Configured in both projects' `config.hpp` / `espnow_protocol.hpp`.
 
 ## MAC Address Configuration
 
-### Remote Controller → Test Unit
+### Remote Controller Test Unit
 
 The remote controller must be configured with the test unit's MAC address:
 
@@ -357,7 +357,7 @@ The remote controller must be configured with the test unit's MAC address:
 static constexpr uint8_t TEST_UNIT_MAC_[6] = { 0x24, 0x6F, 0x28, 0xXX, 0xXX, 0xXX };
 ```
 
-### Test Unit → Remote Controller (Optional)
+### Test Unit Remote Controller (Optional)
 
 The test unit can optionally be pre-configured with the remote controller's MAC:
 

@@ -3612,11 +3612,8 @@ Result<bool> TMC51x0<CommType>::MotorControl::IsStealthChopEnabled() noexcept {
 
 template <typename CommType>
 Result<bool> TMC51x0<CommType>::MotorControl::IsStealthChopCalibrated() noexcept {
-  uint8_t pwm_scale_sum = 0;
   int16_t pwm_scale_auto = 0;
-  // Note: GetPwmScale is declared in MotorControl but implemented in Diagnostics
-  // Using Diagnostics implementation for now
-  auto pwm_result = driver_.status.GetPwmScale(pwm_scale_sum, pwm_scale_auto);
+  auto pwm_result = driver_.status.GetPwmScale(pwm_scale_auto);
   if (!pwm_result) {
     return Result<bool>(ErrorCode::COMM_ERROR);
   }
@@ -4156,10 +4153,11 @@ Result<void> TMC51x0<CommType>::Encoder::SetNChannelActiveLevel(ReferenceSwitchA
   if (!mode_guard) {
     return mode_guard;
   }
-  EncoderConfig config{};
-  if (!GetEncoderConfig(config)) {
+  auto config_result = GetEncoderConfig();
+  if (!config_result) {
     return Result<void>(ErrorCode::COMM_ERROR);
   }
+  EncoderConfig config = config_result.Value();
   config.n_channel_active = active_level;
   return Configure(config);
 }
@@ -4170,10 +4168,11 @@ Result<void> TMC51x0<CommType>::Encoder::SetNChannelSensitivity(EncoderNSensitiv
   if (!mode_guard) {
     return mode_guard;
   }
-  EncoderConfig config{};
-  if (!GetEncoderConfig(config)) {
+  auto config_result = GetEncoderConfig();
+  if (!config_result) {
     return Result<void>(ErrorCode::COMM_ERROR);
   }
+  EncoderConfig config = config_result.Value();
   config.n_sensitivity = sensitivity;
   return Configure(config);
 }
@@ -4184,10 +4183,11 @@ Result<void> TMC51x0<CommType>::Encoder::SetClearMode(EncoderClearMode clear_mod
   if (!mode_guard) {
     return mode_guard;
   }
-  EncoderConfig config{};
-  if (!GetEncoderConfig(config)) {
+  auto config_result = GetEncoderConfig();
+  if (!config_result) {
     return Result<void>(ErrorCode::COMM_ERROR);
   }
+  EncoderConfig config = config_result.Value();
   config.clear_mode = clear_mode;
   return Configure(config);
 }
@@ -4198,10 +4198,11 @@ Result<void> TMC51x0<CommType>::Encoder::SetPrescalerMode(EncoderPrescalerMode p
   if (!mode_guard) {
     return mode_guard;
   }
-  EncoderConfig config{};
-  if (!GetEncoderConfig(config)) {
+  auto config_result = GetEncoderConfig();
+  if (!config_result) {
     return Result<void>(ErrorCode::COMM_ERROR);
   }
+  EncoderConfig config = config_result.Value();
   config.prescaler_mode = prescaler_mode;
   return Configure(config);
 }

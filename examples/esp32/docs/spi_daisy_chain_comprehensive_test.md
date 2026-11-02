@@ -1,12 +1,3 @@
----
-layout: default
-title: "SPI Daisy Chain Test"
-description: "Comprehensive testing for TMC5160 SPI daisy chain setup and multi-motor coordination"
-nav_order: 6
-parent: "ESP32 Examples"
-permalink: /docs/esp32-examples/spi-daisy-chain-test/
----
-
 # SPI Daisy Chain Comprehensive Test
 
 ## Overview
@@ -275,7 +266,7 @@ I (1239) SPI_DaisyChain_Test: [PASS] Driver Initialization: All drivers initiali
 ## Related Documentation
 
 - [UART Multi-Node Test](uart_multi_node_comprehensive_test.md) - UART multi-motor setup
-- [Special Features: Multi-Chip](../../../docs/special_features_multi_chip.md) - Detailed daisy chain guide
+- [Special Features: Multi-Chip](../../../docs/multi-chip.md) - Detailed daisy chain guide
 
 ---
 

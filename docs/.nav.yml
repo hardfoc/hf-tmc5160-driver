@@ -1,0 +1,27 @@
+---
+# Site navigation (mkdocs-awesome-nav): the tabs and their pages, in reading order.
+nav:
+  - Home: index.md
+  - Get started:
+      - Quickstart: quickstart.md
+      - Installation: installation.md
+      - Hardware: hardware.md
+  - Concepts:
+      - Architecture: architecture.md
+      - Motion and units: motion-and-units.md
+      - Current and chopper: current-and-chopper.md
+      - StallGuard and homing: stallguard-and-homing.md
+      - Multi-chip: multi-chip.md
+      - Communication protocols: protocols.md
+      - TMC5130: tmc5130.md
+  - Guides:
+      - API guide: api-guide.md
+      - Configuration: configuration.md
+      - Porting: porting.md
+      - Examples: examples.md
+      - Troubleshooting: troubleshooting.md
+  - Reference:
+      - API reference: api-reference.md
+      - Testing and CI: testing.md
+      - Figures: diagrams/index.md
+      - Changelog: changelog.md

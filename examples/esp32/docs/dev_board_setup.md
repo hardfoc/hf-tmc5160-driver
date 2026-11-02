@@ -1,17 +1,8 @@
----
-layout: default
-title: "Dev Board Setup"
-description: "Hardware configuration and pinout for the TMC5160 development board"
-nav_order: 1
-parent: "ESP32 Examples"
-permalink: /docs/esp32-examples/dev-board-setup/
----
-
 # Development Board Setup
 
 This document details the specific hardware configuration used for the TMC5160 development board (Trinamic Dev/Eval Kit) referenced in the examples. All tests and examples in this repository are configured by default to match this setup.
 
-## 📝 Hardware Specifications
+## Hardware Specifications
 
 | Component | Model / Value | Notes |
 |-----------|---------------|-------|
@@ -25,7 +16,7 @@ This document details the specific hardware configuration used for the TMC5160 d
 | **Power Supply** | Up to 60V DC | VSA connected to VM (Motor Supply) |
 | **Logic Power** | 5V Input | 5VOUT -> VCC, 3.3V LDO -> VCC_IO |
 
-## 🔌 Pin Configuration
+## Pin Configuration
 
 The software is configured to use the following GPIO mapping by default (defined in `examples/esp32/main/test_config/esp32_tmc51x0_test_config.hpp`).
 
@@ -55,7 +46,7 @@ These pins determine the communication mode and are **hardwired** on the board.
 
 ---
 
-## ⚙️ Critical Driver Settings
+## Critical Driver Settings
 
 ### Power Stage Configuration
 *   **MOSFET Type**: Low Gate Charge ($Q_{gd} < 10nC$) with 10 $\Omega$ Gate Resistors.
@@ -77,7 +68,7 @@ With the **0.05 $\Omega$** sense resistors, the full-scale current capability is
 
 ---
 
-## 🐛 Troubleshooting Common Issues
+## Troubleshooting Common Issues
 
 ### `uv_cp=1` (Charge Pump Undervoltage)
 If you see this error immediately upon enabling the driver:
