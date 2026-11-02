@@ -17,7 +17,7 @@
 // If this file is compiled directly as a translation unit (e.g. by IDE tooling),
 // avoid recursive inclusion (tmc51x0.hpp includes this file for template instantiation).
 #define TMC51X0_COMPILING_SRC 1
-#include "../inc/tmc51x0.hpp"
+#include "tmc51x0.hpp"
 #undef TMC51X0_COMPILING_SRC
 #endif
 
@@ -25,7 +25,7 @@
 #include <cmath>
 #include <limits>
 
-#include "../inc/features/tmc51x0_motor_calc.hpp"
+#include "features/tmc51x0_motor_calc.hpp"
 #include <inttypes.h>
 #include <cstdio>
 #include <string>

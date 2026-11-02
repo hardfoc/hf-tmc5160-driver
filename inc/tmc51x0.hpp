@@ -3324,6 +3324,6 @@ inline const char* GetDriverVersion() noexcept {
 #define TMC51X0_HEADER_INCLUDED
 // NOLINTNEXTLINE(bugprone-suspicious-include) - Intentional: template
 // implementation file
-#include "../src/tmc51x0.ipp"
+#include "tmc51x0.ipp"  // src/ in the source tree, next to this header once installed
 #undef TMC51X0_HEADER_INCLUDED
 #endif
