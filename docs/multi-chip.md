@@ -35,6 +35,14 @@ command followed by padding, max(k + 1, n − k) × 5 bytes in one transfer, and
 | One transfer per access | Your `SpiTransfer()` must keep CSN low for the whole buffer: 5 × n bytes or more |
 | Chain limit | `TMC51X0_SPI_MAX_CHAIN_DEVICES`, 8 by default; raise it at compile time for longer chains |
 
+`TMC51x0DaisyChain` ([`inc/features/tmc51x0_daisy_chain.hpp`](../inc/features/tmc51x0_daisy_chain.hpp)) does the
+same bookkeeping: it creates one driver per position, keeps the chain length in step as you add or remove chips
+at the end, and initialises them all with one configuration.
+
+```cpp
+--8<-- "tests/docs/multi_chip.cpp:spi-chain-helper"
+```
+
 Chips on separate chip selects are simpler: give each its own port object (or one port that selects the CS line)
 and leave the chain length at 1.
 
@@ -61,16 +69,18 @@ so the first chip answers at 0 and all others at 1. Then, one chip at a time:
 | Rule | Detail |
 | --- | --- |
 | Count addresses down | Chips not yet programmed answer at 1, so give programmed chips high addresses, as the datasheet does (254, 253, ...) |
-| Addresses up to 127 with this driver | The UART interface masks the node address to 7 bits on the wire, although `NODEADDR` holds 0 to 253 |
 | SENDDELAY of 2 or more | With several nodes a shorter reply delay makes the other nodes see a transmission error |
 | Keep `DriverConfig::uart_config` at its defaults here | A non-zero `node_address` or `send_delay` in it makes `Initialize()` write `NODECONF` again |
 | Power cycles reset `NODECONF` | Program the addresses after every power-up |
 
 For two chips, tying one NAI low and the other high gives addresses 0 and 1 without any programming.
 
-!!! note "Helper classes"
-    `inc/features/tmc51x0_daisy_chain.hpp` (`TMC51x0DaisyChain`) and `inc/features/tmc51x0_multi_node.hpp`
-    (`TMC51x0MultiNode`) wrap these procedures, but they do not compile today (among other errors, their
-    constructors pass the wrong arguments to `TMC51x0`). Use the individual driver objects shown above.
+`TMC51x0MultiNode` ([`inc/features/tmc51x0_multi_node.hpp`](../inc/features/tmc51x0_multi_node.hpp)) runs the
+procedure for you: `ProgramSequentially()` writes `NODECONF` through address 0 and drives NAO low, chip by chip,
+giving addresses 254, 253, 252, ... in wiring order. `nodes[i]` is the i-th chip from the one with NAI on GND.
+
+```cpp
+--8<-- "tests/docs/multi_chip.cpp:uart-nodes-helper"
+```
 
 Next: [Communication protocols](protocols.md).

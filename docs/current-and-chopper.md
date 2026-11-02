@@ -33,9 +33,9 @@ the sense resistor fails. With 50 mΩ and 1500 mA the result is `IRUN` = 31, `GL
 `LogDerivedInitSummary()` prints what was written; `motorControl.SetCurrent(irun, ihold)` and
 `SetGlobalScaler()` set the registers directly.
 
-!!! warning "TMC5130"
-    The TMC5130 has no `GLOBAL_SCALER`, so the driver skips it, but the `IRUN` it calculates still assumes the
-    scaler. Set the TMC5130's currents with `SetCurrent()` ([TMC5130](tmc5130.md)).
+!!! note "TMC5130"
+    The TMC5130 has no `GLOBAL_SCALER`. On a TMC5130 the driver never writes it and calculates `IRUN` / `IHOLD`
+    from the TMC5130's own formula ([TMC5130](tmc5130.md#current-on-the-tmc5130)).
 
 ## Choosing a chopper
 

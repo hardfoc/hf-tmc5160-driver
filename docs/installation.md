@@ -27,6 +27,20 @@ add_subdirectory(external/hf-tmc5160-driver)
 target_link_libraries(my_app PRIVATE hf_tmc51x0)     # or the alias hf::tmc51x0
 ```
 
+Or install the driver and use the package:
+
+```bash
+cmake -S external/hf-tmc5160-driver -B build-tmc && cmake --install build-tmc --prefix /opt/hardfoc
+```
+
+```cmake
+find_package(hf_tmc51x0 REQUIRED CONFIG)            # CMAKE_PREFIX_PATH=/opt/hardfoc
+target_link_libraries(my_app PRIVATE hf::tmc51x0)
+```
+
+The install tree holds the headers, `tmc51x0.ipp` (the template implementation, included by `tmc51x0.hpp`), the
+generated version header and the package files; a host test builds a consumer against it.
+
 The `hf_tmc51x0` target carries the include directories (`inc/`, `inc/features/`, `inc/registers/`, `src/` and
 the generated version header) and requires C++20, so your target does not need to set either.
 
