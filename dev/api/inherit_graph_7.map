@@ -1,7 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classtmc51x0_1_1_comm_interface.html" title="CRTP&#45;based communication interface for register read/write operations." alt="" coords="5,37,193,77"/>
-<area shape="rect" id="Node000001" href="$classtmc51x0_1_1_spi_comm_interface.html" title="CRTP&#45;based SPI implementation of TMC5160CommInterface." alt="" coords="245,5,453,45"/>
-<area shape="poly" id="edge3_Node000000_Node000001" title=" " alt="" coords="207,41,245,36,245,41,207,46"/>
-<area shape="rect" id="Node000002" href="$classtmc51x0_1_1_uart_comm_interface.html" title="CRTP&#45;based UART implementation of TMC5160CommInterface." alt="" coords="241,69,457,109"/>
-<area shape="poly" id="edge4_Node000000_Node000002" title=" " alt="" coords="207,68,241,73,241,78,207,74"/>
-</map>
