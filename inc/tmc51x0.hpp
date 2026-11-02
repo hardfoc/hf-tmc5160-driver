@@ -3112,6 +3112,7 @@ protected:
    */
   Result<void> Reset() noexcept;
 
+public:
   /**
    * @brief Check if the driver is initialized
    * @return true if initialized, false otherwise
@@ -3119,7 +3120,7 @@ protected:
   [[nodiscard]] bool IsInitialized() const noexcept { return initialized_; }
 
   // ===========================================================================
-  // Driver Version
+  // Driver Version (public: the documented way to log the library version)
   // ===========================================================================
 
   /** @brief Get the compiled driver version string. */
