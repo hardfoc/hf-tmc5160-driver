@@ -1,0 +1,15 @@
+var searchData=
+[
+  ['maximum_0',['MAXIMUM',['../namespacetmc51x0.html#a52bd7474fc03fcfde3c7249fea7ea055a115f17a28532bbd6f0f5ec83ed20692a',1,'tmc51x0']]],
+  ['minimum_1',['MINIMUM',['../namespacetmc51x0.html#a52bd7474fc03fcfde3c7249fea7ea055acf0ee111afe9889278a772d631dfa150',1,'tmc51x0']]],
+  ['mm_2',['Mm',['../namespacetmc51x0.html#a68e41191c288365e02cfca672681f686a07f07b623b4a00b57dc150ff2e59cb92',1,'tmc51x0']]],
+  ['moderate_3',['moderate',['../namespacetmc51x0.html#aaa19c98f87ff911ca28183768e39f607a5137485eff3ff278d233d993c8539599',1,'tmc51x0::MODERATE'],['../namespacetmc51x0.html#a52bd7474fc03fcfde3c7249fea7ea055a5137485eff3ff278d233d993c8539599',1,'tmc51x0::MODERATE'],['../namespacetmc51x0.html#aca6b71c611ab7e217b0d3ce4208821d9a5137485eff3ff278d233d993c8539599',1,'tmc51x0::MODERATE'],['../namespacetmc51x0.html#a4abe4fa0f128137c19f7da4f9b58a816a5137485eff3ff278d233d993c8539599',1,'tmc51x0::MODERATE']]],
+  ['mres_5f128_4',['MRES_128',['../namespacetmc51x0.html#a06908f208ee192aff6a8e8f0346bd8c4ab227ff1ca50d147d685877a0c73041c6',1,'tmc51x0']]],
+  ['mres_5f16_5',['MRES_16',['../namespacetmc51x0.html#a06908f208ee192aff6a8e8f0346bd8c4a782d5ebca14ac091682de02b0c9543fd',1,'tmc51x0']]],
+  ['mres_5f2_6',['MRES_2',['../namespacetmc51x0.html#a06908f208ee192aff6a8e8f0346bd8c4ab8fce733d17943c78fc278ebff4573a8',1,'tmc51x0']]],
+  ['mres_5f256_7',['MRES_256',['../namespacetmc51x0.html#a06908f208ee192aff6a8e8f0346bd8c4af6a5e029c66401ac3bb0d52f2f29353e',1,'tmc51x0']]],
+  ['mres_5f32_8',['MRES_32',['../namespacetmc51x0.html#a06908f208ee192aff6a8e8f0346bd8c4a99fd8a14194ff4938a4fc517f9749cf1',1,'tmc51x0']]],
+  ['mres_5f4_9',['MRES_4',['../namespacetmc51x0.html#a06908f208ee192aff6a8e8f0346bd8c4a8a54bb0f4f69caee2448f5de30c5b6a5',1,'tmc51x0']]],
+  ['mres_5f64_10',['MRES_64',['../namespacetmc51x0.html#a06908f208ee192aff6a8e8f0346bd8c4a8fb86b8c54f4203fae7e604e7e377d5b',1,'tmc51x0']]],
+  ['mres_5f8_11',['MRES_8',['../namespacetmc51x0.html#a06908f208ee192aff6a8e8f0346bd8c4acd0ef50f31291f01e6ad2f0572d56b88',1,'tmc51x0']]]
+];
