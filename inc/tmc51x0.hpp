@@ -3241,6 +3241,15 @@ private:
                                                  Unit unit) const noexcept;
 
   /**
+   * @brief Whether a unit can be converted with the current mechanical setup
+   * @return false for Unit::Mm unless DriverConfig::mechanical describes a lead screw (pitch > 0) or a belt
+   *         drive (pitch > 0 and pulley teeth > 0); true for every other unit. The conversion helpers return 0
+   *         for an unconvertible unit, so the public calls that take a Unit check this first and return
+   *         ErrorCode::INVALID_VALUE instead of commanding position or speed 0.
+   */
+  [[nodiscard]] bool IsUnitConvertible(Unit unit) const noexcept;
+
+  /**
    * @brief Convert position value to steps
    * @param value Position value in specified unit
    * @param unit Unit of the value

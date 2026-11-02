@@ -922,6 +922,20 @@ float TMC51x0<CommType>::convertAccelerationToSteps(float value, Unit unit) cons
 }
 
 template <typename CommType>
+bool TMC51x0<CommType>::IsUnitConvertible(Unit unit) const noexcept {
+  if (unit != Unit::Mm) {
+    return true;
+  }
+  if (mechanical_system_.system_type == MechanicalSystemType::LeadScrew) {
+    return mechanical_system_.lead_screw_pitch_mm > 0.0f;
+  }
+  if (mechanical_system_.system_type == MechanicalSystemType::BeltDrive) {
+    return mechanical_system_.belt_pitch_mm > 0.0f && mechanical_system_.belt_pulley_teeth > 0;
+  }
+  return false;
+}
+
+template <typename CommType>
 float TMC51x0<CommType>::convertPositionToSteps(float value, Unit unit) const noexcept {
   // Position conversions logic is same as speed (time unit cancels out)
   // e.g. RPM (revs) -> Steps (revs * steps/rev)
@@ -1659,6 +1673,9 @@ Result<bool> TMC51x0<CommType>::Switches::GetReferenceSwitchStatus(bool& right_a
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::Events::SetXCompare(float position, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   float steps = driver_.convertPositionToSteps(position, unit);
   int32_t x_compare = static_cast<int32_t>(std::round(steps));
 
@@ -1679,6 +1696,9 @@ Result<float> TMC51x0<CommType>::Events::GetXCompare(Unit unit) const noexcept {
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetTargetPosition(float value, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -1689,6 +1709,9 @@ Result<void> TMC51x0<CommType>::RampControl::SetTargetPosition(float value, Unit
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::MoveRelative(float offset, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   // Get current position in the requested unit
   auto current_pos_result = GetCurrentPosition(unit);
   if (!current_pos_result.IsOk()) {
@@ -1760,6 +1783,9 @@ Result<int32_t> TMC51x0<CommType>::RampControl::GetTargetPositionMicrosteps() no
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetCurrentPosition(float value, Unit unit, bool update_encoder) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   float steps = driver_.convertPositionToSteps(value, unit);
   return SetCurrentPosition(round_to_int32(steps), update_encoder); // Calls private helper
 }
@@ -1788,6 +1814,9 @@ Result<void> TMC51x0<CommType>::RampControl::SetCurrentPosition(int32_t position
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetMaxSpeed(float value, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -1825,11 +1854,17 @@ Result<void> TMC51x0<CommType>::RampControl::SetMaxSpeed(float value, Unit unit)
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetAcceleration(float value, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   return SetAccelerations(value, value, unit);
 }
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetAccelerations(float accel_val, float decel_val, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -1866,6 +1901,9 @@ Result<void> TMC51x0<CommType>::RampControl::SetAccelerations(float accel_val, f
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetDeceleration(float value, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -1887,6 +1925,9 @@ Result<void> TMC51x0<CommType>::RampControl::SetDeceleration(float value, Unit u
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetRampSpeeds(float start_speed, float stop_speed, float transition_speed,
                                                    Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -2356,6 +2397,9 @@ Result<void> TMC51x0<CommType>::RampControl::ConfigureRamp(const RampConfig& con
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetFirstAcceleration(float a1, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -2386,6 +2430,9 @@ Result<void> TMC51x0<CommType>::RampControl::SetFirstAcceleration(float a1, Unit
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetFinalDeceleration(float d1, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -5379,6 +5426,10 @@ template <typename CommType>
 Result<void> TMC51x0<CommType>::Homing::PerformSensorlessHoming(
     bool direction, const BoundsOptions& opt, int32_t& final_position,
     typename TMC51x0<CommType>::Homing::CancelCallback should_cancel) noexcept {
+  if (!driver_.IsUnitConvertible(opt.position_unit) || !driver_.IsUnitConvertible(opt.speed_unit) ||
+      !driver_.IsUnitConvertible(opt.accel_unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -5936,6 +5987,10 @@ template <typename CommType>
 Result<typename TMC51x0<CommType>::Homing::BoundsResult>
 TMC51x0<CommType>::Homing::FindBoundsStallGuard(const BoundsOptions& opt, const HomeConfig& home,
                                                CancelCallback should_cancel) noexcept {
+  if (!driver_.IsUnitConvertible(opt.position_unit) || !driver_.IsUnitConvertible(opt.speed_unit) ||
+      !driver_.IsUnitConvertible(opt.accel_unit)) {
+    return Result<BoundsResult>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   BoundsResult out{};
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) return Result<BoundsResult>(mode_guard.Error());
@@ -6564,6 +6619,10 @@ template <typename CommType>
 Result<void> TMC51x0<CommType>::Homing::PerformSwitchHoming(
     bool direction, const BoundsOptions& opt, int32_t& final_position, bool use_left_switch,
     typename TMC51x0<CommType>::Homing::CancelCallback should_cancel) noexcept {
+  if (!driver_.IsUnitConvertible(opt.position_unit) || !driver_.IsUnitConvertible(opt.speed_unit) ||
+      !driver_.IsUnitConvertible(opt.accel_unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -6901,6 +6960,10 @@ template <typename CommType>
 Result<void> TMC51x0<CommType>::Homing::PerformEncoderIndexHoming(
     bool direction, const BoundsOptions& opt, int32_t& final_position,
     CancelCallback should_cancel) noexcept {
+  if (!driver_.IsUnitConvertible(opt.position_unit) || !driver_.IsUnitConvertible(opt.speed_unit) ||
+      !driver_.IsUnitConvertible(opt.accel_unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
 
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) return mode_guard;
@@ -7152,6 +7215,10 @@ template <typename CommType>
 Result<typename TMC51x0<CommType>::Homing::BoundsResult>
 TMC51x0<CommType>::Homing::FindBoundsEncoder(const BoundsOptions& opt, const HomeConfig& home,
                                             CancelCallback should_cancel) noexcept {
+  if (!driver_.IsUnitConvertible(opt.position_unit) || !driver_.IsUnitConvertible(opt.speed_unit) ||
+      !driver_.IsUnitConvertible(opt.accel_unit)) {
+    return Result<BoundsResult>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   BoundsResult out{};
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) return Result<BoundsResult>(mode_guard.Error());
@@ -7456,6 +7523,10 @@ template <typename CommType>
 Result<typename TMC51x0<CommType>::Homing::BoundsResult>
 TMC51x0<CommType>::Homing::FindBoundsSwitch(const BoundsOptions& opt, const HomeConfig& home,
                                            CancelCallback should_cancel) noexcept {
+  if (!driver_.IsUnitConvertible(opt.position_unit) || !driver_.IsUnitConvertible(opt.speed_unit) ||
+      !driver_.IsUnitConvertible(opt.accel_unit)) {
+    return Result<BoundsResult>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   BoundsResult out{};
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) return Result<BoundsResult>(mode_guard.Error());

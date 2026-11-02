@@ -158,6 +158,29 @@ TEST_CASE("Enable drives EN (DRV_ENN) to ACTIVE through the port") {
   CHECK(saw_enable);
 }
 
+TEST_CASE("Unit::Mm without a lead screw or belt is rejected, not turned into a move to 0") {
+  MockSpi spi;
+  Driver driver(spi);
+  REQUIRE(driver.Initialize(tmc51x0::DriverConfig{}, false).IsOk());  // mechanical: direct drive
+  spi.reg(reg::XTARGET) = 12345;
+  auto r = driver.rampControl.SetTargetPosition(10.0f, tmc51x0::Unit::Mm);
+  CHECK(r.Error() == tmc51x0::ErrorCode::INVALID_VALUE);
+  CHECK_EQ(spi.reg(reg::XTARGET), 12345u);
+  CHECK(driver.rampControl.SetMaxSpeed(5.0f, tmc51x0::Unit::Mm).Error() == tmc51x0::ErrorCode::INVALID_VALUE);
+  CHECK(driver.rampControl.MoveRelative(1.0f, tmc51x0::Unit::Mm).Error() == tmc51x0::ErrorCode::INVALID_VALUE);
+}
+
+TEST_CASE("Unit::Mm with a lead screw converts: 8 mm pitch, 4 mm = half a turn") {
+  MockSpi spi;
+  Driver driver(spi);
+  tmc51x0::DriverConfig cfg{};
+  cfg.mechanical.system_type = tmc51x0::MechanicalSystemType::LeadScrew;
+  cfg.mechanical.lead_screw_pitch_mm = 8.0f;
+  REQUIRE(driver.Initialize(cfg, false).IsOk());
+  REQUIRE(driver.rampControl.SetTargetPosition(4.0f, tmc51x0::Unit::Mm).IsOk());
+  CHECK_EQ(spi.reg(reg::XTARGET), 25600u);  // 200 full steps x 256 / 2
+}
+
 TEST_CASE("Degrees convert to microsteps: 180 deg = 100 full steps x 256") {
   MockSpi spi;
   Driver driver(spi);
