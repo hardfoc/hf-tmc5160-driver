@@ -17,7 +17,7 @@
 // If this file is compiled directly as a translation unit (e.g. by IDE tooling),
 // avoid recursive inclusion (tmc51x0.hpp includes this file for template instantiation).
 #define TMC51X0_COMPILING_SRC 1
-#include "../inc/tmc51x0.hpp"
+#include "tmc51x0.hpp"
 #undef TMC51X0_COMPILING_SRC
 #endif
 
@@ -25,7 +25,7 @@
 #include <cmath>
 #include <limits>
 
-#include "../inc/features/tmc51x0_motor_calc.hpp"
+#include "features/tmc51x0_motor_calc.hpp"
 #include <inttypes.h>
 #include <cstdio>
 #include <string>
@@ -922,6 +922,20 @@ float TMC51x0<CommType>::convertAccelerationToSteps(float value, Unit unit) cons
 }
 
 template <typename CommType>
+bool TMC51x0<CommType>::IsUnitConvertible(Unit unit) const noexcept {
+  if (unit != Unit::Mm) {
+    return true;
+  }
+  if (mechanical_system_.system_type == MechanicalSystemType::LeadScrew) {
+    return mechanical_system_.lead_screw_pitch_mm > 0.0f;
+  }
+  if (mechanical_system_.system_type == MechanicalSystemType::BeltDrive) {
+    return mechanical_system_.belt_pitch_mm > 0.0f && mechanical_system_.belt_pulley_teeth > 0;
+  }
+  return false;
+}
+
+template <typename CommType>
 float TMC51x0<CommType>::convertPositionToSteps(float value, Unit unit) const noexcept {
   // Position conversions logic is same as speed (time unit cancels out)
   // e.g. RPM (revs) -> Steps (revs * steps/rev)
@@ -1066,6 +1080,25 @@ Result<void> TMC51x0<CommType>::Initialize(const DriverConfig& config, bool verb
     return Result<void>(ErrorCode::COMM_ERROR);
   }
 
+  // Detect chip version (IOIN.VERSION, bits 31..24) before the first chip-specific write: the TMC5130 has no
+  // GLOBAL_SCALER (0x0B), DRV_CONF (0x0A) or SHORT_CONF (0x09) and uses a different current formula
+  // (TMC5160A datasheet section 6.1, register map 0x00..0x0F; TMC5130A datasheet register map).
+  auto chip_version_result = io.ReadIcVersion();
+  if (chip_version_result.IsOk()) {
+    uint8_t chip_version = chip_version_result.Value();
+    chip_version_ = chip_version;
+    if (chip_version == ChipVersion::TMC5130) {
+      TMC51X0_LOG_DEBUG(comm_, LogLevel::Info, "TMC5160", "Detected TMC5130 chip (version 0x%02X)", chip_version);
+    } else if (chip_version == ChipVersion::TMC5160) {
+      TMC51X0_LOG_DEBUG(comm_, LogLevel::Info, "TMC5160", "Detected TMC5160 chip (version 0x%02X)", chip_version);
+    } else {
+      TMC51X0_LOG_DEBUG(comm_, LogLevel::Warn, "TMC5160", "Unknown chip version: 0x%02X", chip_version);
+    }
+  } else {
+    TMC51X0_LOG_DEBUG(comm_, LogLevel::Warn, "TMC5160", "Failed to read chip version, assuming TMC5160");
+    chip_version_ = ChipVersion::TMC5160; // Default to TMC5160
+  }
+
   // Calculate initial microsteps from config
   // mres: 0=256, 1=128, ... 8=fullstep. microsteps = 256 >> mres
   uint8_t mres = constrain<uint8_t>(static_cast<uint8_t>(config.chopper.mres), 0U, 8U);
@@ -1111,8 +1144,8 @@ Result<void> TMC51x0<CommType>::Initialize(const DriverConfig& config, bool verb
     return Result<void>(ErrorCode::COMM_ERROR);
   }
 
-  // Configure power stage
-  {
+  // Configure power stage: DRV_CONF and SHORT_CONF exist on the TMC5160 only (TMC5160A datasheet section 6.1)
+  if (chip_version_ != ChipVersion::TMC5130) {
     auto ps_result = powerStage.ConfigurePowerStage(config.power_stage);
     if (!ps_result) {
       TMC51X0_LOG_DEBUG(comm_, LogLevel::Error, "TMC5160",
@@ -1158,10 +1191,12 @@ Result<void> TMC51x0<CommType>::Initialize(const DriverConfig& config, bool verb
   uint8_t shortdelay = CalculateShortDelay(delay_us_x10);
   short_conf.bits.shortdelay = constrain<uint8_t>(shortdelay, 0U, 1U);
 
-  if (!this->comm_.WriteRegister(Registers::SHORT_CONF, short_conf.value, this->GetCommAddress())) {
-    return Result<void>(ErrorCode::COMM_ERROR);
+  if (chip_version_ != ChipVersion::TMC5130) {
+    if (!this->comm_.WriteRegister(Registers::SHORT_CONF, short_conf.value, this->GetCommAddress())) {
+      return Result<void>(ErrorCode::COMM_ERROR);
+    }
+    this->write_only_regs_.short_conf = short_conf.value;
   }
-  this->write_only_regs_.short_conf = short_conf.value;
 
   // Configure chopper
   {
@@ -1189,23 +1224,6 @@ Result<void> TMC51x0<CommType>::Initialize(const DriverConfig& config, bool verb
   TMC51X0_LOG_DEBUG(comm_, LogLevel::Debug, "TMC5160", "Initialize: Setting ramp mode to POSITIONING");
   if (!rampControl.SetRampMode(RampMode::POSITIONING)) {
     return Result<void>(ErrorCode::COMM_ERROR);
-  }
-
-  // Detect chip version (read from IOIN register)
-  auto chip_version_result = io.ReadIcVersion();
-  if (chip_version_result.IsOk()) {
-    uint8_t chip_version = chip_version_result.Value();
-    chip_version_ = chip_version;
-    if (chip_version == ChipVersion::TMC5130) {
-      TMC51X0_LOG_DEBUG(comm_, LogLevel::Info, "TMC5160", "Detected TMC5130 chip (version 0x%02X)", chip_version);
-    } else if (chip_version == ChipVersion::TMC5160) {
-      TMC51X0_LOG_DEBUG(comm_, LogLevel::Info, "TMC5160", "Detected TMC5160 chip (version 0x%02X)", chip_version);
-    } else {
-      TMC51X0_LOG_DEBUG(comm_, LogLevel::Warn, "TMC5160", "Unknown chip version: 0x%02X", chip_version);
-    }
-  } else {
-    TMC51X0_LOG_DEBUG(comm_, LogLevel::Warn, "TMC5160", "Failed to read chip version, assuming TMC5160");
-    chip_version_ = ChipVersion::TMC5160; // Default to TMC5160
   }
 
   // Configure global settings (GCONF)
@@ -1655,6 +1673,9 @@ Result<bool> TMC51x0<CommType>::Switches::GetReferenceSwitchStatus(bool& right_a
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::Events::SetXCompare(float position, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   float steps = driver_.convertPositionToSteps(position, unit);
   int32_t x_compare = static_cast<int32_t>(std::round(steps));
 
@@ -1675,6 +1696,9 @@ Result<float> TMC51x0<CommType>::Events::GetXCompare(Unit unit) const noexcept {
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetTargetPosition(float value, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -1685,6 +1709,9 @@ Result<void> TMC51x0<CommType>::RampControl::SetTargetPosition(float value, Unit
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::MoveRelative(float offset, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   // Get current position in the requested unit
   auto current_pos_result = GetCurrentPosition(unit);
   if (!current_pos_result.IsOk()) {
@@ -1756,6 +1783,9 @@ Result<int32_t> TMC51x0<CommType>::RampControl::GetTargetPositionMicrosteps() no
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetCurrentPosition(float value, Unit unit, bool update_encoder) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   float steps = driver_.convertPositionToSteps(value, unit);
   return SetCurrentPosition(round_to_int32(steps), update_encoder); // Calls private helper
 }
@@ -1784,6 +1814,9 @@ Result<void> TMC51x0<CommType>::RampControl::SetCurrentPosition(int32_t position
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetMaxSpeed(float value, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -1821,11 +1854,17 @@ Result<void> TMC51x0<CommType>::RampControl::SetMaxSpeed(float value, Unit unit)
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetAcceleration(float value, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   return SetAccelerations(value, value, unit);
 }
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetAccelerations(float accel_val, float decel_val, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -1862,6 +1901,9 @@ Result<void> TMC51x0<CommType>::RampControl::SetAccelerations(float accel_val, f
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetDeceleration(float value, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -1883,6 +1925,9 @@ Result<void> TMC51x0<CommType>::RampControl::SetDeceleration(float value, Unit u
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetRampSpeeds(float start_speed, float stop_speed, float transition_speed,
                                                    Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -2352,6 +2397,9 @@ Result<void> TMC51x0<CommType>::RampControl::ConfigureRamp(const RampConfig& con
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetFirstAcceleration(float a1, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -2382,6 +2430,9 @@ Result<void> TMC51x0<CommType>::RampControl::SetFirstAcceleration(float a1, Unit
 
 template <typename CommType>
 Result<void> TMC51x0<CommType>::RampControl::SetFinalDeceleration(float d1, Unit unit) noexcept {
+  if (!driver_.IsUnitConvertible(unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -2427,7 +2478,15 @@ Result<void> TMC51x0<CommType>::MotorControl::Enable() noexcept {
 
   // Enable via EN pin GPIO (EN is active LOW to enable, so set to ACTIVE/LOW to enable power stage)
   // This must be done first to enable the power stage
-  driver_.comm_.GpioSet(TMC51x0CtrlPin::EN, GpioSignal::ACTIVE);
+  // A port without an EN mapping returns UNSUPPORTED (DRV_ENN hard-wired low): carry on with TOFF. Any other
+  // failure means the power stage may still be off (DRV_ENN high, TMC5160A datasheet pin table), so report it.
+  {
+    auto en_result = driver_.comm_.GpioSet(TMC51x0CtrlPin::EN, GpioSignal::ACTIVE);
+    if (!en_result && en_result.Error() != ErrorCode::UNSUPPORTED) {
+      TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Error, "MotorControl::Enable", "Setting EN (DRV_ENN) failed");
+      return en_result;
+    }
+  }
 
   // Verify enable status by reading IOIN register (shows actual pin state as seen by TMC5160)
   auto io_result = driver_.comm_.ReadRegister(Registers::IOIN, driver_.GetCommAddress());
@@ -2467,6 +2526,10 @@ template <typename CommType>
 Result<void> TMC51x0<CommType>::MotorControl::Disable() noexcept {
   TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Info, "TMC5160", "MotorControl::Disable()");
 
+  // Disable via EN pin GPIO first (DRV_ENN high switches the power stage off), so the bridges go off even when
+  // the bus fails below. UNSUPPORTED means the port has no EN mapping; TOFF = 0 then does the job.
+  auto en_result = driver_.comm_.GpioSet(TMC51x0CtrlPin::EN, GpioSignal::INACTIVE);
+
   // Disable via CHOPCONF register (set toff = 0)
   auto chopconf_value_result = driver_.comm_.ReadRegister(Registers::CHOPCONF, driver_.GetCommAddress());
   if (!chopconf_value_result) {
@@ -2478,12 +2541,11 @@ Result<void> TMC51x0<CommType>::MotorControl::Disable() noexcept {
   chopconf.bits.toff = 0; // Disable driver
 
   auto write_result = driver_.comm_.WriteRegister(Registers::CHOPCONF, chopconf.value, driver_.GetCommAddress());
-
-  // Disable via EN pin GPIO (EN is active LOW to enable, so set to INACTIVE/HIGH to disable power stage)
-  driver_.comm_.GpioSet(TMC51x0CtrlPin::EN, GpioSignal::INACTIVE);
-
   if (!write_result) {
     return write_result;
+  }
+  if (!en_result && en_result.Error() != ErrorCode::UNSUPPORTED) {
+    return en_result;
   }
   return Result<void>();
 }
@@ -3001,7 +3063,7 @@ Result<void> TMC51x0<CommType>::MotorControl::ConfigureMotorCurrent(const MotorS
                     run_current, motor_spec.sense_resistor_mohm, motor_spec.supply_voltage_mv);
   
   if (!CalculateMotorCurrent(motor_spec, motor_spec.sense_resistor_mohm, motor_spec.supply_voltage_mv, run_current,
-                             motor_spec.hold_current_ma, calc_irun, calc_ihold, calc_scaler)) {
+                             motor_spec.hold_current_ma, calc_irun, calc_ihold, calc_scaler, driver_.chip_version_)) {
     TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Error, "TMC5160", "Failed to calculate motor current settings: run_current=%u mA may exceed max for sense_resistor=%u mOhm",
                       run_current, motor_spec.sense_resistor_mohm);
     return Result<void>(ErrorCode::INVALID_VALUE);
@@ -3984,7 +4046,8 @@ Result<void> TMC51x0<CommType>::MotorControl::SetupMotorFromSpec(const MotorSpec
 
   // Use CalculateMotorCurrent for accurate calculations
   if (!CalculateMotorCurrent(motor_spec, motor_spec.sense_resistor_mohm, motor_spec.supply_voltage_mv,
-                             run_current, motor_spec.hold_current_ma, calc_irun, calc_ihold, calc_scaler)) {
+                             run_current, motor_spec.hold_current_ma, calc_irun, calc_ihold, calc_scaler,
+                             driver_.chip_version_)) {
     return Result<void>(ErrorCode::INVALID_VALUE);
   }
 
@@ -5374,6 +5437,10 @@ template <typename CommType>
 Result<void> TMC51x0<CommType>::Homing::PerformSensorlessHoming(
     bool direction, const BoundsOptions& opt, int32_t& final_position,
     typename TMC51x0<CommType>::Homing::CancelCallback should_cancel) noexcept {
+  if (!driver_.IsUnitConvertible(opt.position_unit) || !driver_.IsUnitConvertible(opt.speed_unit) ||
+      !driver_.IsUnitConvertible(opt.accel_unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -5701,7 +5768,7 @@ Result<void> ReduceCurrentForBounds(TMC51x0<CommType>& driver, float factor, uin
   if (!CalculateMotorCurrent(motor_spec, motor_spec.sense_resistor_mohm,
                              motor_spec.supply_voltage_mv,
                              new_run_ma, new_hold_ma,
-                             new_irun, new_ihold, new_scaler)) {
+                             new_irun, new_ihold, new_scaler, driver.status.GetChipVersion())) {
     // If calculation fails, do not change anything (safe fallback).
     return Result<void>();
   }
@@ -5931,6 +5998,10 @@ template <typename CommType>
 Result<typename TMC51x0<CommType>::Homing::BoundsResult>
 TMC51x0<CommType>::Homing::FindBoundsStallGuard(const BoundsOptions& opt, const HomeConfig& home,
                                                CancelCallback should_cancel) noexcept {
+  if (!driver_.IsUnitConvertible(opt.position_unit) || !driver_.IsUnitConvertible(opt.speed_unit) ||
+      !driver_.IsUnitConvertible(opt.accel_unit)) {
+    return Result<BoundsResult>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   BoundsResult out{};
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) return Result<BoundsResult>(mode_guard.Error());
@@ -6559,6 +6630,10 @@ template <typename CommType>
 Result<void> TMC51x0<CommType>::Homing::PerformSwitchHoming(
     bool direction, const BoundsOptions& opt, int32_t& final_position, bool use_left_switch,
     typename TMC51x0<CommType>::Homing::CancelCallback should_cancel) noexcept {
+  if (!driver_.IsUnitConvertible(opt.position_unit) || !driver_.IsUnitConvertible(opt.speed_unit) ||
+      !driver_.IsUnitConvertible(opt.accel_unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) {
     return mode_guard;
@@ -6896,6 +6971,10 @@ template <typename CommType>
 Result<void> TMC51x0<CommType>::Homing::PerformEncoderIndexHoming(
     bool direction, const BoundsOptions& opt, int32_t& final_position,
     CancelCallback should_cancel) noexcept {
+  if (!driver_.IsUnitConvertible(opt.position_unit) || !driver_.IsUnitConvertible(opt.speed_unit) ||
+      !driver_.IsUnitConvertible(opt.accel_unit)) {
+    return Result<void>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
 
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) return mode_guard;
@@ -7147,6 +7226,10 @@ template <typename CommType>
 Result<typename TMC51x0<CommType>::Homing::BoundsResult>
 TMC51x0<CommType>::Homing::FindBoundsEncoder(const BoundsOptions& opt, const HomeConfig& home,
                                             CancelCallback should_cancel) noexcept {
+  if (!driver_.IsUnitConvertible(opt.position_unit) || !driver_.IsUnitConvertible(opt.speed_unit) ||
+      !driver_.IsUnitConvertible(opt.accel_unit)) {
+    return Result<BoundsResult>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   BoundsResult out{};
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) return Result<BoundsResult>(mode_guard.Error());
@@ -7451,6 +7534,10 @@ template <typename CommType>
 Result<typename TMC51x0<CommType>::Homing::BoundsResult>
 TMC51x0<CommType>::Homing::FindBoundsSwitch(const BoundsOptions& opt, const HomeConfig& home,
                                            CancelCallback should_cancel) noexcept {
+  if (!driver_.IsUnitConvertible(opt.position_unit) || !driver_.IsUnitConvertible(opt.speed_unit) ||
+      !driver_.IsUnitConvertible(opt.accel_unit)) {
+    return Result<BoundsResult>(ErrorCode::INVALID_VALUE);  // Unit::Mm without a lead screw or belt
+  }
   BoundsResult out{};
   auto mode_guard = driver_.RequireInternalRampMode();
   if (!mode_guard) return Result<BoundsResult>(mode_guard.Error());
@@ -8507,10 +8594,14 @@ Result<void> TMC51x0<CommType>::Status::VerifySetup() noexcept {
   auto version_result = driver_.io.ReadIcVersion();
   if (version_result.IsOk()) {
     uint8_t version = version_result.Value();
-    if (version == 0x30) {
-      TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Info, "VerifySetup", "IC Version: 0x30 (Matches TMC5160)");
+    // IOIN.VERSION: 0x30 = TMC5160 (TMC5160A datasheet, IOIN 0x04 bits 31..24), 0x11 = TMC5130 (TMC5130A datasheet)
+    if (version == ChipVersion::TMC5160) {
+      TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Info, "VerifySetup", "IC Version: 0x30 (TMC5160)");
+    } else if (version == ChipVersion::TMC5130) {
+      TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Info, "VerifySetup", "IC Version: 0x11 (TMC5130)");
     } else {
-      TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Warn, "VerifySetup", "IC Version MISMATCH: 0x%02X (Expected 0x30)", version);
+      TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Warn, "VerifySetup",
+                        "IC Version MISMATCH: 0x%02X (expected 0x30 TMC5160 or 0x11 TMC5130)", version);
       // If version is 0x00 or 0xFF, it's likely a communication error
       if (version == 0x00 || version == 0xFF) {
         TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Error, "VerifySetup", "CRITICAL: Bus communication likely failed!");
@@ -9127,7 +9218,7 @@ Result<void> TMC51x0<CommType>::Tuning::AutoTuneStallGuard(float target_velocity
 
         if (CalculateMotorCurrent(driver_.motor_spec_, driver_.motor_spec_.sense_resistor_mohm,
                                    driver_.motor_spec_.supply_voltage_mv, new_current_ma, new_hold_current_ma,
-                                   new_irun, new_ihold, new_scaler)) {
+                                   new_irun, new_ihold, new_scaler, driver_.chip_version_)) {
           // Ensure minimum IRUN=8 for StealthChop compatibility
           if (new_irun < 8) {
             new_irun = 8;

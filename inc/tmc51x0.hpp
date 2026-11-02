@@ -3112,6 +3112,7 @@ protected:
    */
   Result<void> Reset() noexcept;
 
+public:
   /**
    * @brief Check if the driver is initialized
    * @return true if initialized, false otherwise
@@ -3119,7 +3120,7 @@ protected:
   [[nodiscard]] bool IsInitialized() const noexcept { return initialized_; }
 
   // ===========================================================================
-  // Driver Version
+  // Driver Version (public: the documented way to log the library version)
   // ===========================================================================
 
   /** @brief Get the compiled driver version string. */
@@ -3241,6 +3242,15 @@ private:
                                                  Unit unit) const noexcept;
 
   /**
+   * @brief Whether a unit can be converted with the current mechanical setup
+   * @return false for Unit::Mm unless DriverConfig::mechanical describes a lead screw (pitch > 0) or a belt
+   *         drive (pitch > 0 and pulley teeth > 0); true for every other unit. The conversion helpers return 0
+   *         for an unconvertible unit, so the public calls that take a Unit check this first and return
+   *         ErrorCode::INVALID_VALUE instead of commanding position or speed 0.
+   */
+  [[nodiscard]] bool IsUnitConvertible(Unit unit) const noexcept;
+
+  /**
    * @brief Convert position value to steps
    * @param value Position value in specified unit
    * @param unit Unit of the value
@@ -3315,6 +3325,6 @@ inline const char* GetDriverVersion() noexcept {
 #define TMC51X0_HEADER_INCLUDED
 // NOLINTNEXTLINE(bugprone-suspicious-include) - Intentional: template
 // implementation file
-#include "../src/tmc51x0.ipp"
+#include "tmc51x0.ipp"  // src/ in the source tree, next to this header once installed
 #undef TMC51X0_HEADER_INCLUDED
 #endif

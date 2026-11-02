@@ -15,6 +15,10 @@ namespace tmc51x0 {
 namespace MotorCalcConstants {
 constexpr float VFS_MV = 325.0F;        // Typical full-scale voltage (mV) = 0.325V
 constexpr float SQRT2 = 1.41421356237F; // √2
+/// TMC5130 full-scale sense voltage with CHOPCONF.vsense = 0 (TMC5130A datasheet, "Selecting sense resistors").
+constexpr float TMC5130_VFS_MV = 320.0F;
+/// TMC5130 internal resistance added to RSENSE in its current formula (TMC5130A datasheet, same section).
+constexpr float TMC5130_RSENSE_OFFSET_MOHM = 20.0F;
 } // namespace MotorCalcConstants
 
 /**
@@ -43,13 +47,51 @@ constexpr float SQRT2 = 1.41421356237F; // √2
  *
  * @note For best precision, IRUN will be constrained to 16-31 range
  * @note For automatic tuning compatibility, IRUN will be at least 8
+ *
+ * @param chip_version Detected chip (ChipVersion::TMC5160 by default). The TMC5130 has no GLOBAL_SCALER: its
+ *        current is I_RMS = ((CS+1)/32) * VFS/(RSENSE+20 mOhm) * 1/sqrt(2) with VFS = 0.32 V (vsense = 0), so
+ *        for ChipVersion::TMC5130 the current is set by IRUN / IHOLD alone and global_scaler is returned as 256.
  */
 inline bool CalculateMotorCurrent(const MotorSpec& motor_spec, uint32_t sense_resistor_mohm, uint32_t supply_voltage_mv,
                                   uint16_t run_current_ma, uint16_t hold_current_ma, uint8_t& irun, uint8_t& ihold,
-                                  uint16_t& global_scaler) noexcept {
+                                  uint16_t& global_scaler, uint8_t chip_version = ChipVersion::TMC5160) noexcept {
   // Validate inputs
   if (sense_resistor_mohm == 0 || supply_voltage_mv == 0) {
     return false;
+  }
+
+  if (chip_version == ChipVersion::TMC5130) {
+    if (run_current_ma == 0) {
+      run_current_ma = motor_spec.rated_current_ma;
+    }
+    if (run_current_ma == 0) {
+      return false;
+    }
+    if (hold_current_ma == 0) {
+      hold_current_ma = static_cast<uint16_t>(static_cast<float>(run_current_ma) * 0.3F);
+    }
+    // I_RMS_max (CS = 31) in mA: VFS / (RSENSE + 20 mOhm) / sqrt(2)
+    const float i_max_ma = (MotorCalcConstants::TMC5130_VFS_MV /
+                            (static_cast<float>(sense_resistor_mohm) + MotorCalcConstants::TMC5130_RSENSE_OFFSET_MOHM)) /
+                           MotorCalcConstants::SQRT2 * 1000.0F;
+    if (static_cast<float>(run_current_ma) > i_max_ma * 1.1F) {
+      return false;
+    }
+    // CS = I * 32 / I_max - 1, rounded down so the coil current never exceeds the request.
+    auto cs_for = [i_max_ma](uint16_t ma) -> uint8_t {
+      const float cs = (static_cast<float>(ma) * 32.0F / i_max_ma) - 1.0F;
+      if (cs <= 0.0F) {
+        return 0;
+      }
+      return static_cast<uint8_t>(std::min(31.0F, std::floor(cs + 1e-3F)));
+    };
+    irun = cs_for(run_current_ma);
+    ihold = cs_for(hold_current_ma);
+    if (ihold >= irun) {
+      ihold = (irun > 0) ? static_cast<uint8_t>(irun - 1) : 0;
+    }
+    global_scaler = 256;
+    return true;
   }
 
   // Use motor rated current if run_current_ma is 0

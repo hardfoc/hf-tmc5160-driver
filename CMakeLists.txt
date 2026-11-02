@@ -19,6 +19,8 @@ if(HF_TMC51X0_SOURCE_FILES)
             $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src>
             $<BUILD_INTERFACE:${HF_TMC51X0_VERSION_HEADER_DIR}>
             $<INSTALL_INTERFACE:include>
+            $<INSTALL_INTERFACE:include/features>
+            $<INSTALL_INTERFACE:include/registers>
     )
     target_compile_features(${HF_TMC51X0_TARGET_NAME} PUBLIC cxx_std_20)
 else()
@@ -31,13 +33,17 @@ else()
             $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src>
             $<BUILD_INTERFACE:${HF_TMC51X0_VERSION_HEADER_DIR}>
             $<INSTALL_INTERFACE:include>
+            $<INSTALL_INTERFACE:include/features>
+            $<INSTALL_INTERFACE:include/registers>
     )
     target_compile_features(${HF_TMC51X0_TARGET_NAME} INTERFACE cxx_std_20)
 endif()
 
 add_library(hf::tmc51x0 ALIAS ${HF_TMC51X0_TARGET_NAME})
 
-set_target_properties(${HF_TMC51X0_TARGET_NAME} PROPERTIES VERSION ${HF_TMC51X0_VERSION} SOVERSION ${HF_TMC51X0_VERSION_MAJOR})
+# EXPORT_NAME: the installed package exports hf::tmc51x0, the same name as the in-tree alias.
+set_target_properties(${HF_TMC51X0_TARGET_NAME} PROPERTIES VERSION ${HF_TMC51X0_VERSION} SOVERSION ${HF_TMC51X0_VERSION_MAJOR}
+    EXPORT_NAME tmc51x0)
 
 option(HF_TMC51X0_ENABLE_WARNINGS "Enable extra warnings for TMC51x0 driver" OFF)
 if(HF_TMC51X0_ENABLE_WARNINGS)
@@ -65,7 +71,8 @@ install(TARGETS ${HF_TMC51X0_TARGET_NAME} EXPORT hf_tmc51x0Targets
 
 install(DIRECTORY inc/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     FILES_MATCHING PATTERN "*.hpp" PATTERN "*.h" PATTERN "*.h.in" EXCLUDE)
-install(FILES "${HF_TMC51X0_VERSION_HEADER}" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+# tmc51x0.hpp includes the template implementation "tmc51x0.ipp"; install it next to the header.
+install(FILES src/tmc51x0.ipp "${HF_TMC51X0_VERSION_HEADER}" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 install(EXPORT hf_tmc51x0Targets
     FILE hf_tmc51x0Targets.cmake

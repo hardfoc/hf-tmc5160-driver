@@ -13,6 +13,7 @@ add_executable(hf_tmc51x0_host_tests
   test_main.cpp
   test_frames.cpp
   test_driver.cpp
+  test_multi_chip.cpp
 )
 
 target_link_libraries(hf_tmc51x0_host_tests PRIVATE ${HF_TMC51X0_TARGET_NAME})
@@ -35,3 +36,8 @@ target_link_libraries(hf_tmc51x0_doc_snippets PRIVATE ${HF_TMC51X0_TARGET_NAME})
 target_include_directories(hf_tmc51x0_doc_snippets PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/docs)
 target_compile_features(hf_tmc51x0_doc_snippets PRIVATE cxx_std_20)
 target_compile_options(hf_tmc51x0_doc_snippets PRIVATE -Wall -Wextra)
+
+# The installed package must be usable: install this build tree and compile a find_package() consumer.
+add_test(NAME hf_tmc51x0_install_consumer
+  COMMAND ${CMAKE_COMMAND} -DBUILD_DIR=${CMAKE_BINARY_DIR} -DSOURCE_DIR=${PROJECT_SOURCE_DIR}
+          -DCXX=${CMAKE_CXX_COMPILER} -P ${CMAKE_CURRENT_SOURCE_DIR}/install_check.cmake)

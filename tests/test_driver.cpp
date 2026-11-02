@@ -78,6 +78,59 @@ TEST_CASE("Initialize detects a TMC5130; SetGlobalScaler then writes nothing") {
   CHECK(!spi.lastWrite(reg::GLOBAL_SCALER, scaler));
 }
 
+TEST_CASE("TMC5130: Initialize never writes the TMC5160-only registers 0x09..0x0B") {
+  // TMC5160A datasheet section 6.1: SHORT_CONF (0x09), DRV_CONF (0x0A) and GLOBAL_SCALER (0x0B) are TMC5160 only.
+  MockSpi spi(tmc51x0::ChipVersion::TMC5130);
+  Driver driver(spi);
+  tmc51x0::DriverConfig cfg{};
+  cfg.motor_spec.run_current_ma = 1000;
+  cfg.motor_spec.sense_resistor_mohm = 50;
+  REQUIRE(driver.Initialize(cfg, false).IsOk());
+  uint32_t v = 0;
+  CHECK(!spi.lastWrite(reg::GLOBAL_SCALER, v));
+  CHECK(!spi.lastWrite(reg::DRV_CONF, v));
+  CHECK(!spi.lastWrite(reg::SHORT_CONF, v));
+}
+
+TEST_CASE("TMC5130: IRUN follows the TMC5130 current formula, not GLOBAL_SCALER") {
+  // TMC5130A: I_RMS = ((CS+1)/32) * 0.32 V / (RSENSE + 20 mOhm) / sqrt(2). With 50 mOhm the full scale is
+  // 3.23 A, so 1.0 A needs CS = 8 (0.91 A; rounded down). The TMC5160 formula would give IRUN = 31 (3.2 A).
+  MockSpi spi(tmc51x0::ChipVersion::TMC5130);
+  Driver driver(spi);
+  tmc51x0::DriverConfig cfg{};
+  cfg.motor_spec.run_current_ma = 1000;
+  cfg.motor_spec.hold_current_ma = 500;
+  cfg.motor_spec.sense_resistor_mohm = 50;
+  REQUIRE(driver.Initialize(cfg, false).IsOk());
+  uint32_t ihold_irun = 0;
+  REQUIRE(spi.lastWrite(reg::IHOLD_IRUN, ihold_irun));
+  CHECK_EQ((ihold_irun >> 8) & 0x1Fu, 8u);
+  CHECK_EQ(ihold_irun & 0x1Fu, 3u);
+}
+
+TEST_CASE("TMC5130: VerifySetup accepts version 0x11 without a mismatch warning") {
+  MockSpi spi(tmc51x0::ChipVersion::TMC5130);
+  Driver driver(spi);
+  REQUIRE(driver.Initialize(tmc51x0::DriverConfig{}, false).IsOk());
+  spi.warnings.clear();
+  (void)driver.status.VerifySetup();
+  bool version_warning = false;
+  for (const auto& tag : spi.warnings) {
+    version_warning = version_warning || tag == "VerifySetup";
+  }
+  CHECK(!version_warning);
+}
+
+TEST_CASE("CalculateMotorCurrent keeps the TMC5160 result by default") {
+  tmc51x0::MotorSpec spec{};
+  uint8_t irun = 0;
+  uint8_t ihold = 0;
+  uint16_t scaler = 0;
+  REQUIRE(tmc51x0::CalculateMotorCurrent(spec, 50, 24000, 1500, 0, irun, ihold, scaler));
+  CHECK_EQ(irun, 31u);
+  CHECK(scaler >= 80u && scaler <= 86u);
+}
+
 TEST_CASE("Motion commands write RAMPMODE, VMAX and XTARGET in microsteps") {
   MockSpi spi;
   Driver driver(spi);
@@ -103,6 +156,49 @@ TEST_CASE("Enable drives EN (DRV_ENN) to ACTIVE through the port") {
     }
   }
   CHECK(saw_enable);
+}
+
+TEST_CASE("Unit::Mm without a lead screw or belt is rejected, not turned into a move to 0") {
+  MockSpi spi;
+  Driver driver(spi);
+  REQUIRE(driver.Initialize(tmc51x0::DriverConfig{}, false).IsOk());  // mechanical: direct drive
+  spi.reg(reg::XTARGET) = 12345;
+  auto r = driver.rampControl.SetTargetPosition(10.0f, tmc51x0::Unit::Mm);
+  CHECK(r.Error() == tmc51x0::ErrorCode::INVALID_VALUE);
+  CHECK_EQ(spi.reg(reg::XTARGET), 12345u);
+  CHECK(driver.rampControl.SetMaxSpeed(5.0f, tmc51x0::Unit::Mm).Error() == tmc51x0::ErrorCode::INVALID_VALUE);
+  CHECK(driver.rampControl.MoveRelative(1.0f, tmc51x0::Unit::Mm).Error() == tmc51x0::ErrorCode::INVALID_VALUE);
+}
+
+TEST_CASE("Unit::Mm with a lead screw converts: 8 mm pitch, 4 mm = half a turn") {
+  MockSpi spi;
+  Driver driver(spi);
+  tmc51x0::DriverConfig cfg{};
+  cfg.mechanical.system_type = tmc51x0::MechanicalSystemType::LeadScrew;
+  cfg.mechanical.lead_screw_pitch_mm = 8.0f;
+  REQUIRE(driver.Initialize(cfg, false).IsOk());
+  REQUIRE(driver.rampControl.SetTargetPosition(4.0f, tmc51x0::Unit::Mm).IsOk());
+  CHECK_EQ(spi.reg(reg::XTARGET), 25600u);  // 200 full steps x 256 / 2
+}
+
+TEST_CASE("Enable / Disable report a failing EN (DRV_ENN) pin; UNSUPPORTED is tolerated") {
+  MockSpi spi;
+  Driver driver(spi);
+  REQUIRE(driver.Initialize(tmc51x0::DriverConfig{}, false).IsOk());
+  spi.gpio_error = tmc51x0::ErrorCode::COMM_ERROR;
+  CHECK(driver.motorControl.Enable().Error() == tmc51x0::ErrorCode::COMM_ERROR);
+  CHECK(driver.motorControl.Disable().Error() == tmc51x0::ErrorCode::COMM_ERROR);
+  spi.gpio_error = tmc51x0::ErrorCode::UNSUPPORTED;  // DRV_ENN hard-wired low
+  CHECK(driver.motorControl.Enable().IsOk());
+  CHECK(driver.motorControl.Disable().IsOk());
+}
+
+TEST_CASE("GetDriverVersion and IsInitialized are public") {
+  MockSpi spi;
+  Driver driver(spi);
+  CHECK(!driver.IsInitialized());
+  CHECK(Driver::GetDriverVersion() != nullptr);
+  CHECK_EQ(Driver::GetDriverVersionMajor(), static_cast<uint8_t>(HF_TMC51X0_VERSION_MAJOR));
 }
 
 TEST_CASE("Degrees convert to microsteps: 180 deg = 100 full steps x 256") {

@@ -78,8 +78,9 @@ speed. The internal oscillator is accurate to about ± 4 %; feed an external clo
 ```
 
 !!! warning "Millimetres need a mechanical system"
-    With `DirectDrive` or `Gearbox`, or a zero pitch, the `Unit::Mm` conversions return 0: a `SetTargetPosition(x,
-    Unit::Mm)` then becomes a move to position 0. Configure `mechanical` before you use millimetres.
+    With `DirectDrive` or `Gearbox`, or a zero pitch, millimetres cannot be converted: the calls that take a
+    `Unit` (targets, speeds, accelerations, `X_COMPARE`, homing) return `INVALID_VALUE` and write nothing.
+    `IsUnitConvertible(Unit::Mm)` tells you in advance. Configure `mechanical` before you use millimetres.
 
 ## Position readback
 

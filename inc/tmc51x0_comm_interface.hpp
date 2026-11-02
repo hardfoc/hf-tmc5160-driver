@@ -2979,7 +2979,6 @@ public:
 
   /**
    * @brief Read NAO (Next Address Output) pin state
-   * @param active Reference to store NAO pin state
    * @return Result<bool> containing true if NAO is active, false otherwise
    *
    * NAO is the output from one TMC5160 that connects to the next
@@ -2996,8 +2995,7 @@ public:
    * @note In UART mode, SD_MODE=0 and SPI_MODE=0 must be set
    */
   Result<bool> GetNaoPin() noexcept {
-    bool active = false;
-    return static_cast<Derived *>(this)->GetNaoPin(active);
+    return static_cast<Derived *>(this)->GetNaoPin();
   }
 
   /**
@@ -3024,14 +3022,14 @@ public:
    * @brief Read a 32-bit register via UART
    * @param address Register address (0x00-0x73)
    * @param value Reference to store the read value
-   * @param node_address UART node address (0-127) for multi-node addressing
+   * @param node_address UART node address (0-255; NODECONF.NODEADDR is 8 bits)
    * @return Result<uint32_t> containing the value or error
    */
   Result<uint32_t> ReadRegister(uint8_t address,
                                 uint8_t node_address = 0) noexcept {
     uint32_t value = 0;
     // Build read request frame (4 bytes)
-    uint8_t node_addr = node_address & 0x7F;
+    uint8_t node_addr = node_address; // full 8-bit NODEADDR (datasheet NODECONF 0x03)
     UartFrame read_request = UartFrame::ReadRequest(node_addr, address);
 
     // Get frame bytes (4 bytes)
@@ -3088,13 +3086,13 @@ public:
    * @brief Write a 32-bit register via UART
    * @param address Register address (0x00-0x73)
    * @param value 32-bit value to write
-   * @param node_address UART node address (0-127) for multi-node addressing
+   * @param node_address UART node address (0-255; NODECONF.NODEADDR is 8 bits)
    * @return Result<void> indicating success or error
    */
   Result<void> WriteRegister(uint8_t address, uint32_t value,
                              uint8_t node_address = 0) noexcept {
     // Build write access frame (8 bytes)
-    uint8_t node_addr = node_address & 0x7F;
+    uint8_t node_addr = node_address; // full 8-bit NODEADDR (datasheet NODECONF 0x03)
     UartFrame write_frame = UartFrame::Write(node_addr, address, value);
 
     // Get frame bytes (8 bytes)
