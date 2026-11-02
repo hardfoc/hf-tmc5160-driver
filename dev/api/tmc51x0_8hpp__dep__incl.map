@@ -1,0 +1,7 @@
+<map id="tmc51x0.hpp" name="tmc51x0.hpp">
+<area shape="rect" id="Node000001" title="Main TMC51x0 stepper motor driver interface and subsystem classes." alt="" coords="154,5,261,31"/>
+<area shape="rect" id="Node000002" href="$tmc51x0__daisy__chain_8hpp.html" title="High&#45;level daisy&#45;chain manager for multiple TMC51x0 drivers (TMC5130 &amp;." alt="" coords="5,79,196,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,40,120,81,117,76,178,36"/>
+<area shape="rect" id="Node000003" href="$tmc51x0__multi__node_8hpp.html" title="High&#45;level multi&#45;node manager for multiple TMC51x0 drivers on UART." alt="" coords="221,79,407,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="237,36,298,76,295,81,234,40"/>
+</map>
