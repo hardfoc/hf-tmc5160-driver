@@ -266,7 +266,7 @@ I (1239) SPI_DaisyChain_Test: [PASS] Driver Initialization: All drivers initiali
 ## Related Documentation
 
 - [UART Multi-Node Test](uart_multi_node_comprehensive_test.md) - UART multi-motor setup
-- [Special Features: Multi-Chip](../../../docs/special_features_multi_chip.md) - Detailed daisy chain guide
+- [Special Features: Multi-Chip](../../../docs/multi-chip.md) - Detailed daisy chain guide
 
 ---
 

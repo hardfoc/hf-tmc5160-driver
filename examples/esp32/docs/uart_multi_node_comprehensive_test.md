@@ -175,9 +175,9 @@ I UART_MultiNode_Test: [PASS] Motor Control via UART
 ## Related Documentation
 
 - [SPI Daisy Chain Test](spi_daisy_chain_comprehensive_test.md) -- SPI multi-motor equivalent
-- [Multi-Chip Communication](../../../docs/special_features_multi_chip.md) -- Detailed UART/SPI daisy chain guide
-- [Communication Interface](../../../docs/special_features_communication_interface.md) -- UART protocol details
-- [Platform Integration](../../../docs/platform_integration.md) -- Implementing `Esp32UART`
+- [Multi-Chip Communication](../../../docs/multi-chip.md) -- Detailed UART/SPI daisy chain guide
+- [Communication Interface](../../../docs/protocols.md) -- UART protocol details
+- [Platform Integration](../../../docs/porting.md) -- Implementing `Esp32UART`
 
 ---
 
