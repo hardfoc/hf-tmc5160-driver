@@ -8512,10 +8512,14 @@ Result<void> TMC51x0<CommType>::Status::VerifySetup() noexcept {
   auto version_result = driver_.io.ReadIcVersion();
   if (version_result.IsOk()) {
     uint8_t version = version_result.Value();
-    if (version == 0x30) {
-      TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Info, "VerifySetup", "IC Version: 0x30 (Matches TMC5160)");
+    // IOIN.VERSION: 0x30 = TMC5160 (TMC5160A datasheet, IOIN 0x04 bits 31..24), 0x11 = TMC5130 (TMC5130A datasheet)
+    if (version == ChipVersion::TMC5160) {
+      TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Info, "VerifySetup", "IC Version: 0x30 (TMC5160)");
+    } else if (version == ChipVersion::TMC5130) {
+      TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Info, "VerifySetup", "IC Version: 0x11 (TMC5130)");
     } else {
-      TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Warn, "VerifySetup", "IC Version MISMATCH: 0x%02X (Expected 0x30)", version);
+      TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Warn, "VerifySetup",
+                        "IC Version MISMATCH: 0x%02X (expected 0x30 TMC5160 or 0x11 TMC5130)", version);
       // If version is 0x00 or 0xFF, it's likely a communication error
       if (version == 0x00 || version == 0xFF) {
         TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Error, "VerifySetup", "CRITICAL: Bus communication likely failed!");

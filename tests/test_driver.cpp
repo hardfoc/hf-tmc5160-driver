@@ -108,6 +108,19 @@ TEST_CASE("TMC5130: IRUN follows the TMC5130 current formula, not GLOBAL_SCALER"
   CHECK_EQ(ihold_irun & 0x1Fu, 3u);
 }
 
+TEST_CASE("TMC5130: VerifySetup accepts version 0x11 without a mismatch warning") {
+  MockSpi spi(tmc51x0::ChipVersion::TMC5130);
+  Driver driver(spi);
+  REQUIRE(driver.Initialize(tmc51x0::DriverConfig{}, false).IsOk());
+  spi.warnings.clear();
+  (void)driver.status.VerifySetup();
+  bool version_warning = false;
+  for (const auto& tag : spi.warnings) {
+    version_warning = version_warning || tag == "VerifySetup";
+  }
+  CHECK(!version_warning);
+}
+
 TEST_CASE("CalculateMotorCurrent keeps the TMC5160 result by default") {
   tmc51x0::MotorSpec spec{};
   uint8_t irun = 0;

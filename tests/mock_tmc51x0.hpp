@@ -13,6 +13,7 @@
 #include <array>
 #include <cstdarg>
 #include <cstdint>
+#include <string>
 #include <utility>
 #include <vector>
 
@@ -64,7 +65,11 @@ public:
   }
   void DelayMs(uint32_t ms) noexcept { elapsed_us += ms * 1000ULL; }
   void DelayUs(uint32_t us) noexcept { elapsed_us += us; }
-  void DebugLog(int /*level*/, const char* /*tag*/, const char* /*format*/, va_list /*args*/) noexcept {}
+  void DebugLog(int level, const char* tag, const char* /*format*/, va_list /*args*/) noexcept {
+    if (level == static_cast<int>(tmc51x0::LogLevel::Warn)) {
+      warnings.emplace_back(tag != nullptr ? tag : "");
+    }
+  }
 
   uint32_t& reg(uint8_t addr) noexcept { return regs_[addr & 0x7F]; }
 
@@ -85,6 +90,7 @@ public:
   std::vector<size_t> lengths;
   std::vector<std::pair<uint8_t, uint32_t>> writes;
   std::vector<std::pair<tmc51x0::TMC51x0CtrlPin, tmc51x0::GpioSignal>> gpio_sets;
+  std::vector<std::string> warnings;  ///< Tags of the Warn-level log lines
 
 private:
   std::array<uint32_t, 128> regs_{};
