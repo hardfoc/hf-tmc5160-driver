@@ -735,7 +735,7 @@ public:
     constexpr gpio_num_t UNMAPPED_PIN = static_cast<gpio_num_t>(-1);
     if (gpio_pin == UNMAPPED_PIN) {
       ESP_LOGW(BUS_TAG, "Pin not mapped: %d", static_cast<int>(pin));
-      return tmc51x0::Result<void>(tmc51x0::ErrorCode::INVALID_VALUE);
+      return tmc51x0::Result<void>(tmc51x0::ErrorCode::UNSUPPORTED);  // not wired: the port contract
     }
 
     // If user is trying to set SPI_MODE or SD_MODE pins, configure them as OUTPUT
@@ -1156,7 +1156,7 @@ public:
     }
     gpio_num_t gpio = GetPinMapping(pin);
     constexpr gpio_num_t UNMAPPED = static_cast<gpio_num_t>(-1);
-    if (gpio == UNMAPPED) return tmc51x0::Result<void>(tmc51x0::ErrorCode::INVALID_VALUE);
+    if (gpio == UNMAPPED) return tmc51x0::Result<void>(tmc51x0::ErrorCode::UNSUPPORTED);  // not wired
 
     bool level = (signal == tmc51x0::GpioSignal::ACTIVE)
                      ? active_levels_.GetActiveLevel(pin)
