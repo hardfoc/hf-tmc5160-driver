@@ -58,7 +58,7 @@ public:
 
   tmc51x0::Result<void> GpioSet(tmc51x0::TMC51x0CtrlPin pin, tmc51x0::GpioSignal signal) noexcept {
     gpio_sets.emplace_back(pin, signal);
-    return tmc51x0::Result<void>();
+    return tmc51x0::Result<void>(gpio_error);
   }
   tmc51x0::Result<tmc51x0::GpioSignal> GpioRead(tmc51x0::TMC51x0CtrlPin /*pin*/) noexcept {
     return tmc51x0::Result<tmc51x0::GpioSignal>(tmc51x0::GpioSignal::INACTIVE);
@@ -85,6 +85,7 @@ public:
   }
 
   uint8_t status{0};
+  tmc51x0::ErrorCode gpio_error{tmc51x0::ErrorCode::OK};  ///< What GpioSet() returns
   int transfers{0};
   unsigned long long elapsed_us{0};
   std::vector<size_t> lengths;

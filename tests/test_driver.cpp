@@ -181,6 +181,26 @@ TEST_CASE("Unit::Mm with a lead screw converts: 8 mm pitch, 4 mm = half a turn")
   CHECK_EQ(spi.reg(reg::XTARGET), 25600u);  // 200 full steps x 256 / 2
 }
 
+TEST_CASE("Enable / Disable report a failing EN (DRV_ENN) pin; UNSUPPORTED is tolerated") {
+  MockSpi spi;
+  Driver driver(spi);
+  REQUIRE(driver.Initialize(tmc51x0::DriverConfig{}, false).IsOk());
+  spi.gpio_error = tmc51x0::ErrorCode::COMM_ERROR;
+  CHECK(driver.motorControl.Enable().Error() == tmc51x0::ErrorCode::COMM_ERROR);
+  CHECK(driver.motorControl.Disable().Error() == tmc51x0::ErrorCode::COMM_ERROR);
+  spi.gpio_error = tmc51x0::ErrorCode::UNSUPPORTED;  // DRV_ENN hard-wired low
+  CHECK(driver.motorControl.Enable().IsOk());
+  CHECK(driver.motorControl.Disable().IsOk());
+}
+
+TEST_CASE("GetDriverVersion and IsInitialized are public") {
+  MockSpi spi;
+  Driver driver(spi);
+  CHECK(!driver.IsInitialized());
+  CHECK(Driver::GetDriverVersion() != nullptr);
+  CHECK_EQ(Driver::GetDriverVersionMajor(), static_cast<uint8_t>(HF_TMC51X0_VERSION_MAJOR));
+}
+
 TEST_CASE("Degrees convert to microsteps: 180 deg = 100 full steps x 256") {
   MockSpi spi;
   Driver driver(spi);

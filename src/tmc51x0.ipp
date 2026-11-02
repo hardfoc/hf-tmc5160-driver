@@ -2478,7 +2478,15 @@ Result<void> TMC51x0<CommType>::MotorControl::Enable() noexcept {
 
   // Enable via EN pin GPIO (EN is active LOW to enable, so set to ACTIVE/LOW to enable power stage)
   // This must be done first to enable the power stage
-  driver_.comm_.GpioSet(TMC51x0CtrlPin::EN, GpioSignal::ACTIVE);
+  // A port without an EN mapping returns UNSUPPORTED (DRV_ENN hard-wired low): carry on with TOFF. Any other
+  // failure means the power stage may still be off (DRV_ENN high, TMC5160A datasheet pin table), so report it.
+  {
+    auto en_result = driver_.comm_.GpioSet(TMC51x0CtrlPin::EN, GpioSignal::ACTIVE);
+    if (!en_result && en_result.Error() != ErrorCode::UNSUPPORTED) {
+      TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Error, "MotorControl::Enable", "Setting EN (DRV_ENN) failed");
+      return en_result;
+    }
+  }
 
   // Verify enable status by reading IOIN register (shows actual pin state as seen by TMC5160)
   auto io_result = driver_.comm_.ReadRegister(Registers::IOIN, driver_.GetCommAddress());
@@ -2518,6 +2526,10 @@ template <typename CommType>
 Result<void> TMC51x0<CommType>::MotorControl::Disable() noexcept {
   TMC51X0_LOG_DEBUG(driver_.comm_, LogLevel::Info, "TMC5160", "MotorControl::Disable()");
 
+  // Disable via EN pin GPIO first (DRV_ENN high switches the power stage off), so the bridges go off even when
+  // the bus fails below. UNSUPPORTED means the port has no EN mapping; TOFF = 0 then does the job.
+  auto en_result = driver_.comm_.GpioSet(TMC51x0CtrlPin::EN, GpioSignal::INACTIVE);
+
   // Disable via CHOPCONF register (set toff = 0)
   auto chopconf_value_result = driver_.comm_.ReadRegister(Registers::CHOPCONF, driver_.GetCommAddress());
   if (!chopconf_value_result) {
@@ -2529,12 +2541,11 @@ Result<void> TMC51x0<CommType>::MotorControl::Disable() noexcept {
   chopconf.bits.toff = 0; // Disable driver
 
   auto write_result = driver_.comm_.WriteRegister(Registers::CHOPCONF, chopconf.value, driver_.GetCommAddress());
-
-  // Disable via EN pin GPIO (EN is active LOW to enable, so set to INACTIVE/HIGH to disable power stage)
-  driver_.comm_.GpioSet(TMC51x0CtrlPin::EN, GpioSignal::INACTIVE);
-
   if (!write_result) {
     return write_result;
+  }
+  if (!en_result && en_result.Error() != ErrorCode::UNSUPPORTED) {
+    return en_result;
   }
   return Result<void>();
 }
