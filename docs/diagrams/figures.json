@@ -1,0 +1,14 @@
+{
+  "driver-layers": {
+    "title": "Three layers, one of them yours",
+    "alt": "Layer diagram: the application calls the hardware-agnostic TMC51x0 driver and its subsystems, which use the SPI or UART communication interface, which calls the platform port you write, which drives the SPI bus or single-wire UART and the DRV_ENN pin of the TMC5160 or TMC5130.",
+    "description": "From top to bottom. Your application talks to one TMC51x0<Comm> object per chip, whose public members are the chip's subsystems (listed from inc/tmc51x0.hpp). Each subsystem turns a call in physical units into register reads and writes. The communication interface (SpiCommInterface or UartCommInterface in inc/tmc51x0_comm_interface.hpp) builds the 40-bit SPI datagrams or CRC-checked UART frames, handles daisy-chain padding and node addresses. The platform port is the only code you write: the methods the interface calls on it, read from the header. Below it is the TMC5160 or TMC5130.",
+    "profile": "overview",
+    "width": 1200,
+    "source": "docs/diagrams/figures/driver-layers.py",
+    "sources": [
+      "inc/tmc51x0.hpp:TMC51x0 members",
+      "inc/tmc51x0_comm_interface.hpp:SpiCommInterface"
+    ]
+  }
+}

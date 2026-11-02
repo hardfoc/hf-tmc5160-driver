@@ -18,11 +18,7 @@ metadata:
 apps:
   # Internal Ramp Test Suites
   internal_ramp_comprehensive_test:
-    description: >
-      Comprehensive internal ramp testing suite - combines core, motor control,
-      ramp control, diagnostics, and protection tests into a single wholesome
-      test suite for SPI internal ramp mode (single motor, with encoder and
-      reference switches)
+    description: "Internal-ramp test suite over SPI: core, motor control, ramp control, diagnostics and protection (one motor, encoder and reference switches)"
     source_file: "internal_ramp_test_suites/internal_ramp_comprehensive_test.cpp"
     category: "testing"
     idf_versions: ["release/v5.5"]
@@ -31,9 +27,7 @@ apps:
     featured: true
 
   spi_daisy_chain_comprehensive_test:
-    description: >
-      Comprehensive SPI daisy chain testing suite - SPI daisy chain setup,
-      position management, multi-motor coordination (set TEST_CHAIN_LENGTH to match your hardware)
+    description: "SPI daisy-chain test suite: chain setup, positions and multi-motor moves (set TEST_CHAIN_LENGTH to your hardware)"
     source_file: "internal_ramp_test_suites/spi_daisy_chain_comprehensive_test.cpp"
     category: "testing"
     idf_versions: ["release/v5.5"]
@@ -42,10 +36,7 @@ apps:
     featured: false
 
   uart_multi_node_comprehensive_test:
-    description: >
-      UART communication test suite - basic register access, node addressing,
-      send delay configuration, and motor control over UART single-wire interface
-      (set TEST_NODE_COUNT to match your hardware, default: 1)
+    description: "UART single-wire test suite: register access, node addressing, send delay and motion (set TEST_NODE_COUNT, default 1)"
     source_file: "internal_ramp_test_suites/uart_multi_node_comprehensive_test.cpp"
     category: "testing"
     idf_versions: ["release/v5.5"]
@@ -54,7 +45,7 @@ apps:
     featured: false
 
   internal_ramp_sinusoidal:
-    description: "Sinusoidal motion pattern example"
+    description: "Sinusoidal back-and-forth motion with the internal ramp generator"
     source_file: "internal_ramp_test_suites/internal_ramp_sinusoidal.cpp"
     category: "motor_control"
     idf_versions: ["release/v5.5"]
@@ -64,10 +55,7 @@ apps:
 
   # Fatigue Testing Application (Unified - supports both StallGuard2 and encoder)
   fatigue_test_espnow_unit:
-    description: >
-      Unified fatigue test unit with ESP-NOW and UART support, dual bounds
-      detection (StallGuard2/Encoder) - replaces fatigue_test_stallguard and
-      fatigue_test_encoder
+    description: "Fatigue test unit controlled over ESP-NOW or UART, with StallGuard2 or encoder bounds detection"
     source_file: "fatigue_test_espnow/main.cpp"
     category: "motor_control"
     idf_versions: ["release/v5.5"]
@@ -77,10 +65,7 @@ apps:
 
   # ESP-NOW Protocol Test Unit (No Motor Control)
   espnow_protocol_test_unit:
-    description: >
-      Minimal ESP-NOW protocol test unit - receives commands and responds with
-      protocol messages, but does NOT control motors (useful for testing ESP-NOW
-      communication without hardware dependencies)
+    description: "ESP-NOW protocol test unit: answers protocol messages without driving a motor"
     source_file: "fatigue_test_espnow/espnow_protocol_test_unit.cpp"
     category: "testing"
     idf_versions: ["release/v5.5"]
@@ -90,7 +75,7 @@ apps:
 
   # Tuning Tools
   stallguard_tuning:
-    description: "Tool to automatically tune StallGuard2 Threshold (SGT) for sensorless homing"
+    description: "Finds the StallGuard2 threshold (SGT) for sensorless homing"
     source_file: "tuning/stallguard_tuning.cpp"
     category: "motor_control"
     idf_versions: ["release/v5.5"]
@@ -99,7 +84,7 @@ apps:
     featured: true
 
   bounds_finding_test:
-    description: "Standalone bounds finding test - searches for mechanical limits, homes to center, reports results"
+    description: "Finds the mechanical limits, homes to the centre and reports the travel"
     source_file: "tuning/bounds_finding_test.cpp"
     category: "motor_control"
     idf_versions: ["release/v5.5"]
@@ -109,9 +94,7 @@ apps:
 
   # Sensor Examples
   abn_encoder_reader:
-    description: >
-      ABN encoder position reader - Continuously reads and displays encoder
-      position from ABN incremental encoder
+    description: "Reads and prints the position of an ABN incremental encoder"
     source_file: "sensors/abn_encoder_reader.cpp"
     category: "motor_control"
     idf_versions: ["release/v5.5"]
@@ -121,7 +104,7 @@ apps:
 
   # Diagnostics
   i2c_scan:
-    description: "I2C bus scanner for OLED UI board wiring (SDA=GPIO5, SCL=GPIO23)"
+    description: "I2C bus scanner for the OLED UI board wiring (SDA = GPIO5, SCL = GPIO23)"
     source_file: "diagnostics/i2c_scan.cpp"
     category: "diagnostics"
     idf_versions: ["release/v5.5"]

@@ -167,3 +167,23 @@ void encoder(Driver& driver) {
   }
   // --8<-- [end:encoder]
 }
+
+void six_point_ramp(Driver& driver) {
+  // --8<-- [start:ramp]
+  driver.rampControl.SetRampSpeeds(0.05f, 0.1f, 1.0f, Unit::RevPerSec);   // VSTART, VSTOP, V1
+  driver.rampControl.SetFirstAcceleration(8.0f, Unit::RevPerSec);         // A1: VSTART .. V1
+  driver.rampControl.SetAccelerations(4.0f, 4.0f, Unit::RevPerSec);       // AMAX, DMAX: V1 .. VMAX
+  driver.rampControl.SetFinalDeceleration(8.0f, Unit::RevPerSec);         // D1: V1 .. VSTOP (never 0)
+  driver.rampControl.SetMaxSpeed(3.0f, Unit::RevPerSec);                  // VMAX
+  // --8<-- [end:ramp]
+}
+
+void millimetres(Driver& driver) {
+  // --8<-- [start:mm]
+  // With cfg.mechanical = LeadScrew, 8 mm pitch, given to Initialize():
+  driver.rampControl.SetMaxSpeed(40.0f, Unit::Mm);            // mm/s: 5 rev/s
+  driver.rampControl.MoveRelative(12.5f, Unit::Mm);           // 1.5625 rev
+  const float where_mm = driver.rampControl.GetCurrentPosition(Unit::Mm).ValueOr(0.0f);
+  std::printf("at %.2f mm\n", where_mm);
+  // --8<-- [end:mm]
+}

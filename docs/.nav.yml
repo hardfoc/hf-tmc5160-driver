@@ -1,22 +1,27 @@
 ---
-# Site navigation (mkdocs-awesome-nav): the tabs and sidebar, in this order.
+# Site navigation (mkdocs-awesome-nav): the tabs and their pages, in reading order.
 nav:
   - Home: index.md
-  - "Installation": installation.md
-  - "Quick Start": quickstart.md
-  - "Hardware Setup": hardware_setup.md
-  - "Platform Integration": platform_integration.md
-  - "CMake Integration": cmake_integration.md
-  - "Configuration": configuration.md
-  - "API Reference": api_reference.md
-  - "Examples": examples.md
-  - "Troubleshooting": troubleshooting.md
-  - "Unit Conversions": special_features_unit_conversions.md
-  - "Motor Setup from Specifications": special_features_motor_setup.md
-  - "Sensorless Homing": special_features_sensorless_homing.md
-  - "Advanced Configuration": special_features_advanced_configuration.md
-  - "Multi-Chip Communication": special_features_multi_chip.md
-  - "TMC5130 Support": tmc5130_support.md
-  - "Communication Interface": special_features_communication_interface.md
-  - "GPIO Pin Configuration": gpio_pin_configuration.md
-  - "Register Access": special_features_register_access.md
+  - Get started:
+      - Quickstart: quickstart.md
+      - Installation: installation.md
+      - Hardware: hardware.md
+  - Concepts:
+      - Architecture: architecture.md
+      - Motion and units: motion-and-units.md
+      - Current and chopper: current-and-chopper.md
+      - StallGuard and homing: stallguard-and-homing.md
+      - Multi-chip: multi-chip.md
+      - Communication protocols: protocols.md
+      - TMC5130: tmc5130.md
+  - Guides:
+      - API guide: api-guide.md
+      - Configuration: configuration.md
+      - Porting: porting.md
+      - Examples: examples.md
+      - Troubleshooting: troubleshooting.md
+  - Reference:
+      - API reference: api-reference.md
+      - Testing and CI: testing.md
+      - Figures: diagrams/index.md
+      - Changelog: changelog.md

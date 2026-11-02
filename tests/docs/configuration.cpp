@@ -24,7 +24,7 @@ tmc51x0::DriverConfig board_config() {
   cfg.power_stage.bbm_time_ns = 100;                // break-before-make
   cfg.power_stage.over_temp_protection = tmc51x0::OverTempProtection::Temp150C;
 
-  // Chopper: SpreadCycle with the datasheet's starting values, 256 microsteps.
+  // Chopper: SpreadCycle with the driver's default timing, 256 microsteps.
   cfg.chopper.mode = tmc51x0::ChopperMode::SPREAD_CYCLE;
   cfg.chopper.toff = 5;
   cfg.chopper.tbl = 2;

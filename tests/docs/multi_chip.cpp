@@ -25,15 +25,19 @@ void spi_chain(MySpi& spi, const tmc51x0::DriverConfig& cfg) {
 
 void uart_nodes(MyUart& uart, const tmc51x0::DriverConfig& cfg) {
   // --8<-- [start:uart-nodes]
-  // First chip: NAI tied low, so it answers at address 0 after power-up.
-  tmc51x0::TMC51x0<MyUart> first(uart, 0, 0);
-  first.communication.ConfigureUartNodeAddress(1, 2);  // NODEADDR = 1, SENDDELAY >= 2 on a shared bus
+  // After power-up the first chip (NAI tied low) answers at address 0; the others answer at 1.
+  tmc51x0::TMC51x0<MyUart> first(uart);
+  first.uartConfig.ConfigureUartNodeAddress(127, 2);   // NODECONF via address 0; SENDDELAY 2 for a shared bus
+  first.io.SetSdoCfg0Polarity(false);                  // NAO low: the next chip now answers at 0
 
-  // Second chip: its NAI is driven by the first chip's NAO; it now answers at 0.
-  tmc51x0::TMC51x0<MyUart> second(uart, 0, 0);
-  second.communication.ConfigureUartNodeAddress(2, 2);
+  tmc51x0::TMC51x0<MyUart> second(uart);
+  second.uartConfig.ConfigureUartNodeAddress(126, 2);
+  second.io.SetSdoCfg0Polarity(false);
 
-  first.Initialize(cfg, false);
-  second.Initialize(cfg, false);
+  for (auto* node : {&first, &second}) {
+    if (!node->Initialize(cfg, false)) {
+      std::printf("node %u did not initialise\n", node->communication.GetUartNodeAddress());
+    }
+  }
   // --8<-- [end:uart-nodes]
 }
