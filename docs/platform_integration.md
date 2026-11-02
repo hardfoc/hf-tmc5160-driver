@@ -1,12 +1,3 @@
----
-layout: default
-title: "🔧 Platform Integration"
-description: "Implement the CRTP communication interface for your platform"
-nav_order: 4
-parent: "📚 Documentation"
-permalink: /docs/platform_integration/
----
-
 # Platform Integration Guide
 
 This guide explains how to implement the hardware abstraction interface for the TMC51x0 driver (TMC5130 & TMC5160) on your platform.

@@ -1,12 +1,3 @@
----
-layout: default
-title: "🔗 Multi-Chip Communication"
-description: "SPI daisy chaining and UART multi-node addressing for TMC5160"
-nav_order: 12
-parent: "📚 Documentation"
-permalink: /docs/special_features_multi_chip/
----
-
 # Multi-Chip Communication
 
 The TMC51x0 driver (TMC5130 & TMC5160) supports multiple chips on a single communication bus through two methods:

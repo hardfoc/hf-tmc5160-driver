@@ -1,12 +1,3 @@
----
-layout: default
-title: "SPI Daisy Chain Test"
-description: "Comprehensive testing for TMC5160 SPI daisy chain setup and multi-motor coordination"
-nav_order: 6
-parent: "ESP32 Examples"
-permalink: /docs/esp32-examples/spi-daisy-chain-test/
----
-
 # SPI Daisy Chain Comprehensive Test
 
 ## Overview

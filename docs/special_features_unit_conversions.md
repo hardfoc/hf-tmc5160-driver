@@ -1,12 +1,3 @@
----
-layout: default
-title: "📐 Unit Conversions"
-description: "Converting between physical units and driver steps"
-nav_order: 9
-parent: "📚 Documentation"
-permalink: /docs/special_features_unit_conversions/
----
-
 # Unit Conversions
 
 The TMC51x0 driver (TMC5130 & TMC5160) works internally with steps, but most applications need to work with physical units like millimeters, degrees, RPM, or revolutions per second. This guide shows how to use the unit conversion functions and unit-aware API to work with intuitive units.

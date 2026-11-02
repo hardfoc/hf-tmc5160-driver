@@ -1,12 +1,3 @@
----
-layout: default
-title: "🔧 TMC5130 Support"
-description: "Automatic detection and support for TMC5130 and TMC5160 chips"
-nav_order: 12
-parent: "📚 Documentation"
-permalink: /docs/tmc5130_support/
----
-
 # TMC5130 Support
 
 The driver automatically detects and supports both TMC5130 and TMC5160 chips.

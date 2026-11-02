@@ -244,7 +244,7 @@ The system uses FreeRTOS tasks for concurrent operation:
 
 ## Data Flow
 
-### Command Flow (ESP-NOW → Motor)
+### Command Flow (ESP-NOW Motor)
 
 ```
 Remote Controller
@@ -285,7 +285,7 @@ TMC51x0 Driver (SPI)
 Motor Hardware
 ```
 
-### Status Flow (Motor → Remote)
+### Status Flow (Motor Remote)
 
 ```
 motion_control_task() or bounds_finding_task()

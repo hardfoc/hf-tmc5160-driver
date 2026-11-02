@@ -1,12 +1,3 @@
----
-layout: default
-title: "UART Communication Test"
-description: "UART single-wire communication testing for TMC51x0 (single and multi-node)"
-nav_order: 7
-parent: "ESP32 Examples"
-permalink: /docs/esp32-examples/uart-communication-test/
----
-
 # UART Communication Test Suite
 
 ## Overview

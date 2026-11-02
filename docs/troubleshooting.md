@@ -1,12 +1,3 @@
----
-layout: default
-title: "🐛 Troubleshooting"
-description: "Common issues and solutions for the TMC51x0 driver (TMC5130 & TMC5160)"
-nav_order: 8
-parent: "📚 Documentation"
-permalink: /docs/troubleshooting/
----
-
 # Troubleshooting
 
 This guide helps you diagnose and resolve common issues when using the TMC51x0 driver (TMC5130 & TMC5160).

@@ -1,12 +1,3 @@
----
-layout: default
-title: "🔧 Advanced Configuration"
-description: "Advanced features: CoolStep, dcStep, freewheeling, and more"
-nav_order: 12
-parent: "📚 Documentation"
-permalink: /docs/special_features_advanced_configuration/
----
-
 # Advanced Configuration
 
 This guide covers advanced TMC51x0 (TMC5130 & TMC5160) features including CoolStep current reduction, dcStep automatic commutation, freewheeling modes, reference switches, and microstep lookup tables.

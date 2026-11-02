@@ -1,12 +1,3 @@
----
-layout: default
-title: "Examples"
-description: "Complete example walkthroughs for the TMC51x0 driver (TMC5130 & TMC5160)"
-nav_order: 7
-parent: "📚 Documentation"
-permalink: /docs/examples/
----
-
 # Examples
 
 This guide walks through progressively more advanced uses of the TMC51x0 driver.

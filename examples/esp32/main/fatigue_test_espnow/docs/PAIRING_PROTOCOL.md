@@ -73,7 +73,7 @@ The secret is parsed at compile time into the `PAIRING_SECRET` byte array for HM
 
 ## Message Structures
 
-### PairingRequest (Controller → Broadcast)
+### PairingRequest (Controller Broadcast)
 
 ```cpp
 struct PairingRequestPayload {
@@ -87,7 +87,7 @@ struct PairingRequestPayload {
 
 **Size**: 18 bytes
 
-### PairingResponse (Tester → Controller)
+### PairingResponse (Tester Controller)
 
 ```cpp
 struct PairingResponsePayload {
@@ -101,7 +101,7 @@ struct PairingResponsePayload {
 
 **Size**: 47 bytes
 
-### PairingConfirm (Controller → Tester)
+### PairingConfirm (Controller Tester)
 
 ```cpp
 struct PairingConfirmPayload {
@@ -113,7 +113,7 @@ struct PairingConfirmPayload {
 
 **Size**: 23 bytes
 
-### PairingReject (Tester → Controller)
+### PairingReject (Tester Controller)
 
 ```cpp
 struct PairingRejectPayload {

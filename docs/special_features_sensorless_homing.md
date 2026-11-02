@@ -1,12 +1,3 @@
----
-layout: default
-title: "🏠 Sensorless Homing"
-description: "Homing without endstops using StallGuard2"
-nav_order: 11
-parent: "📚 Documentation"
-permalink: /docs/special_features_sensorless_homing/
----
-
 # Sensorless Homing
 
 The TMC51x0 (TMC5130 & TMC5160) supports sensorless homing using StallGuard2 stall detection. This allows you to home the motor without physical endstop switches by detecting when the motor stalls against a mechanical stop.

@@ -1,12 +1,3 @@
----
-layout: default
-title: "🔌 Hardware Setup"
-description: "Hardware wiring and connection guide for the TMC51x0 (TMC5130 & TMC5160)"
-nav_order: 3
-parent: "📚 Documentation"
-permalink: /docs/hardware_setup/
----
-
 # Hardware Setup
 
 ![TMC5160 SPI daisy-chain topology and 7-phase motion ramp profile](assets/tmc5160-daisy-ramp.svg)

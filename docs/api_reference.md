@@ -1,12 +1,3 @@
----
-layout: default
-title: "📖 API Reference"
-description: "Complete API documentation for the TMC51x0 driver (TMC5130 & TMC5160)"
-nav_order: 6
-parent: "📚 Documentation"
-permalink: /docs/api_reference/
----
-
 # API Reference
 
 Complete reference documentation for all public methods and types in the TMC51x0 driver (TMC5130 & TMC51x0).
@@ -290,7 +281,7 @@ Driver status monitoring and diagnostics subsystem.
 | `GetLostSteps()` | `Result<uint32_t> GetLostSteps() noexcept` | `Result<uint32_t>` containing the value or error | Get lost steps counter (dcStep mode only) |
 | `GetChipVersion()` | `uint8_t GetChipVersion() const noexcept` | Chip version (0x11 = TMC5130, 0x30 = TMC51x0) | Get detected chip version |
 
-## Tuning Subsystem ⭐
+## Tuning Subsystem
 
 Automatic parameter tuning for optimal driver performance.
 
@@ -1374,7 +1365,7 @@ Free functions for converting between physical units and driver steps.
 
 The TMC51x0 driver provides comprehensive coverage of all chipset features. This section summarizes the implementation status and available features.
 
-### Core Functionality: 100% ✅
+### Core Functionality: 100%
 
 - **Ramp Control**: Complete - positioning, velocity, hold modes with configurable acceleration profiles
 - **Current Control**: Complete - run/hold currents with global scaler
@@ -1384,7 +1375,7 @@ The TMC51x0 driver provides comprehensive coverage of all chipset features. This
 - **dcStep**: Complete - automatic commutation configuration
 - **Protection**: Complete - short circuit, overtemperature, overvoltage protection
 
-### Advanced Features: 100% ✅
+### Advanced Features: 100%
 
 - **Diagnostics**: Complete - access to all read-only diagnostic registers
   - `TSTEP` - Actual time between microsteps

@@ -1,12 +1,3 @@
----
-layout: default
-title: "⚙️ CMake Integration"
-description: "How to integrate the TMC51x0 driver into your CMake project"
-nav_order: 5
-parent: "📚 Documentation"
-permalink: /docs/cmake_integration/
----
-
 # TMC51x0 — CMake Integration Guide
 
 > **Build contract architecture and templates:** See the main [Documentation](index.md) for integration details.

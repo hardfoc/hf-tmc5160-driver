@@ -1,12 +1,3 @@
----
-layout: default
-title: "🛠️ Installation"
-description: "Installation and build instructions for the TMC51x0 driver (TMC5130 & TMC5160)"
-nav_order: 1
-parent: "📚 Documentation"
-permalink: /docs/installation/
----
-
 # Installation
 
 This guide covers how to obtain, build, and verify the TMC51x0 driver (TMC5130 & TMC5160) library.

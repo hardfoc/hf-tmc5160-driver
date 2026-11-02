@@ -1,9 +1,6 @@
 [submodule "examples/esp32/scripts"]
 	path = examples/esp32/scripts
 	url = https://github.com/hardfoc/hf-espidf-project-tools.git
-[submodule "_config/doxygen-extensions/doxygen-awesome-css"]
-	path = _config/doxygen-extensions/doxygen-awesome-css
-	url = https://github.com/jothepro/doxygen-awesome-css.git
 [submodule "esp32_remote_controller"]
 	path = examples/esp32_remote_controller
 	url = https://github.com/N3b3x/esp32-simple-remote-controller.git

@@ -1,12 +1,3 @@
----
-layout: default
-title: "⚙️ Motor Setup from Specifications"
-description: "High-level motor configuration from physical parameters"
-nav_order: 10
-parent: "📚 Documentation"
-permalink: /docs/special_features_motor_setup/
----
-
 # Motor Setup from Specifications
 
 Instead of manually calculating `irun`, `ihold`, and `global_scaler` values, you can use `SetupMotorFromSpec()` to automatically configure the driver from your motor's physical specifications.

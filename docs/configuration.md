@@ -1,12 +1,3 @@
----
-layout: default
-title: "⚙️ Configuration"
-description: "Configuration options for the TMC51x0 driver (TMC5130 & TMC5160)"
-nav_order: 5
-parent: "📚 Documentation"
-permalink: /docs/configuration/
----
-
 # Configuration
 
 This guide covers all configuration options available for the TMC51x0 driver (TMC5130 & TMC5160).

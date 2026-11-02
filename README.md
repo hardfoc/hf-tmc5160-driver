@@ -1,11 +1,3 @@
----
-layout: default
-title: "HardFOC TMC51x0 Driver (TMC5130 & TMC5160)"
-description: "C++17 hardware-agnostic driver for Trinamic TMC51x0 stepper motor controllers (TMC5130 & TMC5160) with advanced features"
-nav_order: 1
-permalink: /
----
-
 # HF-TMC51x0 Driver (TMC5130 & TMC5160)
 **C++17 hardware-agnostic driver for Trinamic TMC51x0 stepper motor controllers (TMC5130 & TMC5160) with advanced features**
 
@@ -14,18 +6,18 @@ permalink: /
 [![CI](https://github.com/hardfoc/hf-tmc5160-driver/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main)](https://github.com/hardfoc/hf-tmc5160-driver/actions/workflows/esp32-examples-build-ci.yml)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://hardfoc.github.io/hf-tmc5160-driver/)
 
-## 📚 Table of Contents
-1. [Overview](#-overview)
-2. [Features](#-features)
-3. [Quick Start](#-quick-start)
-4. [Installation](#-installation)
-5. [API Reference](#-api-reference)
-6. [Examples](#-examples)
-7. [Documentation](#-documentation)
-8. [Contributing](#-contributing)
-9. [License](#-license)
+## Table of Contents
+1. [Overview](#overview)
+2. [Features](#features)
+3. [Quick Start](#quick-start)
+4. [Installation](#installation)
+5. [API Reference](#api-reference)
+6. [Examples](#examples)
+7. [Documentation](#documentation)
+8. [Contributing](#contributing)
+9. [License](#license)
 
-## 📦 Overview
+## Overview
 
 > **📖 [📚🌐 Live Complete Documentation](https://hardfoc.github.io/hf-tmc5160-driver/)** -
 > Interactive guides, examples, and step-by-step tutorials
@@ -80,7 +72,7 @@ overhead** while maintaining complete platform independence.
 - **Dual Chip Support**: Automatically detects and supports both TMC5130 and TMC5160 chips
 - **Modern C++17**: Type-safe API with RAII principles and compile-time optimizations
 
-### 🔀 Chip Compatibility
+### Chip Compatibility
 
 The driver targets the entire TMC51x0 family with a single class. Chip-specific features
 degrade gracefully with `ErrorCode::UNSUPPORTED` when called on a chip that lacks them.
@@ -101,9 +93,9 @@ degrade gracefully with `ErrorCode::UNSUPPORTED` when called on a chip that lack
 Chip detection is automatic during `Initialize()`. See
 [docs/tmc5130_support.md](docs/tmc5130_support.md) for the complete differences list.
 
-## ✨ Features
+## Features
 
-### 🎯 Core Motor Control
+### Core Motor Control
 
 #### RampControl Subsystem
 - ✅ **Positioning Mode**: Precise position control with configurable acceleration profiles
@@ -122,7 +114,7 @@ Chip detection is automatic during `Initialize()`. See
 - ✅ **Mode Switching**: Automatic switching between stealthChop and spreadCycle based on velocity
 - ✅ **Freewheeling**: Automatic freewheeling when motor is stopped
 
-### 🔍 Diagnostics & Tuning
+### Diagnostics & Tuning
 
 #### Status Subsystem (`driver.status`)
 - ✅ **Status Monitoring**: Comprehensive driver status (overtemperature, short circuit, etc.)
@@ -141,7 +133,7 @@ Chip detection is automatic during `Initialize()`. See
 - ✅ **Comprehensive Results**: Returns detailed tuning results including actual achievable velocities
 - ✅ **Target Velocity Priority**: Optimizes SGT primarily for your most important operating speed
 
-### 🏠 Homing & Positioning
+### Homing & Positioning
 
 #### Homing Subsystem (`driver.homing`)
 - ✅ **Sensorless Homing**: Endstop-free homing using StallGuard2 stall detection
@@ -151,7 +143,7 @@ Chip detection is automatic during `Initialize()`. See
 - ✅ **Automatic Settings Caching**: Preserves and restores driver settings during homing
 - ✅ **Cancel Callback**: Abort homing mid-operation via user-provided callback
 
-### 🔄 Encoder Integration
+### Encoder Integration
 
 #### Encoder Subsystem
 - ✅ **Closed-Loop Control**: Encoder feedback for position verification
@@ -159,14 +151,14 @@ Chip detection is automatic during `Initialize()`. See
 - ✅ **Automatic Compensation**: Optional automatic position correction
 - ✅ **Encoder Configuration**: Flexible encoder setup (AB, ABZ, SPI, etc.)
 
-### 🛡️ Protection Systems
+### Protection Systems
 
 #### PowerStage Subsystem (`driver.powerStage`)
 - ✅ **Short Circuit Protection**: Configurable S2VS and S2G voltage thresholds
 - ✅ **Power Stage Configuration**: MOSFET drive strength, break-before-make timing
 - ✅ **Overtemperature Protection**: Automatic shutdown on overtemperature (monitored via `driver.status`)
 
-### 🔗 Multi-Chip Communication
+### Multi-Chip Communication
 
 #### Communication Subsystem
 - ✅ **SPI Daisy Chaining**: Connect multiple TMC51x0 chips on a single SPI bus
@@ -179,7 +171,7 @@ Chip detection is automatic during `Initialize()`. See
   - `TMC51x0MultiNode` helper class for multi-device management
 - ✅ **Automatic Detection**: Chip version detection (TMC5130 vs TMC5160)
 
-### ⚙️ Advanced Features
+### Advanced Features
 
 - ✅ **CoolStep**: Automatic current reduction when load is low for power efficiency
 - ✅ **dcStep**: Automatic commutation for DC motor-like operation
@@ -192,7 +184,7 @@ Chip detection is automatic during `Initialize()`. See
 - ✅ **Factory Configuration**: Read factory calibration and configuration data
 - ✅ **Motor Setup from Specs**: High-level configuration from physical motor parameters
 
-### 🏗️ Platform & Architecture
+### Platform & Architecture
 
 - ✅ **Hardware Agnostic**: SPI or UART interface for complete platform independence
 - ✅ **CRTP Design**: Zero-overhead compile-time polymorphism
@@ -201,7 +193,7 @@ Chip detection is automatic during `Initialize()`. See
 - ✅ **Complete Register Coverage**: All 47 registers (0x00-0x73) with 100+ public API methods
 - ✅ **Subsystem Organization**: Logical grouping of functionality for easy discovery
 
-## 🚀 Quick Start
+## Quick Start
 
 ```cpp
 #include "inc/tmc51x0.hpp"
@@ -248,7 +240,7 @@ and the [Multi-chip / Units / Error-handling cookbook](docs/special_features_mul
 > [docs/troubleshooting.md](docs/troubleshooting.md). Quick Start above omits checks
 > for brevity — production code should always inspect the result.
 
-## 🔧 Installation
+## Installation
 
 1. **Clone or copy** the driver files into your project
 2. **Implement the communication interface** for your platform (see [Platform Integration](docs/platform_integration.md))
@@ -260,7 +252,7 @@ and the [Multi-chip / Units / Error-handling cookbook](docs/special_features_mul
 
 For detailed installation instructions, see [docs/installation.md](docs/installation.md).
 
-## 📖 API Reference
+## API Reference
 
 > All methods return `Result<T>` types. Check with `IsOk()` / `operator bool` before using `Value()`. See the [full API Reference](docs/api_reference.md) for complete signatures and return types, and [docs/troubleshooting.md](docs/troubleshooting.md) for the full `ErrorCode` list.
 
@@ -442,7 +434,7 @@ driver.powerStage.ConfigureShortProtection(ps_cfg);
 
 For complete API documentation with all methods and parameters, see [docs/api_reference.md](docs/api_reference.md).
 
-## 📊 Examples
+## Examples
 
 Comprehensive ESP32 examples are available in [`examples/esp32/main/`](examples/esp32/main/), demonstrating all major features. Build and flash using the project scripts (see [`examples/esp32/README.md`](examples/esp32/README.md)).
 
@@ -466,7 +458,7 @@ Comprehensive ESP32 examples are available in [`examples/esp32/main/`](examples/
 
 All examples use a unified test rig selection (`SELECTED_TEST_RIG`) for compile-time motor/board/platform configuration. See [docs/examples.md](docs/examples.md) for detailed walkthroughs.
 
-## 📚 Documentation
+## Documentation
 
 **[Complete Documentation on GitHub Pages](https://hardfoc.github.io/hf-tmc5160-driver/)**
 
@@ -501,7 +493,7 @@ All examples use a unified test rig selection (`SELECTED_TEST_RIG`) for compile-
 
 For local browsing, see the [docs directory](docs/index.md).
 
-## 🔗 References
+## References
 
 | Resource | Link |
 |----------|------|
@@ -513,11 +505,11 @@ For local browsing, see the [docs directory](docs/index.md).
 | ESP-IDF SPI / UART | <https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/index.html> |
 | C++17 language reference | <https://en.cppreference.com/w/cpp/17> |
 
-## 🤝 Contributing
+## Contributing
 
 Pull requests and suggestions are welcome! Please follow the existing code style and include tests for new features.
 
-## 📄 License
+## License
 
 This project is licensed under the **GNU General Public License v3.0**.
 See the [LICENSE](LICENSE) file for details.

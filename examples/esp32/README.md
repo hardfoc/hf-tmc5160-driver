@@ -2,7 +2,7 @@
 
 This directory contains comprehensive examples for using the TMC5160 stepper motor driver with ESP32 microcontrollers.
 
-## 🛠️ Hardware Setup
+## Hardware Setup
 
 These examples are configured by default for a specific **Trinamic TMC5160 Dev/Eval Kit** setup.
 
@@ -16,7 +16,7 @@ These examples are configured by default for a specific **Trinamic TMC5160 Dev/E
 👉 **[Full Hardware Configuration & Pinout](docs/dev_board_setup.md)**  
 *Please read the detailed setup guide above before running any examples to ensure your hardware matches the configuration and avoid damage.*
 
-## 📂 Available Examples
+## Available Examples
 
 | App | Description |
 |-----|-------------|
@@ -32,7 +32,7 @@ These examples are configured by default for a specific **Trinamic TMC5160 Dev/E
 
 Run `./scripts/build_app.sh list` to see all apps and build types.
 
-## 🚀 Getting Started
+## Getting Started
 
 ![What you need for the ESP32 build process](../assets/images/what-you-need.png)
 
@@ -62,7 +62,7 @@ Run `./scripts/build_app.sh list` to see all apps and build types.
     - See `scripts/README.md` for an overview of the ESP-IDF project tools.
     - Full documentation: [HardFOC ESP-IDF Project Tools Docs](https://hardfoc.github.io/hf-espidf-project-tools/)
 
-## ⚠️ Critical Warnings
+## Critical Warnings
 
 *   **Charge Pump:** Ensure the **22nF/100V** capacitor is connected between VCP and VS. Missing this will cause `uv_cp=1` errors.
 *   **Wiring:** Verify motor phases are not shorted before powering up.
