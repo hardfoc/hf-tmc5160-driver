@@ -105,6 +105,47 @@
   <meta property="og:description" content="Hardware-agnostic C++20 driver for the Analog Devices (Trinamic) TMC5160 and TMC5130 stepper motor controllers: motion ramps, StallGuard, CoolStep, encoder and multi-chip buses, over SPI or UART.">
   <meta property="og:url" content="https://hardfoc.github.io/hf-tmc5160-driver/latest/hardware/">
   <meta name="twitter:card" content="summary">
+  <script>
+(function () {
+  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
+  var SRC = "https://unpkg.com/mermaid@11/dist/mermaid.min.js", config = {}, real, loading, waiting = [];
+  var stub = {
+    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
+    render: function (id, text) {
+      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-hf-mermaid])");
+      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
+      if (el) el.setAttribute("data-hf-mermaid", "");
+      return near(el).then(load).then(function (m) { return m.render(id, text); });
+    }
+  };
+  function load() {
+    return loading || (loading = new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = SRC;
+      s.onload = function () {
+        real = window.mermaid;
+        window.mermaid = stub;
+        real.initialize(config);
+        resolve(real);
+      };
+      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
+      document.head.appendChild(s);
+    }));
+  }
+  function near(el) {
+    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
+    return new Promise(function (resolve) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); resolve(); }
+      }, { rootMargin: "100% 0px" });
+      io.observe(el);
+      waiting.push(function () { io.disconnect(); resolve(); });
+    });
+  }
+  window.addEventListener("beforeprint", function () { waiting.splice(0).forEach(function (go) { go(); }); });
+  window.mermaid = stub;
+})();
+</script>
 
   </head>
   
@@ -1104,7 +1145,7 @@
 <h1 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">&para;</a></h1>
 <p>What to connect between your MCU and a TMC5160, with which bus settings and supplies, and the board-level traps to
 avoid.</p>
-<p>All values here come from the <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/docs/datasheet/tmc5160a-datasheet-rev1.18.pdf">TMC5160 / TMC5160A datasheet</a>
+<p>All values here come from the <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/docs/datasheet/tmc5160a-datasheet-rev1.18.pdf">TMC5160 / TMC5160A datasheet</a>
 (Rev. 1.18, 2023-03-01). Pin numbers are given for the eTQFP48 package, with the QFN56 number in brackets. The
 TMC5130 has the same digital interface; check its own datasheet for its pinout and supply range
 (<a href="../tmc5130/">TMC5130</a>).</p>
@@ -1424,7 +1465,7 @@ scales the current down from there with <code>GLOBAL_SCALER</code> (32 to 256) a
 </tr>
 </tbody>
 </table>
-<p>It lives in <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/test_config/esp32_tmc51x0_test_config.hpp"><code>esp32_tmc51x0_test_config.hpp</code></a>.</p>
+<p>It lives in <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/test_config/esp32_tmc51x0_test_config.hpp"><code>esp32_tmc51x0_test_config.hpp</code></a>.</p>
 <h2 id="reference-documents">Reference documents<a class="headerlink" href="#reference-documents" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1435,7 +1476,7 @@ scales the current down from there with <code>GLOBAL_SCALER</code> (32 to 256) a
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/docs/datasheet/tmc5160a-datasheet-rev1.18.pdf">TMC5160 / TMC5160A datasheet</a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/docs/datasheet/tmc5160a-datasheet-rev1.18.pdf">TMC5160 / TMC5160A datasheet</a></td>
 <td>Pins, registers, electrical limits, chopper and StallGuard tuning</td>
 </tr>
 <tr>

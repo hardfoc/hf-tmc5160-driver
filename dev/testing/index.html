@@ -105,6 +105,47 @@
   <meta property="og:description" content="Hardware-agnostic C++20 driver for the Analog Devices (Trinamic) TMC5160 and TMC5130 stepper motor controllers: motion ramps, StallGuard, CoolStep, encoder and multi-chip buses, over SPI or UART.">
   <meta property="og:url" content="https://hardfoc.github.io/hf-tmc5160-driver/latest/testing/">
   <meta name="twitter:card" content="summary">
+  <script>
+(function () {
+  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
+  var SRC = "https://unpkg.com/mermaid@11/dist/mermaid.min.js", config = {}, real, loading, waiting = [];
+  var stub = {
+    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
+    render: function (id, text) {
+      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-hf-mermaid])");
+      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
+      if (el) el.setAttribute("data-hf-mermaid", "");
+      return near(el).then(load).then(function (m) { return m.render(id, text); });
+    }
+  };
+  function load() {
+    return loading || (loading = new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = SRC;
+      s.onload = function () {
+        real = window.mermaid;
+        window.mermaid = stub;
+        real.initialize(config);
+        resolve(real);
+      };
+      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
+      document.head.appendChild(s);
+    }));
+  }
+  function near(el) {
+    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
+    return new Promise(function (resolve) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); resolve(); }
+      }, { rootMargin: "100% 0px" });
+      io.observe(el);
+      waiting.push(function () { io.disconnect(); resolve(); });
+    });
+  }
+  window.addEventListener("beforeprint", function () { waiting.splice(0).forEach(function (go) { go(); }); });
+  window.mermaid = stub;
+})();
+</script>
 
   </head>
   
@@ -1020,29 +1061,29 @@ follows the datasheet's SPI rules: 40-bit datagrams, the reply to a read arrivin
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/tests/test_frames.cpp"><code>tests/test_frames.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/tests/test_frames.cpp"><code>tests/test_frames.cpp</code></a></td>
 <td>SPI datagram encoding against the datasheet examples, <code>SPI_STATUS</code> decoding, UART frames and CRC8 against the datasheet algorithm</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/tests/test_driver.cpp"><code>tests/test_driver.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/tests/test_driver.cpp"><code>tests/test_driver.cpp</code></a></td>
 <td>Pipelined reads, write confirmation, <code>Result&lt;T&gt;</code>, <code>Initialize()</code> with TMC5160 and TMC5130 detection (no TMC5160-only writes, TMC5130 current formula), <code>VerifySetup()</code>, motion commands and unit conversion (millimetres rejected without a mechanical system), <code>Enable()</code> / <code>Disable()</code> GPIO errors</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/tests/test_multi_chip.cpp"><code>tests/test_multi_chip.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/tests/test_multi_chip.cpp"><code>tests/test_multi_chip.cpp</code></a></td>
 <td><code>TMC51x0DaisyChain</code> and <code>TMC51x0MultiNode</code> (explicitly instantiated), the NODECONF / NAO addressing sequence, 8-bit UART node addresses</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/tests/install_check.cmake"><code>tests/install_check.cmake</code></a></td>
-<td>Installs the build tree and builds a <code>find_package(hf_tmc51x0)</code> consumer (<a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/tests/install/CMakeLists.txt"><code>tests/install/</code></a>)</td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/tests/install_check.cmake"><code>tests/install_check.cmake</code></a></td>
+<td>Installs the build tree and builds a <code>find_package(hf_tmc51x0)</code> consumer (<a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/tests/install/CMakeLists.txt"><code>tests/install/</code></a>)</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/tests/mock_tmc51x0.hpp"><code>tests/mock_tmc51x0.hpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/tests/mock_tmc51x0.hpp"><code>tests/mock_tmc51x0.hpp</code></a></td>
 <td>The chip model</td>
 </tr>
 </tbody>
 </table>
 <h2 id="documentation-snippets">Documentation snippets<a class="headerlink" href="#documentation-snippets" title="Permanent link">&para;</a></h2>
-<p>Every C++ block on this site is included from <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/tests/docs/my_spi.hpp"><code>tests/docs/</code></a>, which the host build
+<p>Every C++ block on this site is included from <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/tests/docs/my_spi.hpp"><code>tests/docs/</code></a>, which the host build
 compiles (target <code>hf_tmc51x0_doc_snippets</code>) with the driver explicitly instantiated over the documented SPI and
 UART ports, so every member of <code>TMC51x0</code> is compiled. A change to the API that breaks a page breaks the build
 first.</p>

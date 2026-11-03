@@ -105,6 +105,47 @@
   <meta property="og:description" content="Hardware-agnostic C++20 driver for the Analog Devices (Trinamic) TMC5160 and TMC5130 stepper motor controllers: motion ramps, StallGuard, CoolStep, encoder and multi-chip buses, over SPI or UART.">
   <meta property="og:url" content="https://hardfoc.github.io/hf-tmc5160-driver/latest/architecture/">
   <meta name="twitter:card" content="summary">
+  <script>
+(function () {
+  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
+  var SRC = "https://unpkg.com/mermaid@11/dist/mermaid.min.js", config = {}, real, loading, waiting = [];
+  var stub = {
+    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
+    render: function (id, text) {
+      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-hf-mermaid])");
+      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
+      if (el) el.setAttribute("data-hf-mermaid", "");
+      return near(el).then(load).then(function (m) { return m.render(id, text); });
+    }
+  };
+  function load() {
+    return loading || (loading = new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = SRC;
+      s.onload = function () {
+        real = window.mermaid;
+        window.mermaid = stub;
+        real.initialize(config);
+        resolve(real);
+      };
+      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
+      document.head.appendChild(s);
+    }));
+  }
+  function near(el) {
+    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
+    return new Promise(function (resolve) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); resolve(); }
+      }, { rootMargin: "100% 0px" });
+      io.observe(el);
+      waiting.push(function () { io.disconnect(); resolve(); });
+    });
+  }
+  window.addEventListener("beforeprint", function () { waiting.splice(0).forEach(function (go) { go(); }); });
+  window.mermaid = stub;
+})();
+</script>
 
   </head>
   
@@ -1128,14 +1169,14 @@
 <h1 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h1>
 <p>How the driver is put together: three layers, what each owns, and how one call reaches the chip.</p>
 <figure class="hf-figure">
-<img src="../diagrams/driver-layers.svg#only-light" alt="Layer diagram: the application calls the hardware-agnostic TMC51x0 driver and its subsystems, which use the SPI or UART communication interface, which calls the platform port you write, which drives the SPI bus or single-wire UART and the DRV_ENN pin of the TMC5160 or TMC5130." width="1200" loading="lazy"><img src="../diagrams/driver-layers.dark.svg#only-dark" alt="Layer diagram: the application calls the hardware-agnostic TMC51x0 driver and its subsystems, which use the SPI or UART communication interface, which calls the platform port you write, which drives the SPI bus or single-wire UART and the DRV_ENN pin of the TMC5160 or TMC5130." width="1200" loading="lazy">
+<img src="../diagrams/driver-layers.svg#only-light" alt="Layer diagram: the application calls the hardware-agnostic TMC51x0 driver and its subsystems, which use the SPI or UART communication interface, which calls the platform port you write, which drives the SPI bus or single-wire UART and the DRV_ENN pin of the TMC5160 or TMC5130." width="1200" height="875"><img src="../diagrams/driver-layers.dark.svg#only-dark" alt="Layer diagram: the application calls the hardware-agnostic TMC51x0 driver and its subsystems, which use the SPI or UART communication interface, which calls the platform port you write, which drives the SPI bus or single-wire UART and the DRV_ENN pin of the TMC5160 or TMC5130." width="1200" height="875">
 <figcaption>Three layers, one of them yours</figcaption>
 </figure>
 
 <details class="hf-figure-desc">
 <summary>Figure description and sources</summary>
 <p>From top to bottom. Your application talks to one TMC51x0<Comm> object per chip, whose public members are the chip's subsystems (listed from inc/tmc51x0.hpp). Each subsystem turns a call in physical units into register reads and writes. The communication interface (SpiCommInterface or UartCommInterface in inc/tmc51x0_comm_interface.hpp) builds the 40-bit SPI datagrams or CRC-checked UART frames, handles daisy-chain padding and node addresses. The platform port is the only code you write: the methods the interface calls on it, read from the header. Below it is the TMC5160 or TMC5130.</p>
-<p>Drawn from: <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/inc/tmc51x0.hpp"><code>inc/tmc51x0.hpp</code></a> <code>TMC51x0 members</code>; <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/inc/tmc51x0_comm_interface.hpp"><code>inc/tmc51x0_comm_interface.hpp</code></a> <code>SpiCommInterface</code>; figure module <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/docs/diagrams/figures/driver-layers.py"><code>docs/diagrams/figures/driver-layers.py</code></a>.</p>
+<p>Drawn from: <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/inc/tmc51x0.hpp"><code>inc/tmc51x0.hpp</code></a> <code>TMC51x0 members</code>; <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/inc/tmc51x0_comm_interface.hpp"><code>inc/tmc51x0_comm_interface.hpp</code></a> <code>SpiCommInterface</code>; figure module <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/docs/diagrams/figures/driver-layers.py"><code>docs/diagrams/figures/driver-layers.py</code></a>.</p>
 </details>
 <h2 id="the-three-layers">The three layers<a class="headerlink" href="#the-three-layers" title="Permanent link">&para;</a></h2>
 <table>
@@ -1150,13 +1191,13 @@
 <tbody>
 <tr>
 <td><strong>Hardware-agnostic core</strong>: <code>TMC51x0&lt;Comm&gt;</code> and its subsystems</td>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/inc/tmc51x0.hpp"><code>inc/tmc51x0.hpp</code></a>, <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/src/tmc51x0.ipp"><code>src/tmc51x0.ipp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/inc/tmc51x0.hpp"><code>inc/tmc51x0.hpp</code></a>, <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/src/tmc51x0.ipp"><code>src/tmc51x0.ipp</code></a></td>
 <td>The interface's register access only</td>
 <td>Never, for a new board</td>
 </tr>
 <tr>
 <td><strong>Communication interface</strong>: <code>SpiCommInterface</code>, <code>UartCommInterface</code></td>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/inc/tmc51x0_comm_interface.hpp"><code>inc/tmc51x0_comm_interface.hpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/inc/tmc51x0_comm_interface.hpp"><code>inc/tmc51x0_comm_interface.hpp</code></a></td>
 <td>The methods of your port</td>
 <td>Never</td>
 </tr>

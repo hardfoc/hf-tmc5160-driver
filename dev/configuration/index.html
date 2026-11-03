@@ -105,6 +105,47 @@
   <meta property="og:description" content="Hardware-agnostic C++20 driver for the Analog Devices (Trinamic) TMC5160 and TMC5130 stepper motor controllers: motion ramps, StallGuard, CoolStep, encoder and multi-chip buses, over SPI or UART.">
   <meta property="og:url" content="https://hardfoc.github.io/hf-tmc5160-driver/latest/configuration/">
   <meta name="twitter:card" content="summary">
+  <script>
+(function () {
+  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
+  var SRC = "https://unpkg.com/mermaid@11/dist/mermaid.min.js", config = {}, real, loading, waiting = [];
+  var stub = {
+    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
+    render: function (id, text) {
+      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-hf-mermaid])");
+      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
+      if (el) el.setAttribute("data-hf-mermaid", "");
+      return near(el).then(load).then(function (m) { return m.render(id, text); });
+    }
+  };
+  function load() {
+    return loading || (loading = new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = SRC;
+      s.onload = function () {
+        real = window.mermaid;
+        window.mermaid = stub;
+        real.initialize(config);
+        resolve(real);
+      };
+      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
+      document.head.appendChild(s);
+    }));
+  }
+  function near(el) {
+    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
+    return new Promise(function (resolve) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); resolve(); }
+      }, { rootMargin: "100% 0px" });
+      io.observe(el);
+      waiting.push(function () { io.disconnect(); resolve(); });
+    });
+  }
+  window.addEventListener("beforeprint", function () { waiting.splice(0).forEach(function (go) { go(); }); });
+  window.mermaid = stub;
+})();
+</script>
 
   </head>
   
@@ -1094,7 +1135,7 @@
 <h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h1>
 <p>Every setting <code>Initialize()</code> applies, how to build a configuration, and what to change at run time.</p>
 <h2 id="driverconfig">DriverConfig<a class="headerlink" href="#driverconfig" title="Permanent link">&para;</a></h2>
-<p><code>tmc51x0::DriverConfig</code> (in <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/inc/tmc51x0_types.hpp"><code>inc/tmc51x0_types.hpp</code></a>) holds the whole chip setup.
+<p><code>tmc51x0::DriverConfig</code> (in <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/inc/tmc51x0_types.hpp"><code>inc/tmc51x0_types.hpp</code></a>) holds the whole chip setup.
 Every member has a safe default; a minimal configuration sets only the motor and board values.</p>
 <table>
 <thead>
@@ -1237,7 +1278,7 @@ Every member has a safe default; a minimal configuration sets only the motor and
 </span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="k">return</span><span class="w"> </span><span class="n">cfg</span><span class="p">;</span>
 </span></code></pre></div>
 <h2 id="or-use-the-builder">Or use the builder<a class="headerlink" href="#or-use-the-builder" title="Permanent link">&para;</a></h2>
-<p><code>tmc51x0::ConfigBuilder</code> (in <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/inc/features/tmc51x0_config_builder.hpp"><code>inc/features/tmc51x0_config_builder.hpp</code></a>)
+<p><code>tmc51x0::ConfigBuilder</code> (in <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/inc/features/tmc51x0_config_builder.hpp"><code>inc/features/tmc51x0_config_builder.hpp</code></a>)
 sets the same fields with chained calls and returns a <code>DriverConfig</code>:</p>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">return</span><span class="w"> </span><span class="n">tmc51x0</span><span class="o">::</span><span class="n">ConfigBuilder</span><span class="p">()</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="p">.</span><span class="n">WithMotorMa</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">2800</span><span class="p">)</span>
@@ -1328,7 +1369,7 @@ sets the same fields with chained calls and returns a <code>DriverConfig</code>:
 </table>
 <h2 id="the-esp32-examples-configuration">The ESP32 examples' configuration<a class="headerlink" href="#the-esp32-examples-configuration" title="Permanent link">&para;</a></h2>
 <p>The examples split their settings into board, motor and platform structs in
-<a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/test_config/esp32_tmc51x0_test_config.hpp"><code>esp32_tmc51x0_test_config.hpp</code></a>:
+<a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/test_config/esp32_tmc51x0_test_config.hpp"><code>esp32_tmc51x0_test_config.hpp</code></a>:
 <code>BoardConfig_TMC51x0_EVAL</code> (50 mΩ sense resistors) and <code>BoardConfig_TMC51x0_BOB</code> (110 mΩ), motor structs such as
 <code>MotorConfig_17HS4401S</code>, and platform structs for switches, encoder and mechanics.
 <code>ConfigureDriverFromTestRig()</code> combines them into a <code>DriverConfig</code>.</p>

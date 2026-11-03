@@ -105,6 +105,47 @@
   <meta property="og:description" content="Hardware-agnostic C++20 driver for the Analog Devices (Trinamic) TMC5160 and TMC5130 stepper motor controllers: motion ramps, StallGuard, CoolStep, encoder and multi-chip buses, over SPI or UART.">
   <meta property="og:url" content="https://hardfoc.github.io/hf-tmc5160-driver/latest/examples/">
   <meta name="twitter:card" content="summary">
+  <script>
+(function () {
+  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
+  var SRC = "https://unpkg.com/mermaid@11/dist/mermaid.min.js", config = {}, real, loading, waiting = [];
+  var stub = {
+    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
+    render: function (id, text) {
+      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-hf-mermaid])");
+      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
+      if (el) el.setAttribute("data-hf-mermaid", "");
+      return near(el).then(load).then(function (m) { return m.render(id, text); });
+    }
+  };
+  function load() {
+    return loading || (loading = new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = SRC;
+      s.onload = function () {
+        real = window.mermaid;
+        window.mermaid = stub;
+        real.initialize(config);
+        resolve(real);
+      };
+      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
+      document.head.appendChild(s);
+    }));
+  }
+  function near(el) {
+    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
+    return new Promise(function (resolve) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); resolve(); }
+      }, { rootMargin: "100% 0px" });
+      io.observe(el);
+      waiting.push(function () { io.disconnect(); resolve(); });
+    });
+  }
+  window.addEventListener("beforeprint", function () { waiting.splice(0).forEach(function (go) { go(); }); });
+  window.mermaid = stub;
+})();
+</script>
 
   </head>
   
@@ -1028,8 +1069,8 @@
 <h1 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h1>
 <p>Complete ESP32 applications that exercise the driver on real hardware, one feature area each.</p>
 <p>They run on an ESP32-C6 wired to a TMC5160 board (the TMC5160-EVAL or a breakout board); the pins are in
-<a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/test_config/esp32_tmc51x0_test_config.hpp"><code>esp32_tmc51x0_test_config.hpp</code></a> and the port in
-<a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/test_config/esp32_tmc51x0_bus.hpp"><code>esp32_tmc51x0_bus.hpp</code></a>. CI builds every app marked
+<a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/test_config/esp32_tmc51x0_test_config.hpp"><code>esp32_tmc51x0_test_config.hpp</code></a> and the port in
+<a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/test_config/esp32_tmc51x0_bus.hpp"><code>esp32_tmc51x0_bus.hpp</code></a>. CI builds every app marked
 "yes" below on each pull request.</p>
 <h2 id="the-apps">The apps<a class="headerlink" href="#the-apps" title="Permanent link">&para;</a></h2>
 <!-- generated: examples -->
@@ -1046,61 +1087,61 @@
 <tr>
 <td><code>internal_ramp_comprehensive_test</code> <span class="twemoji" title="featured"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg></span></td>
 <td>Internal-ramp test suite over SPI: core, motor control, ramp control, diagnostics and protection (one motor, encoder and reference switches)</td>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/internal_ramp_test_suites/internal_ramp_comprehensive_test.cpp"><code>internal_ramp_test_suites/internal_ramp_comprehensive_test.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/internal_ramp_test_suites/internal_ramp_comprehensive_test.cpp"><code>internal_ramp_test_suites/internal_ramp_comprehensive_test.cpp</code></a></td>
 <td>yes</td>
 </tr>
 <tr>
 <td><code>spi_daisy_chain_comprehensive_test</code></td>
 <td>SPI daisy-chain test suite: chain setup, positions and multi-motor moves (set TEST_CHAIN_LENGTH to your hardware)</td>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/internal_ramp_test_suites/spi_daisy_chain_comprehensive_test.cpp"><code>internal_ramp_test_suites/spi_daisy_chain_comprehensive_test.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/internal_ramp_test_suites/spi_daisy_chain_comprehensive_test.cpp"><code>internal_ramp_test_suites/spi_daisy_chain_comprehensive_test.cpp</code></a></td>
 <td>no</td>
 </tr>
 <tr>
 <td><code>uart_multi_node_comprehensive_test</code></td>
 <td>UART single-wire test suite: register access, node addressing, send delay and motion (set TEST_NODE_COUNT, default 1)</td>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/internal_ramp_test_suites/uart_multi_node_comprehensive_test.cpp"><code>internal_ramp_test_suites/uart_multi_node_comprehensive_test.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/internal_ramp_test_suites/uart_multi_node_comprehensive_test.cpp"><code>internal_ramp_test_suites/uart_multi_node_comprehensive_test.cpp</code></a></td>
 <td>no</td>
 </tr>
 <tr>
 <td><code>internal_ramp_sinusoidal</code> <span class="twemoji" title="featured"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg></span></td>
 <td>Sinusoidal back-and-forth motion with the internal ramp generator</td>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/internal_ramp_test_suites/internal_ramp_sinusoidal.cpp"><code>internal_ramp_test_suites/internal_ramp_sinusoidal.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/internal_ramp_test_suites/internal_ramp_sinusoidal.cpp"><code>internal_ramp_test_suites/internal_ramp_sinusoidal.cpp</code></a></td>
 <td>yes</td>
 </tr>
 <tr>
 <td><code>fatigue_test_espnow_unit</code> <span class="twemoji" title="featured"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg></span></td>
 <td>Fatigue test unit controlled over ESP-NOW or UART, with StallGuard2 or encoder bounds detection</td>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/fatigue_test_espnow/main.cpp"><code>fatigue_test_espnow/main.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/fatigue_test_espnow/main.cpp"><code>fatigue_test_espnow/main.cpp</code></a></td>
 <td>no</td>
 </tr>
 <tr>
 <td><code>espnow_protocol_test_unit</code></td>
 <td>ESP-NOW protocol test unit: answers protocol messages without driving a motor</td>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/fatigue_test_espnow/espnow_protocol_test_unit.cpp"><code>fatigue_test_espnow/espnow_protocol_test_unit.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/fatigue_test_espnow/espnow_protocol_test_unit.cpp"><code>fatigue_test_espnow/espnow_protocol_test_unit.cpp</code></a></td>
 <td>no</td>
 </tr>
 <tr>
 <td><code>stallguard_tuning</code> <span class="twemoji" title="featured"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg></span></td>
 <td>Finds the StallGuard2 threshold (SGT) for sensorless homing</td>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/tuning/stallguard_tuning.cpp"><code>tuning/stallguard_tuning.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/tuning/stallguard_tuning.cpp"><code>tuning/stallguard_tuning.cpp</code></a></td>
 <td>yes</td>
 </tr>
 <tr>
 <td><code>bounds_finding_test</code> <span class="twemoji" title="featured"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg></span></td>
 <td>Finds the mechanical limits, homes to the centre and reports the travel</td>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/tuning/bounds_finding_test.cpp"><code>tuning/bounds_finding_test.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/tuning/bounds_finding_test.cpp"><code>tuning/bounds_finding_test.cpp</code></a></td>
 <td>no</td>
 </tr>
 <tr>
 <td><code>abn_encoder_reader</code> <span class="twemoji" title="featured"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z"/></svg></span></td>
 <td>Reads and prints the position of an ABN incremental encoder</td>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/sensors/abn_encoder_reader.cpp"><code>sensors/abn_encoder_reader.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/sensors/abn_encoder_reader.cpp"><code>sensors/abn_encoder_reader.cpp</code></a></td>
 <td>no</td>
 </tr>
 <tr>
 <td><code>i2c_scan</code></td>
 <td>I2C bus scanner for the OLED UI board wiring (SDA = GPIO5, SCL = GPIO23)</td>
-<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/diagnostics/i2c_scan.cpp"><code>diagnostics/i2c_scan.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/diagnostics/i2c_scan.cpp"><code>diagnostics/i2c_scan.cpp</code></a></td>
 <td>no</td>
 </tr>
 </tbody>
@@ -1109,7 +1150,7 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./scripts/build_app.sh<span class="w"> </span>internal_ramp_comprehensive_test<span class="w"> </span>Release
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>./scripts/flash_app.sh<span class="w"> </span>flash_monitor<span class="w"> </span>internal_ramp_comprehensive_test<span class="w"> </span>Release
 </span></code></pre></div>
-<p>Source of this table: <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/app_config.yml"><code>examples/esp32/app_config.yml</code></a>.</p>
+<p>Source of this table: <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/app_config.yml"><code>examples/esp32/app_config.yml</code></a>.</p>
 <!-- /generated -->
 
 <h2 id="set-up-once">Set up once<a class="headerlink" href="#set-up-once" title="Permanent link">&para;</a></h2>
@@ -1117,8 +1158,8 @@
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>examples/esp32
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>./scripts/build_app.sh<span class="w"> </span>list<span class="w">                           </span><span class="c1"># every app, build type and ESP-IDF version</span>
 </span></code></pre></div>
-<p>The scripts read <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/app_config.yml"><code>app_config.yml</code></a> (the same file this page's table comes
-from) and build each app as its own firmware image. The <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/README.md">example folder's README</a>
+<p>The scripts read <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/app_config.yml"><code>app_config.yml</code></a> (the same file this page's table comes
+from) and build each app as its own firmware image. The <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/README.md">example folder's README</a>
 covers installing ESP-IDF with the project tools.</p>
 <h2 id="what-to-read-in-an-example">What to read in an example<a class="headerlink" href="#what-to-read-in-an-example" title="Permanent link">&para;</a></h2>
 <table>
@@ -1155,13 +1196,13 @@ covers installing ESP-IDF with the project tools.</p>
 </tr>
 <tr>
 <td>Run a long fatigue test controlled over ESP-NOW</td>
-<td><code>fatigue_test_espnow/main.cpp</code> and its <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/fatigue_test_espnow/README.md"><code>docs/</code></a></td>
+<td><code>fatigue_test_espnow/main.cpp</code> and its <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/fatigue_test_espnow/README.md"><code>docs/</code></a></td>
 </tr>
 </tbody>
 </table>
-<p>Each app has a page in <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/docs/index.md"><code>examples/esp32/docs/</code></a> with its wiring and expected
+<p>Each app has a page in <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/docs/index.md"><code>examples/esp32/docs/</code></a> with its wiring and expected
 output. The board, motor and platform settings the apps share are described in the
-<a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/docs/driver_configuration_guide.md">driver configuration guide</a>.</p>
+<a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/docs/driver_configuration_guide.md">driver configuration guide</a>.</p>
 
 
 

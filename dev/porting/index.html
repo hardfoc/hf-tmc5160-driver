@@ -105,6 +105,47 @@
   <meta property="og:description" content="Hardware-agnostic C++20 driver for the Analog Devices (Trinamic) TMC5160 and TMC5130 stepper motor controllers: motion ramps, StallGuard, CoolStep, encoder and multi-chip buses, over SPI or UART.">
   <meta property="og:url" content="https://hardfoc.github.io/hf-tmc5160-driver/latest/porting/">
   <meta name="twitter:card" content="summary">
+  <script>
+(function () {
+  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
+  var SRC = "https://unpkg.com/mermaid@11/dist/mermaid.min.js", config = {}, real, loading, waiting = [];
+  var stub = {
+    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
+    render: function (id, text) {
+      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-hf-mermaid])");
+      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
+      if (el) el.setAttribute("data-hf-mermaid", "");
+      return near(el).then(load).then(function (m) { return m.render(id, text); });
+    }
+  };
+  function load() {
+    return loading || (loading = new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = SRC;
+      s.onload = function () {
+        real = window.mermaid;
+        window.mermaid = stub;
+        real.initialize(config);
+        resolve(real);
+      };
+      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
+      document.head.appendChild(s);
+    }));
+  }
+  function near(el) {
+    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
+    return new Promise(function (resolve) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); resolve(); }
+      }, { rootMargin: "100% 0px" });
+      io.observe(el);
+      waiting.push(function () { io.disconnect(); resolve(); });
+    });
+  }
+  window.addEventListener("beforeprint", function () { waiting.splice(0).forEach(function (go) { go(); }); });
+  window.mermaid = stub;
+})();
+</script>
 
   </head>
   
@@ -1117,17 +1158,17 @@
 <p>Run the driver on a new MCU by writing one class: the communication interface for SPI or UART.</p>
 <p>The driver never calls your SDK directly. It calls a few methods on a class you derive from
 <code>tmc51x0::SpiCommInterface&lt;Self&gt;</code> or <code>tmc51x0::UartCommInterface&lt;Self&gt;</code> (in
-<a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/inc/tmc51x0_comm_interface.hpp"><code>inc/tmc51x0_comm_interface.hpp</code></a>). The base classes use CRTP: the calls are
+<a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/inc/tmc51x0_comm_interface.hpp"><code>inc/tmc51x0_comm_interface.hpp</code></a>). The base classes use CRTP: the calls are
 resolved at compile time, so there are no virtual functions and no vtable.</p>
 <figure class="hf-figure">
-<img src="../diagrams/driver-layers.svg#only-light" alt="Layer diagram: the application calls the hardware-agnostic TMC51x0 driver and its subsystems, which use the SPI or UART communication interface, which calls the platform port you write, which drives the SPI bus or single-wire UART and the DRV_ENN pin of the TMC5160 or TMC5130." width="1200" loading="lazy"><img src="../diagrams/driver-layers.dark.svg#only-dark" alt="Layer diagram: the application calls the hardware-agnostic TMC51x0 driver and its subsystems, which use the SPI or UART communication interface, which calls the platform port you write, which drives the SPI bus or single-wire UART and the DRV_ENN pin of the TMC5160 or TMC5130." width="1200" loading="lazy">
+<img src="../diagrams/driver-layers.svg#only-light" alt="Layer diagram: the application calls the hardware-agnostic TMC51x0 driver and its subsystems, which use the SPI or UART communication interface, which calls the platform port you write, which drives the SPI bus or single-wire UART and the DRV_ENN pin of the TMC5160 or TMC5130." width="1200" height="875"><img src="../diagrams/driver-layers.dark.svg#only-dark" alt="Layer diagram: the application calls the hardware-agnostic TMC51x0 driver and its subsystems, which use the SPI or UART communication interface, which calls the platform port you write, which drives the SPI bus or single-wire UART and the DRV_ENN pin of the TMC5160 or TMC5130." width="1200" height="875">
 <figcaption>Three layers, one of them yours</figcaption>
 </figure>
 
 <details class="hf-figure-desc">
 <summary>Figure description and sources</summary>
 <p>From top to bottom. Your application talks to one TMC51x0<Comm> object per chip, whose public members are the chip's subsystems (listed from inc/tmc51x0.hpp). Each subsystem turns a call in physical units into register reads and writes. The communication interface (SpiCommInterface or UartCommInterface in inc/tmc51x0_comm_interface.hpp) builds the 40-bit SPI datagrams or CRC-checked UART frames, handles daisy-chain padding and node addresses. The platform port is the only code you write: the methods the interface calls on it, read from the header. Below it is the TMC5160 or TMC5130.</p>
-<p>Drawn from: <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/inc/tmc51x0.hpp"><code>inc/tmc51x0.hpp</code></a> <code>TMC51x0 members</code>; <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/inc/tmc51x0_comm_interface.hpp"><code>inc/tmc51x0_comm_interface.hpp</code></a> <code>SpiCommInterface</code>; figure module <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/docs/diagrams/figures/driver-layers.py"><code>docs/diagrams/figures/driver-layers.py</code></a>.</p>
+<p>Drawn from: <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/inc/tmc51x0.hpp"><code>inc/tmc51x0.hpp</code></a> <code>TMC51x0 members</code>; <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/inc/tmc51x0_comm_interface.hpp"><code>inc/tmc51x0_comm_interface.hpp</code></a> <code>SpiCommInterface</code>; figure module <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/docs/diagrams/figures/driver-layers.py"><code>docs/diagrams/figures/driver-layers.py</code></a>.</p>
 </details>
 <h2 id="what-you-implement">What you implement<a class="headerlink" href="#what-you-implement" title="Permanent link">&para;</a></h2>
 <table>
@@ -1371,13 +1412,13 @@ of the active state:</p>
 for applications that want them; a port may return <code>UNSUPPORTED</code> for pins it does not wire. Change a level with
 <code>PinActiveLevels::SetActiveLevel()</code> when your board inverts a signal.</p>
 <h2 id="reference-implementation">Reference implementation<a class="headerlink" href="#reference-implementation" title="Permanent link">&para;</a></h2>
-<p>The ESP32 examples use <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/examples/esp32/main/test_config/esp32_tmc51x0_bus.hpp"><code>esp32_tmc51x0_bus.hpp</code></a>:
+<p>The ESP32 examples use <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/examples/esp32/main/test_config/esp32_tmc51x0_bus.hpp"><code>esp32_tmc51x0_bus.hpp</code></a>:
 <code>Esp32SPI</code> on the ESP-IDF <code>spi_master</code> driver with an optional mutex, and <code>Esp32UART</code> on the UART driver, with
 FreeRTOS delays, <code>ESP_LOG</code> output, pin mapping through <code>TMC51x0PinConfig</code> and CLK control. Start from it for any
 ESP-IDF target.</p>
 <h2 id="check-your-port">Check your port<a class="headerlink" href="#check-your-port" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Build it: both ports on this page are compiled by the host CI from <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/5153e561531a6c8140160cad1301534e72883241/tests/docs/my_spi.hpp"><code>tests/docs/</code></a>,
+<li>Build it: both ports on this page are compiled by the host CI from <a href="https://github.com/hardfoc/hf-tmc5160-driver/blob/8f4e43b89478729588d5231e808469fb47e0a685/tests/docs/my_spi.hpp"><code>tests/docs/</code></a>,
    with the driver instantiated over them.</li>
 <li>Read <code>IOIN</code> (<code>io.ReadIcVersion()</code>): <code>0x30</code> for a TMC5160, <code>0x11</code> for a TMC5130. <code>0x00</code> or <code>0xFF</code> means the
    bus does not work.</li>
