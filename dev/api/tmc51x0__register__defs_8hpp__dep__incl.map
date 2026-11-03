@@ -1,0 +1,20 @@
+<map id="tmc51x0_register_defs.hpp" name="tmc51x0_register_defs.hpp">
+<area shape="rect" id="Node000001" title="X&#45;MACRO definitions for TMC51x0 registers (TMC5130 &amp; TMC5160)" alt="" coords="109,5,308,31"/>
+<area shape="rect" id="Node000002" href="$tmc51x0__register__defs_8cpp.html" title="Tmc51X0 Register Defs definitions." alt="" coords="5,79,204,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,41,123,81,120,76,179,36"/>
+<area shape="rect" id="Node000003" href="$tmc51x0__registers_8hpp.html" title="Register definitions and bitfield structures for TMC51x0 stepper motor." alt="" coords="229,79,399,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="239,36,298,76,295,81,236,41"/>
+<area shape="rect" id="Node000004" href="$tmc51x0_8hpp.html" title="Main TMC51x0 stepper motor driver interface and subsystem classes." alt="" coords="163,225,270,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="301,117,227,227,222,224,296,114"/>
+<area shape="rect" id="Node000007" href="$tmc51x0__types_8hpp.html" title="Type definitions and enumerations for TMC51x0 stepper motor driver (TMC5130 &amp; TMC5160)" alt="" coords="304,152,455,177"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="336,113,371,150,367,154,332,116"/>
+<area shape="rect" id="Node000005" href="$tmc51x0__daisy__chain_8hpp.html" title="High&#45;level daisy&#45;chain manager for multiple TMC51x0 drivers (TMC5130 &amp;." alt="" coords="15,299,205,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="190,260,129,301,126,296,187,256"/>
+<area shape="rect" id="Node000006" href="$tmc51x0__multi__node_8hpp.html" title="High&#45;level multi&#45;node manager for multiple TMC51x0 drivers on UART." alt="" coords="230,299,417,324"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="246,256,307,296,304,301,244,260"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="342,185,244,228,242,223,340,180"/>
+<area shape="rect" id="Node000008" href="$tmc51x0__config__builder_8hpp.html" title="Fluent configuration builder for TMC51x0 driver." alt="" coords="295,225,499,251"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="388,190,396,225,391,226,383,191"/>
+<area shape="rect" id="Node000009" href="$tmc51x0__motor__calc_8hpp.html" title="Motor current calculation functions for TMC51x0 (TMC5130 &amp; TMC5160)" alt="" coords="523,225,710,251"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="431,179,579,223,577,228,430,184"/>
+</map>
