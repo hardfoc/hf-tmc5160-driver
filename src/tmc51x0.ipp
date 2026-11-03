@@ -281,9 +281,9 @@ void TMC51x0<CommType>::LogConfigSummary(const DriverConfig &cfg, const char *ta
                  std::string_view unit, std::string_view notes) noexcept {
     detail::LogTableRow(comm_, lvl, tag, W, key, value, unit, notes, KEY_W, VAL_W, UNIT_W, NOTES_W);
     // Yield periodically to avoid starving the watchdog when emitting long tables.
-    // On ESP-IDF with 100Hz tick, DelayMs(1) is 0 ticks. We use 10ms to ensure 1 tick.
+    // HardFOC runs FreeRTOS at 1 kHz, so DelayMs(1) is one tick.
     if ((++row_counter % 30U) == 0U) {
-      comm_.DelayMs(10);
+      comm_.DelayMs(1);
     }
   };
 

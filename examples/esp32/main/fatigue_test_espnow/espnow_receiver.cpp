@@ -380,7 +380,7 @@ bool EspNowReceiver::is_in_pairing_mode()
 {
     if (!s_pairing_mode) return false;
     
-    if (xTaskGetTickCount() > s_pairing_timeout_tick) {
+    if (static_cast<int32_t>(xTaskGetTickCount() - s_pairing_timeout_tick) > 0) {
         s_pairing_mode = false;
         s_awaiting_pairing_confirm = false;
         ESP_LOGI(TAG, "Pairing mode timed out");
@@ -528,7 +528,7 @@ static void handlePairingConfirm(const uint8_t* src_mac, const EspNowPacket& pkt
         return;
     }
 
-    if (xTaskGetTickCount() > s_pairing_confirm_timeout) {
+    if (static_cast<int32_t>(xTaskGetTickCount() - s_pairing_confirm_timeout) > 0) {
         ESP_LOGW(TAG, "PairingConfirm timed out");
         s_awaiting_pairing_confirm = false;
         return;
